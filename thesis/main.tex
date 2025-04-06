@@ -1,0 +1,82 @@
+\documentclass[a4paper, 11pt, italian, oneside]{book}
+
+\usepackage{preamble}
+
+
+\author{Davide Pierotti}
+\date{\normalsize Roma, Luglio 2025\\Anno Accademico 2024/2025}
+\title{Analisi comparativa di immagini SNOM e AFM di batteri tramite image processing per l'estrazione di informazioni morfologiche}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\frontmatter
+\makeatletter
+
+\begin{titlepage}
+	\begin{center}
+		\includesvg[scale=0.35]{images/Logo_Roma_Tre.svg}\\[1cm]
+
+		\large{Dipartimento di Ingegneria Civile, Informatica\\e delle Tecnologie Aeronautiche\\
+		\textsc{Corso di Laurea in Ingegneria Informatica}}\\[2cm]
+
+		\bigskip
+		Prova finale di laurea
+		\medskip
+
+		\textbf{\LARGE\@title}
+
+		\vspace{4 cm}
+
+		\noindent \textbf{Relatore} \hfill \textbf{Laureando} \\
+		\noindent Prof.ssa Gabriella Cincotti \hfill \@author \\
+		\hfill 562733 \\
+
+		\begin{bottompar}
+			\@date
+		\end{bottompar}
+
+	\end{center}
+\end{titlepage}
+
+\makeatother
+
+%----------------------------------------------------------------------------------------
+%	TOC
+%----------------------------------------------------------------------------------------
+
+\tableofcontents
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\listoftables
+\listoffigures
+
+%----------------------------------------------------------------------------------------
+%	CONTENT SECTION
+%----------------------------------------------------------------------------------------
+
+\mainmatter
+\pagenumbering{arabic}
+\pagestyle{headings}
+
+\subfile{sections/introduzione}
+\subfile{sections/gigascience}
+\subfile{sections/afm-snom}
+\chapter{Analisi con MATLAB / ImageJ}
+\chapter{Risultati}
+\chapter{Conclusioni}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\backmatter
+\printglossary[title=Glossario, toctitle=Glossario]
+\printglossary[type=\acronymtype]
+\pagenumbering{Roman}
+\bibliography{references}
+\end{document}

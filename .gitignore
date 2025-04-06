@@ -1,4 +1,4 @@
-## Core latex/pdflatex auxiliary files:
+## Latex/pdflatex auxiliary files:
 *.aux
 *.lof
 *.log
@@ -11,3 +11,16 @@
 *.cb
 *.cb2
 .*.lb
+*.acn
+*.ist
+*.gls
+*.glo
+*.glg
+*.bbl
+*.blg
+*.fdb_latexmk
+*.synctex.gz
+
+## SVG to Latex output folder
+svg-inkscape/
+
