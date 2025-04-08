@@ -1,9 +1,9 @@
 \ProvidesPackage{preamble}
 
 \usepackage{babel}
-\usepackage{amsmath,amsfonts,amsthm}
-\usepackage{graphicx}
-\usepackage{svg}
+\usepackage{amsmath,amsfonts,amsthm}%per gli ambienti matematici
+\usepackage{graphicx}				%per le immagini raster
+\usepackage{svg}					%per le immagini svg
 \usepackage{booktabs}
 \usepackage[square, numbers, super, sort]{natbib}					%gestione file .bib
 \usepackage{textcomp}
@@ -12,7 +12,7 @@
 \usepackage{makeidx}
 \usepackage{color}
 \usepackage{epstopdf}				%converte il eps in pdf
-\usepackage{setspace}					%interlinea
+\usepackage{setspace}				%interlinea
 \usepackage{float} 					%gestione figure
 \usepackage{subfig}					%gestione sottofigure
 \usepackage{midpage}				%Posizionamento a centro pagina per avere Abstract ma anche numero pagine continuo
@@ -29,7 +29,13 @@
 
 \geometry{a4paper, top=3cm, bottom=3cm, left=3.5cm, right=3cm,heightrounded,bindingoffset=5mm}
 
-\hypersetup{colorlinks=true,linkcolor=black,citecolor = black}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	citecolor = blue,
+	pdftitle={\@title},
+	pdfauthor={\@author}
+}
 
 \pagestyle{fancy}
 
@@ -41,24 +47,11 @@
 
 %\definecolor{LightGray}{gray}{0.9}
 
-
 \captionsetup{font={small}}			%Dimensione didascalie
 
 \makeglossaries
 \loadglsentries{glossary}
 
 \bibliographystyle{dinat}
-
-%\hypersetup{
-	%pdftitle={},					%Posso impostare parole chiave
-	%pdfauthor={},
-	%pdfsubject={},
-	%pdfkeywords={},
-	%	colorlinks=true				%Rimando a Testo
-	%	linkcolor= black			%Opzione colore rimando a Testo
-	%	linktocpage=true			%Rimando a Biblio
-	%	citecolor = red				%Opzione colore rimando a Biblio
-	%	pageanchor=true				%Rimanda a pagina citata nello stesso doc
-	%}
 
 \usepackage{subfiles}
