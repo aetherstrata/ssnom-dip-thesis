@@ -1,5 +1,8 @@
 ## Latex/pdflatex auxiliary files:
+*.acr
+*.alg
 *.aux
+*.dvi
 *.lof
 *.log
 *.lot
@@ -17,8 +20,10 @@
 *.glo
 *.glg
 *.bbl
+*.bcf
 *.blg
 *.fdb_latexmk
+*.run.xml
 *.synctex.gz
 
 ## SVG to Latex output folder

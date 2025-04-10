@@ -1,11 +1,18 @@
 \ProvidesPackage{preamble}
 
 \usepackage{babel}
+\usepackage[autostyle]{csquotes}
 \usepackage{amsmath,amsfonts,amsthm}%per gli ambienti matematici
 \usepackage{graphicx}				%per le immagini raster
 \usepackage{svg}					%per le immagini svg
 \usepackage{booktabs}
-\usepackage[square, numbers, super, sort]{natbib}					%gestione file .bib
+\usepackage[
+	backend=biber,
+	citestyle=numeric,
+	bibstyle=ieee,
+	natbib=true,
+	backend=biber,
+]{biblatex}
 \usepackage{textcomp}
 \usepackage{geometry}
 \usepackage{verbatim}
@@ -17,10 +24,10 @@
 \usepackage{subfig}					%gestione sottofigure
 \usepackage{midpage}				%Posizionamento a centro pagina per avere Abstract ma anche numero pagine continuo
 \usepackage{appendix}
+\usepackage{hyperref}
 \usepackage[toc, acronym]{glossaries}
 \usepackage{fancyhdr}
 \usepackage{lipsum}
-\usepackage{hyperref}
 \usepackage{xcolor,colortbl}
 
 \newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
@@ -52,6 +59,6 @@
 \makeglossaries
 \loadglsentries{glossary}
 
-\bibliographystyle{dinat}
+\addbibresource{references.bib}
 
 \usepackage{subfiles}
