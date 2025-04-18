@@ -1,5 +1,6 @@
 \ProvidesPackage{preamble}
-
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{xargs}
 \usepackage{babel}
 \usepackage[autostyle]{csquotes}
@@ -14,7 +15,8 @@
 	bibstyle=ieee,
 	natbib=true,
 	backend=biber,
-	sorting=none
+	sorting=none,
+	eprint=false
 ]{biblatex}
 \usepackage{textcomp}
 \usepackage{geometry}
@@ -24,7 +26,8 @@
 \usepackage{epstopdf}				%converte il eps in pdf
 \usepackage{setspace}				%interlinea
 \usepackage{float} 					%gestione figure
-\usepackage{subfig}					%gestione sottofigure
+\usepackage{subcaption}				%gestione sottofigure
+\usepackage{wrapfig}				%figure ai lati del testo
 \usepackage{midpage}				%Posizionamento a centro pagina per avere Abstract ma anche numero pagine continuo
 \usepackage{appendix}
 \usepackage{hyperref}
@@ -34,6 +37,10 @@
 \usepackage[pdftex, dvipsnames]{xcolor,colortbl}
 \usepackage{tikz}
 \usetikzlibrary{math}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+
+\setlength{\marginparwidth}{2.5cm}
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
@@ -44,7 +51,6 @@
 \newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
 
 \linespread{1.5}
-
 \geometry{a4paper, top=3cm, bottom=3cm, left=3.5cm, right=3cm,heightrounded,bindingoffset=5mm}
 
 \hypersetup{
@@ -55,6 +61,8 @@
 	pdfauthor={\@author}
 }
 
+\captionsetup{font={small}}
+
 \pagestyle{fancy}
 
 \renewcommand{\headrulewidth}{0.1 pt}
@@ -64,8 +72,6 @@
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}					 % Create horizontal rule command with 1 argument of height
 
 %\definecolor{LightGray}{gray}{0.9}
-
-\captionsetup{font={small}}			%Dimensione didascalie
 
 \makeglossaries
 \loadglsentries{glossary}
