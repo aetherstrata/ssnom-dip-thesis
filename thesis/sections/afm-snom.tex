@@ -314,7 +314,33 @@ Una delle tecniche di microscopia che sono state usate per acquisire le immagini
 
 \subsection{Principio di funzionamento}
 
-I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a un braccio elastico (\textit{cantilever}), che viene fatta scorrere sulla superficie del campione. Durante la scansione, la punta viene inclinata verso l'alto e il basso a causa della forza di interazione con il campione, che può essere di tipo repulsivo o attrattivo in base alla modalità di scansione. Queste inclinazioni vengono misurate da un raggio laser che viene riflesso dal cantilever su un fotodiodo a quadranti. L'inclinazione del cantilever deflette il raggio laser, che si sposta fra i quadranti del fotodiodo e la variazione di corrente tra i quadranti viene poi convertita in una variazione di altezza della punta, che viene usata per generare l'immagine del campione. Con questo sistema si possono apprezzare variazioni di altezza fino a 0.01nm.\cite{sun_2018}
+I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a un braccio elastico (\textit{cantilever}), che viene fatta scorrere sulla superficie del campione. La dimensione della punta è importante perché influisce sulla risoluzione spaziale dell'immagine, che può arrivare anche a frazioni di nanometri. La fabbricazione di punte con un raggio così piccolo è uno dei limiti tecnici della microscopia \acrshort{afm} e il loro spessore minuscolo fa si che possano essere facilmente danneggiate.\\
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{4cm}
+		\includegraphics[width=4cm]{images/afm_tip.png}
+		\caption{Vista laterale}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{4cm}
+		\includegraphics[width=4cm]{images/afm_tip_zoom.png}
+		\caption{Vista ingrandita}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{4cm}
+		\includegraphics[width=4cm]{images/afm_tip_front.png}
+		\caption{Vista frontale}
+	\end{subfigure}
+\caption{Punta di un microscopio \acrshort{afm} vista al microscopio \acrshort{sem}\ \cite{budgetsensors} }
+\label{fig:afm_tip}
+\end{figure}
+
+Durante la scansione, la punta viene inclinata verso l'alto e il basso a causa della forza di interazione con il campione, che può essere di tipo repulsivo o attrattivo in base alla modalità di scansione. Queste inclinazioni vengono misurate da un raggio laser che viene riflesso dal cantilever su un fotodiodo a quadranti. L'inclinazione del cantilever deflette il raggio laser, che si sposta fra i quadranti del fotodiodo, e la variazione della corrente tra i quadranti viene poi convertita in una variazione di altezza della punta, che viene usata per generare l'immagine del campione.
+
+Per effettuare la scansione, il piatto su cui poggia il campione viene spostato da degli elementi piezoelettrici, che possono espandersi e contrarsi con una precisione nanometrica variando una piccola tensione imposta (mV). Questi elementi piezoelettrici sono in grado di muoversi in tre direzioni (X, Y, Z) e sono controllati da un sistema elettronico che regola il movimento del campione in modo da mantenere il segnale di riferimento costante.
+
+Con questo sistema si possono apprezzare variazioni di altezza fino a 0.01nm.\cite{sun_2018}
 
 \begin{figure}[h]
 \centering
@@ -328,7 +354,7 @@ I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a 
 		.. controls (2.5, -2.15) and (1,-2.25) .. cycle;
 
 	% campione
-	\filldraw[fill=purple] (-2,-3.5) -- (-2,-3.25)
+	\filldraw[fill=OliveGreen] (-2,-3.5) -- (-2,-3.25)
 		.. controls (-2,-3) and (-1.33,-3) .. (-1.25,-3.25)
 		.. controls (-1,-3.3) and (-0.5, -2.9) .. (0.25,-3.25)
 		.. controls (0.75,-3.4) and (1,-3.1) .. (1.7,-3.25)
@@ -337,7 +363,15 @@ I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a 
 	 	-- cycle;
 
 	%base
+	\shadedraw[top color=red!80!black, bottom color=blue!80!black] (-1,-3.65)
+		node[below left, yshift=-0.5mm] {Tubo piezoelettrico}
+		rectangle (1,-4.3);
+
 	\fill (-2.5,-3.5) rectangle (2.5,-3.7);
+
+	\fill[color=gray] (0.4,-3.75) rectangle (0.9,-4.2) node[midway,black] {Z};
+	\fill[color=gray] (-0.4,-3.75) rectangle (-0.9,-4.2) node[midway,black] {Y};
+	\fill[color=gray] (-0.3,-3.75) rectangle (0.3,-4.2) node[midway,black] {X};
 
 	% scanner
 	\shadedraw[left color=gray!30, right color=gray!60, middle color=gray!10]
@@ -347,6 +381,7 @@ I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a 
 		-- cycle;
 	\draw (6,1.5) .. controls (6,1.8) and (4,1.8) .. (4,1.5);
 	\draw (6,-1) .. controls (6,-1.3) and (4,-1.3) .. (4,-1);
+
 	%laser
 	\filldraw (1.8,1.6) -- (2.2,1.4) -- (2.3,1.6) -- (1.9,1.8) -- cycle;
 	\draw[fill=yellow!30]
@@ -360,10 +395,11 @@ I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a 
 		-- (-2,1.5);
 
 	% elettronica
-	\draw (-2.6,1.35) -- (-3.25,1.35) -- (-3.25,3) -- (4,3);
+	\draw[->] (-2.6,1.35) -- (-3.25,1.35) -- (-3.25,3) -- (3.9,3);
 	\draw[dashed,->] (6,3) -- (7,3);
 	\node[draw, fill=white, align=center] at (5,3) {Elettronica\\di controllo};
 	\draw[->] (5,2.5) -- (5,1.5);
+	\draw[->] (5,-2.75) -- (5,-4) -- (1, -4);
 
 	% indicazioni
 	\draw[line width=0.5mm,<->] (3.25,-1.25) node[above] {Z}
@@ -377,27 +413,7 @@ I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a 
 \label{fig:afm_diag}
 \end{figure}
 
-La dimensione della punta è importante perché influisce sulla risoluzione spaziale dell'immagine, che può arrivare anche a frazioni di nanometri. La fabbricazione di punte con un raggio così piccolo è uno dei limiti tecnici della microscopia \acrshort{afm} e il loro spessore minuscolo fa si che possano essere facilmente danneggiate.
-
-\begin{figure}[H]
-\centering
-\begin{subfigure}{4cm}
-	\includegraphics[width=4cm]{images/afm_tip.png}
-	\caption{Vista laterale}
-\end{subfigure}
-\hfill
-\begin{subfigure}{4cm}
-	\includegraphics[width=4cm]{images/afm_tip_zoom.png}
-	\caption{Vista ingrandita}
-\end{subfigure}
-\hfill
-\begin{subfigure}{4cm}
-	\includegraphics[width=4cm]{images/afm_tip_front.png}
-	\caption{Vista frontale}
-\end{subfigure}
-\caption{Punta di un microscopio \acrshort{afm} vista al microscopio \acrshort{sem}\ \cite{budgetsensors} }
-\label{fig:afm_tip}
-\end{figure}
+I microscopi \acrshort{afm} possono essere usati in diverse modalità, a seconda del tipo di interazione che si vuole misurare. Queste modalità possono essere divise in tre categorie principali.
 
 \subsection{Modalità a contatto}
 
