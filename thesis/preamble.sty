@@ -35,6 +35,10 @@
 \usepackage{fancyhdr}
 \usepackage{lipsum}
 \usepackage[pdftex, dvipsnames]{xcolor,colortbl}
+
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
 \usepackage{tikz}
 \usetikzlibrary{math}
 \usetikzlibrary{calc}
@@ -47,6 +51,12 @@
 \newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
 \newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 \newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+
+\newtcolorbox{note}[2][]{breakable,sharp corners, skin=enhancedmiddle jigsaw,parbox=false,
+	boxrule=0mm,leftrule=2mm,boxsep=0mm,arc=0mm,outer arc=0mm,attach title to upper,
+	after title={.\ }, coltitle=RawSienna,colback=yellow!10,colframe=Goldenrod, title={#2},
+	fonttitle=\bfseries,#1
+}
 
 \newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
 

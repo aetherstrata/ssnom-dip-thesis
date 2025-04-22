@@ -144,7 +144,7 @@ I microscopi elettronici utilizzano un fascio di elettroni al posto della luce e
 
 Nei primi microscopi elettronici, il campione da esaminare è posto tra il cannone elettronico e il rilevatore e l'immagine si forma in base a come gli elettroni vengono trasmessi attraverso il campione, che deve essere molto sottile (meno di 100nm). Questo tipo di microscopi si chiama microscopio elettronico \textit{a trasmissione} (\acrshort{tem}) e i modelli più recenti possono arrivare a risoluzioni spaziali fino a 0.5\AA\ (50pm).\cite{rolf_2009}
 
-Un altro tipo molto usato di microscopi elettronici è quello \textit{a scansione} (\acrshort{sem}), in cui non si rileva il fascio trasmesso attraverso il campione bensì i raggi secondari che sono generati dalla loro interazione (come elettroni secondari o raggi X). Questa tecnica può ottenere immagini tridimensionali e non richiede un campione sottile quanto la \acrshort{tem}. Modelli recenti di \acrshort{sem} possono arrivare a risoluzioni spaziali fino a 0.4nm.\cite{hitachi_sem}
+Un altro tipo molto usato di microscopi elettronici è quello \textit{a scansione} (\acrshort{sem}), in cui non si rileva il fascio trasmesso attraverso il campione bensì i raggi secondari che sono generati dalla loro interazione (come elettroni secondari o raggi X). Questa tecnica può ottenere immagini tridimensionali e non richiede un campione sottile quanto la \acrshort{tem}. Modelli recenti di \acrshort{sem} possono arrivare a risoluzioni spaziali fino a 0.4nm.\cite{hitachi_sem}\\
 
 \begin{figure}[htbp]
 \centering
@@ -354,7 +354,7 @@ Con questo sistema si possono apprezzare variazioni di altezza fino a 0.01nm.\ci
 		.. controls (2.5, -2.15) and (1,-2.25) .. cycle;
 
 	% campione
-	\filldraw[fill=OliveGreen] (-2,-3.5) -- (-2,-3.25)
+	\filldraw[fill=purple] (-2,-3.5) -- (-2,-3.25)
 		.. controls (-2,-3) and (-1.33,-3) .. (-1.25,-3.25)
 		.. controls (-1,-3.3) and (-0.5, -2.9) .. (0.25,-3.25)
 		.. controls (0.75,-3.4) and (1,-3.1) .. (1.7,-3.25)
@@ -376,8 +376,7 @@ Con questo sistema si possono apprezzare variazioni di altezza fino a 0.01nm.\ci
 	% scanner
 	\shadedraw[left color=gray!30, right color=gray!60, middle color=gray!10]
 		(4,-2.5) .. controls (4,-2.8) and (6,-2.8) .. (6,-2.5)
-		-- (6,1.5) node[midway,right,sloped, yshift=-4mm] {Scanner}
-		.. controls (6,1.2) and (4,1.2) .. (4,1.5)
+		-- (6,1.5) .. controls (6,1.2) and (4,1.2) .. (4,1.5)
 		-- cycle;
 	\draw (6,1.5) .. controls (6,1.8) and (4,1.8) .. (4,1.5);
 	\draw (6,-1) .. controls (6,-1.3) and (4,-1.3) .. (4,-1);
@@ -409,22 +408,228 @@ Con questo sistema si possono apprezzare variazioni di altezza fino a 0.01nm.\ci
 		node[below,midway] {X,Y};
 
 \end{tikzpicture}
-\caption{Principio di funzionamento di un microscopio a forza atomica}
+\caption{Principio di funzionamento di un microscopio \acrshort{afm}}
 \label{fig:afm_diag}
 \end{figure}
 
-I microscopi \acrshort{afm} possono essere usati in diverse modalità, a seconda del tipo di interazione che si vuole misurare. Queste modalità possono essere divise in tre categorie principali.
+I microscopi \acrshort{afm} possono essere usati in diverse modalità, a seconda del tipo di interazione che si vuole misurare. Queste modalità possono essere divise in tre categorie principali.\\
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.32\linewidth}
+\centering
+	\begin{tikzpicture}
+	% campione
+	\shadedraw[left color=OliveGreen, right color=green!80!black] (0.5,0)
+		.. controls (1, 0.4) and (1.2, 0.3) .. (1.5,0.2)
+		.. controls (2,0.4) and (2.2,0.3) .. (2.5,0.2)
+		.. controls (2.8, 0.3) and (3, 0.4) .. (3.5,0);
+	%solco
+	\draw[red, line width=0.5mm, line cap=rect] (0.5,0)
+		.. controls (1, 0.4) and (1.2, 0.3) .. (1.5,0.2)
+		.. controls (2,0.4) and (2.2,0.29) .. (2.25,0.28);
+	%punta
+	\fill (2.15,0.75) -- (2.25,0.28) -- (2.35,0.75);
+	\fill (2.15,0.75)
+		.. controls (1.5,0.7) and (1,0.7) .. (0.1, 1)
+		-- (0.1, 0.9)
+		.. controls (1,0.6) and (1.5,0.6) .. (2.2,0.65);
+	%base
+	\fill (0,0) rectangle (4,-0.2);
+	\end{tikzpicture}
+	\subcaption{Contatto}
+	\end{subfigure}
+	\begin{subfigure}{0.32\linewidth}
+	\begin{tikzpicture}
+	% campione
+	\shadedraw[left color=OliveGreen, right color=green!80!black] (0.5,0)
+		.. controls (1, 0.4) and (1.2, 0.3) .. (1.5,0.2)
+		.. controls (2,0.4) and (2.2,0.3) .. (2.5,0.2)
+		.. controls (2.8, 0.3) and (3, 0.4) .. (3.5,0);
+	%punta
+	\fill[gray] (2.15,0.75) -- (2.25,0.28) -- (2.35,0.75);
+	\fill[gray] (2.15,0.75)
+		.. controls (1.5,0.7) and (1,0.7) .. (0.1, 1)
+		-- (0.1, 0.9)
+		.. controls (1,0.6) and (1.5,0.6) .. (2.2,0.65);
+	%punta
+	\fill (2.25,0.85) -- (2.35,0.38) -- (2.45,0.85);
+	\fill (2.25,0.85)
+		.. controls (1.5,0.75) and (1,0.7) .. (0.1, 1)
+		-- (0.1, 0.9)
+		.. controls (1,0.6) and (1.5,0.65) .. (2.3,0.75);
+	%movimento
+	\draw[<->, thick] (2.45,0.65) .. controls (2.55,0.55) and (2.55,0.45) .. (2.4,0.35);
+	%base
+	\fill (0,0) rectangle (4,-0.2);
+	\end{tikzpicture}
+	\subcaption{Contatto intermittente}
+	\end{subfigure}
+	\begin{subfigure}{0.32\linewidth}
+	\begin{tikzpicture}
+	% campione
+	\shadedraw[left color=OliveGreen, right color=green!80!black] (0.5,0)
+		.. controls (1, 0.4) and (1.2, 0.3) .. (1.5,0.2)
+		.. controls (2,0.4) and (2.2,0.3) .. (2.5,0.2)
+		.. controls (2.8, 0.3) and (3, 0.4) .. (3.5,0);
+	%punta
+	\fill[gray] (2.3,0.85) -- (2.4,0.38) -- (2.5,0.85);
+	\fill[gray] (2.3,0.85)
+		.. controls (1.5,0.75) and (1,0.7) .. (0.1, 1)
+		-- (0.1, 0.9)
+		.. controls (1,0.6) and (1.5,0.65) .. (2.35,0.75);
+	%punta
+	\fill (2.4,1) -- (2.5,0.52) -- (2.6,1);
+	\fill (2.4,1)
+		.. controls (1.5,0.8) and (1,0.8) .. (0.1, 1)
+		-- (0.1, 0.9)
+		.. controls (1.05,0.7) and (1.55,0.7) .. (2.45,0.9);
+	%movimento
+	\draw[<->, thick] (2.6,0.75) .. controls (2.7,0.65) and (2.7,0.55) .. (2.55,0.45);
+	%base
+	\fill (0,0) rectangle (4,-0.2);
+	\end{tikzpicture}
+	\subcaption{Senza contatto}
+\end{subfigure}
+\caption{Modalità di funzionamento di un microscopio \acrshort{afm}}
+\label{fig:afm_modes}
+\end{figure}
 
 \subsection{Modalità a contatto}
 
+Nella modalità a contatto la forza normale, quindi l'inclinamento verticale del cantilever, è mantenuta costante durante la scansione. Quando la punta si sposta sopra una parte protrudente del campione, il cantilever viene spinto verso l'alto e si crea un errore sull'inclinazione verticale. Per correggere questo errore, il controllore alza la punta finché l'errore non si annulla. Quando si incontrano delle depressioni nel campione si opera il procedimento opposto, abbassando la punta.
+
+Questa modalità permette anche di misurare le forze di attrito tra la superficie del campione e la punta ma non è utilizzabile su campioni biologici perché troppo delicati. La forza esercitata dalla punta può provocare stimoli meccanici non sostenibili per delle cellule e deformare biomolecole.\cite{zhong_1993}
+
+Idealmente, la forza dovrebbe essere minore di 100pN per essere utilizzabile su biomolecole e nell'ordine dei nN per le cellule. Per questo motivo, vengono usati dei cantilever con una bassa costante elastica per diminuire il rumore, aumentare la sensibilità e diminuire la forza di interazione.\cite{wang_2018}
+
+Un altro problema dell'uso di modalità a contatto è la possibilità che cellule poco aderenti o particelle di sporco si attacchino al cantilever.
 
 \subsection{Modalità a contatto intermittente}
 
-\subsection{Modalità oscillanti}
+Nella modalità a contatto intermittente, il cantilever oscilla verticalmente alla sua frequenza di risonanza, o poco meno. Quando la punta scansiona il campione, la sua altezza diminuisce l'ampiezza delle oscillazioni del cantilever che vengono misurate dal fotodiodo. Il segnale di controllo viene regolato in modo che, nel punto più basso del ciclo di oscillazione, la punta tocchi appena il campione. L'ampiezza di queste oscillazioni è quindi una misura delle interazioni tra la punta e il campione. Muovere la punta in alto e in basso, im modo da mantenere la stessa ampiezza di oscillazione, permette di ottenere una topografia del campione.
+
+Altre informazioni ottenute da questo metodo sono l'ampiezza e fase dell'errore tra l'oscillazione del cantilever e il segnale di riferimento. Questo scostamento dal segnale pilota è causato dalla dissipazione di energia tra la punta e il campione, che può essere causato da delle deformazioni della superficie del campione o da forze di attrazione. Queste informazioni possono essere usate per ottenere proprietà viscoelastiche del campione e distinguere materiali diversi.\cite{bruker_phase_imaging}
+
+Al contrario della modalità a contatto, la foza laterale è trascurabile visto che la punta tocca il campione solo per un istante ed è maggiormente indicata per campioni biologici, che altrimenti si muoverebbero liberamente insieme alla punta.\cite{karrasch_1993}
+
+Questa modalità di operazione è più lenta rispetto alla modalità a contatto a causa del meccanismo di scansione. Mentre nella modalità a contatto intermittente il segnale è generato dalla modulazione in ampiezza del cantilever, nella modalità a contatto si usa la deflessione del cantilever, che varia molto più velocemente. Questa differenza si riflette anche nel comportamento del controllore: la modalità a contatto è più stabile ad alti guadagni, che invece possono generare forti artefatti o immagini rumorose nella modalità a contatto intermittente. I parametri del controllore devono quindi essere scelti con più attenzione. 
+
+\subsection{Modalità senza contatto}
+
+Nella modalità senza contatto, la punta non tocca mai il campione ma mantiene comunque un'alta sensibilità alla sua topologia. Per fare ciò, la punta deve trovarsi abbastanza vicino al campione da entrare nel suo campo di forze, ma senza passare nella regione attrattiva usata per le modalità a contatto, quindi la scansione con questa modalità è eseguita esclusivamente nella regione attrattiva.
+
+Questa scelta comporta l'uso di un cantilever molto rigido e farlo rimanere molto vicino alla superficie del campione per osservare come cambiano l'ampiezza e la fase della sua oscillazione, evitando che salti nel regime repulsivo. Questi sono effetti della variazione della frequenza di oscillazione in risposta alle forze applicate dalla superficie sulla punta (forze di van der Waals).
+
+Per questa modalità si usa un cantilever ad alta frequenza di risonanza, tipicamente compresa tra 300 e 400 kHz, e bassa ampiezza di oscillazione, di circa 10nm.\cite{giessibil_1999} Come per la modalità a contatto intermittente, la velocità di scansione è più bassa di quella della modalità a contatto, ma queste proprietà del cantilever permettono di avere velocità maggiori della modalità a contatto intermittente.
+
+Non entrando mai nella regione ripulsiva, questa modalità presenta il più basso rischio di danneggiare o contaminare la punta e il campione.\cite{ho_1996}
+
+\vspace{2mm}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[domain=1.93:4, samples=200, scale=2.6]
+	%assi
+	\draw[->] (1.5,0) -- (4.2,0) node[above left] {Distanza};
+	\draw[->] (1.85,-0.9) -- (1.85,1) 
+		node[above right,midway,sloped, xshift=11mm] {Forza};
+		
+	%grafico
+	\draw plot (\x,{3*((2/\x)^(12)-(2/\x)^6)});
+	
+	%regione contatto
+	\draw[domain=1.94:1.99, red, line width=0.5mm] plot (\x,{3*((2/\x)^(12)-(2/\x)^6)});
+	\node[red,above left] at (1.85,0.2) {Contatto};
+	
+	%regione senza contatto
+	\draw[domain=2.3:3, blue, line width=0.5mm] plot (\x,{3*((2/\x)^(12)-(2/\x)^6)});
+	\node[blue,right] at (2.75,-0.55) {Senza contatto};
+	
+	%regione intermittente
+	\draw[dashed] (3,0.7) -- (3,-0.4);
+	\draw[<->, thick] (2, 0.5) -- (2.95,0.5)
+		node[above,midway] {Intermittente};
+\end{tikzpicture}
+\caption[Grafico delle forze di van der Waals secondo il modello di Lennard-Jones] {
+	\begin{tabular}[t]{ @{} l @{} }
+		Grafico delle forze di van der Waals secondo il modello di Lennard-Jones\\
+		Semipiano superiore: Forze repulsive\\
+		Semipiano inferiore: Forze attrattive
+	\end{tabular}}
+\label{fig:waals}
+\end{figure}
+
+\subsection{Modulazione in frequenza}
+
+Le modalità descritte nei paragrafi precedenti fanno tipicamente uso della modulazione in ampiezza. L'uso della modulazione in frequenza è limitato in quanto richiede attrezzature specifiche e un ambiente a vuoto ultra spinto. Usare una modalità oscillante a modulazione in frequenza ha anche dei vantaggi, come una vera risoluzione atomica.\cite{sugawara_1995}
+
 
 \subsection{Sistema di controllo}
 
+Il controllo del sistema è affidato a un controllore \acrshort{pid}, di gran lunga il tipo di sistema di controllo più usato (il 95\% di tutti i problemi di controllo si possono risolvere con questo sistema).\cite{astrom_2010}
 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+	
+	\draw[->] (-2,0) node[above right, xshift=-1.5mm] {Ingresso} 
+		-- (-0.5,0) node[right, xshift=-0.75mm] {\textbf{+}};
+	
+	\draw (0,0) circle (0.5);
+	\draw (0.3535,-0.3535) -- (-0.3535,0.3535);
+	\draw (-0.3535,-0.3535) -- (0.3535,0.3535);
+	
+	\draw[->] (0.5,0) node[above right] {$e(t)$} -- (2.5,0);
+	\draw[->] (2,0) -- (2,1.1) -- (2.5,1.1);
+	\draw[->] (2,0) -- (2,-1.1) -- (2.5,-1.1);
+	\fill (2,0) circle (0.05);
+	
+	\draw[->] (5.5,0) -- (6,0);
+	\draw[->] (5.5,1.1) -- (6.25,1.1) -- (6.25,0.25);
+	\draw[->] (5.5,-1.1) -- (6.25,-1.1) -- (6.25,-0.25);
+	\draw (6.25,0) circle (0.25) node {\textbf{+}};
+	
+	%controllore
+	\draw (2.5,1.6) rectangle (5.5,0.6)
+		node[midway] {$\displaystyle K_p\,e(t)$};
+	\draw (2.5,0.5) rectangle (5.5,-0.5)
+		node[midway] {$\displaystyle K_i\int\!e(t)\,dt$};
+	\draw (2.5,-0.6) rectangle (5.5,-1.6)
+		node[midway] {$\displaystyle K_d\frac{de(t)}{dt}$};
+	
+	\draw[->] (6.5,0) -- (7.5,0);
+	\draw (7.5,0.5) rectangle (10.5,-0.5)
+		node[midway] {Sistema};
+	
+	\draw[->] (10.5,0) -- (12,0) node[above left, xshift=1mm] {Uscita};
+	\draw[->] (11,0) -- (11,-2) node[above left, xshift=-3mm] {Controreazione}
+		-- (0,-2) -- (0,-0.5) node[above, yshift=-0.75mm] {$-$};
+	\fill (11,0) circle (0.05);
+\end{tikzpicture}
+\caption[Diagramma di un controllore PID ad anello chiuso] {
+	\begin{tabular}[t]{ @{} l @{} }
+		Diagramma di un controllore PID ad anello chiuso\\
+		$e(t)$: funzione di errore
+	\end{tabular}}
+\label{fig:pid_diag}
+\end{figure}
+
+Quando le forze di interazione tra la punta e il campione cambiano, il cantilever si flette e, di conseguenza, modifica l'uscita del fotodiodo facendola deviare dal valore di ingresso. La differenza tra ingresso e uscita è la funzione di errore $e(t)$.
+
+Il controllore PID agisce su questa funzione e il suo comportamento è composto da tre azioni indipendenti, controllate da altrettante variabili di regolazione. 
+\begin{itemize}
+	\item Il termine \textbf{P} (\textit{azione proporzionale}) è proporzionale alla funzione di errore
+	\item Il termine \textbf{I} (\textit{azione integrativa}) è l'integrale dei valori passati di $e(t)$
+	\item Il termine \textbf{D} (\textit{azione derivativa}) è una stima delle variazioni future di $e(t)$
+\end{itemize}
+
+Il sistema di feedback comprende tre meccanismi principali:
+\begin{enumerate}
+	\item Il tubo piezoelettrico per il controllo del movimento e della posizione della punta rispetto alla superficie del campione
+	\item Il cantilever e il sistema ottico per la misura della distanza tra la sonda e la superficie del campione
+	\item Il circuito di controllo per mantenere una deflessione costante correggendo la tensione applicata al tubo piezoelettrico
+\end{enumerate}
 
 \section{SNOM}
 
