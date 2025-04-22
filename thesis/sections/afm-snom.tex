@@ -5,7 +5,7 @@ Le immagini prese in esame in questa tesi sono state prodotte con un microscopio
 \change{Imposta una introduzione quando finisci il capitolo}
 \section{Storia della Microscopia}
 
-I primi microscopi composti costruiti risalgono al 17\textdegree\ secolo, oltre 400 anni fa. È in quest'epoca che si riuscì a vedere per la prima volta i microrganismi che abitano la Terra ed ebbe inizio lo studio della Microbiologia. \textit{Robert Hooke} osservò le pareti cellulari e usò per la prima volta il termine ``cellula" \cite{fara_2009, micrographia}, mentre \textit{Antoine van Leeuwenhoek} sviluppò dei microscopi semplici (a singola lente) con ingrandimenti molto superiori a quelli degli strumenti contemporanei e fu il primo ad osservare microrganismi, come batteri e globuli rossi.\cite{lane_2015, dobell_1923, corliss_1975, jessup_2024}
+I primi microscopi composti costruiti risalgono al 17\textdegree\ secolo, oltre 400 anni fa. È in quest'epoca che si riuscì a vedere per la prima volta i microrganismi che abitano la Terra ed ebbe inizio lo studio della \gls{microbiologia}. \textit{Robert Hooke} osservò le pareti cellulari e usò per la prima volta il termine ``cellula" \cite{fara_2009, micrographia}, mentre \textit{Antoine van Leeuwenhoek} sviluppò dei microscopi semplici (a singola lente) con ingrandimenti molto superiori a quelli degli strumenti contemporanei e fu il primo ad osservare microrganismi, come batteri e globuli rossi.\cite{lane_2015, dobell_1923, corliss_1975, jessup_2024}
 
 \subsection{Microscopio ottico composto}
 
@@ -495,7 +495,7 @@ I microscopi \acrshort{afm} possono essere usati in diverse modalità, a seconda
 \label{fig:afm_modes}
 \end{figure}
 
-\subsection{Modalità a contatto}
+\subsection{Modalità a contatto} \label{s:afm_contact}
 
 Nella modalità a contatto la forza normale, quindi l'inclinamento verticale del cantilever, è mantenuta costante durante la scansione. Quando la punta si sposta sopra una parte protrudente del campione, il cantilever viene spinto verso l'alto e si crea un errore sull'inclinazione verticale. Per correggere questo errore, il controllore alza la punta finché l'errore non si annulla. Quando si incontrano delle depressioni nel campione si opera il procedimento opposto, abbassando la punta.
 
@@ -505,7 +505,7 @@ Idealmente, la forza dovrebbe essere minore di 100pN per essere utilizzabile su 
 
 Un altro problema dell'uso di modalità a contatto è la possibilità che cellule poco aderenti o particelle di sporco si attacchino al cantilever.
 
-\subsection{Modalità a contatto intermittente}
+\subsection{Modalità a contatto intermittente} \label{s:afm_ic}
 
 Nella modalità a contatto intermittente, il cantilever oscilla verticalmente alla sua frequenza di risonanza, o poco meno. Quando la punta scansiona il campione, la sua altezza diminuisce l'ampiezza delle oscillazioni del cantilever che vengono misurate dal fotodiodo. Il segnale di controllo viene regolato in modo che, nel punto più basso del ciclo di oscillazione, la punta tocchi appena il campione. L'ampiezza di queste oscillazioni è quindi una misura delle interazioni tra la punta e il campione. Muovere la punta in alto e in basso, im modo da mantenere la stessa ampiezza di oscillazione, permette di ottenere una topografia del campione.
 
@@ -515,7 +515,7 @@ Al contrario della modalità a contatto, la foza laterale è trascurabile visto 
 
 Questa modalità di operazione è più lenta rispetto alla modalità a contatto a causa del meccanismo di scansione. Mentre nella modalità a contatto intermittente il segnale è generato dalla modulazione in ampiezza del cantilever, nella modalità a contatto si usa la deflessione del cantilever, che varia molto più velocemente. Questa differenza si riflette anche nel comportamento del controllore: la modalità a contatto è più stabile ad alti guadagni, che invece possono generare forti artefatti o immagini rumorose nella modalità a contatto intermittente. I parametri del controllore devono quindi essere scelti con più attenzione. 
 
-\subsection{Modalità senza contatto}
+\subsection{Modalità senza contatto} \label{s:afm_nc}
 
 Nella modalità senza contatto, la punta non tocca mai il campione ma mantiene comunque un'alta sensibilità alla sua topologia. Per fare ciò, la punta deve trovarsi abbastanza vicino al campione da entrare nel suo campo di forze, ma senza passare nella regione attrattiva usata per le modalità a contatto, quindi la scansione con questa modalità è eseguita esclusivamente nella regione attrattiva.
 
@@ -617,7 +617,7 @@ Il controllo del sistema è affidato a un controllore \acrshort{pid}, di gran lu
 
 Quando le forze di interazione tra la punta e il campione cambiano, il cantilever si flette e, di conseguenza, modifica l'uscita del fotodiodo facendola deviare dal valore di ingresso. La differenza tra ingresso e uscita è la funzione di errore $e(t)$.
 
-Il controllore PID agisce su questa funzione e il suo comportamento è composto da tre azioni indipendenti, controllate da altrettante variabili di regolazione. 
+Il controllore PID agisce su questa funzione e il suo comportamento è composto da tre azioni indipendenti, controllate da altrettante variabili di regolazione.\cite{ogata_2010}
 \begin{itemize}
 	\item Il termine \textbf{P} (\textit{azione proporzionale}) è proporzionale alla funzione di errore
 	\item Il termine \textbf{I} (\textit{azione integrativa}) è l'integrale dei valori passati di $e(t)$
@@ -630,6 +630,14 @@ Il sistema di feedback comprende tre meccanismi principali:
 	\item Il cantilever e il sistema ottico per la misura della distanza tra la sonda e la superficie del campione
 	\item Il circuito di controllo per mantenere una deflessione costante correggendo la tensione applicata al tubo piezoelettrico
 \end{enumerate}
+
+\subsection{Parametri del sistema}
+
+Per sua natura, un microscopio \acrshort{afm} è molto versatile e presenta molti parametri che si possono regolare per ottimizzare la resa delle immagini. Partendo da quelli più generali, si può impostare una modalità operativa, come quelle descritte sopra (\textit{vedi} \ref{s:afm_contact}, \ref{s:afm_ic}, \ref{s:afm_nc}), e un tipo di cantilever che più si adattano al campione scelto.
+
+Passando ai parametri di scansione, si possono impostare la velocità e l'area di scansione controllando opportunamente il sistema piezoelettrico su cui poggia il campione. L'area di scansione rappresenta il campo di osservazione del campione (es. 10 µm × 10 µm) ed influenza la risoluzione delle immagini. La velocità di scansione, espressa in µm/s o linee al secondo (Hz), è inversamente proporzionale alla qualità dell'immagine, ma con basse velocità aumenta il rischio di muovere parti del campione.
+
+È possile anche regolare dei parametri relativi all'interazione tra la punta e il campione, come l'ampiezza e la frequenza di oscillazione (solo in modalità oscillanti) e la forza di carico desiderata. Per regolare questi parametri si può operare sull'ingresso del sistema e sul guadagno dell'anello di feedback.
 
 \section{SNOM}
 
