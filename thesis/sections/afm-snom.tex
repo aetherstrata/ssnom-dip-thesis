@@ -134,7 +134,7 @@ Usando l'aria come mezzo di trasmissione si ha un indice di rifrazione di 1, men
 \label{fig:na_diag}
 \end{figure}
 
-Per migliorare la risoluzione oltre il limite dei 250nm, ottenibili usando lunghezze d'onda dello spettro visibile, si possono scegliere onde elettromagnetiche a lunghezza minore, come i raggi X o UV, oppure raggi di altra natura, come i fasci di elettroni. Queste tecniche portano a una risoluzione maggiore ma anche a delle controindicazioni, come una scarsa risposta da parte del campione oppure tossicità.\cite{hell_2007}
+Per migliorare la risoluzione oltre il limite dei 250nm, ottenibili usando lunghezze d'onda dello spettro visibile, si possono scegliere onde elettromagnetiche a lunghezza minore, come i raggi X o UV, oppure raggi di altra natura, come i fasci di elettroni. Queste tecniche portano a risoluzioni maggiori ma anche a delle controindicazioni, come una scarsa risposta da parte del campione oppure tossicità.\cite{hell_2007}
 
 \subsection{Microscopio elettronico}
 
@@ -144,9 +144,9 @@ I microscopi elettronici utilizzano un fascio di elettroni al posto della luce e
 
 Nei primi microscopi elettronici, il campione da esaminare è posto tra il cannone elettronico e il rilevatore e l'immagine si forma in base a come gli elettroni vengono trasmessi attraverso il campione, che deve essere molto sottile (meno di 100nm). Questo tipo di microscopi si chiama microscopio elettronico \textit{a trasmissione} (\acrshort{tem}) e i modelli più recenti possono arrivare a risoluzioni spaziali fino a 0.5\AA\ (50pm).\cite{rolf_2009}
 
-Un altro tipo molto usato di microscopi elettronici è quello \textit{a scansione} (\acrshort{sem}), in cui non si rileva il fascio trasmesso attraverso il campione bensì i raggi secondari che sono generati dalla loro interazione (come elettroni secondari o raggi X). Questa tecnica può ottenere immagini tridimensionali e non richiede un campione sottile quanto la \acrshort{tem}. Modelli recenti di \acrshort{sem} possono arrivare a risoluzioni spaziali fino a 0.4nm.\cite{hitachi_sem}\\
+Un altro tipo molto usato di microscopi elettronici è quello \textit{a scansione} (\acrshort{sem}), in cui non si rileva il fascio trasmesso attraverso il campione bensì i raggi secondari che sono generati dalla loro interazione (come elettroni secondari o raggi X). Questa tecnica può ottenere immagini tridimensionali e non richiede un campione sottile quanto la \acrshort{tem}. Modelli recenti di \acrshort{sem} possono arrivare a risoluzioni spaziali fino a 0.4nm.\cite{hitachi_sem}
 
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \begin{subfigure}[t]{4.5cm}
 	\centering
@@ -240,7 +240,8 @@ Un altro tipo molto usato di microscopi elettronici è quello \textit{a scansion
 	\end{tikzpicture}
 	\caption{SEM}
 \end{subfigure}%
-\caption{Principio di funzionamento dei microscopi TEM e SEM}
+\caption[Principio di funzionamento dei microscopi TEM e SEM] {
+	Principio di funzionamento dei microscopi \acrshort{tem} e \acrshort{sem} }
 \label{fig:em_diag}
 \end{figure}
 
@@ -305,7 +306,7 @@ Questi microscopi rilevano la superficie del campione usando una punta minuscola
 
 \end{tikzpicture}
 \caption{Principio di funzionamento di un microscopio a effetto tunnel}
-\label{fig:stm_di1ag}
+\label{fig:stm_diag}
 \end{figure}
 
 \section{AFM}
@@ -332,7 +333,8 @@ I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a 
 		\includegraphics[width=4cm]{images/afm_tip_front.png}
 		\caption{Vista frontale}
 	\end{subfigure}
-\caption{Punta di un microscopio \acrshort{afm} vista al microscopio \acrshort{sem}\ \cite{budgetsensors} }
+\caption[Punta di un microscopio AFM vista al microscopio SEM]{
+	Punta di un microscopio \acrshort{afm} vista al microscopio \acrshort{sem}\ \cite{budgetsensors} }
 \label{fig:afm_tip}
 \end{figure}
 
@@ -408,7 +410,8 @@ Con questo sistema si possono apprezzare variazioni di altezza fino a 0.01nm.\ci
 		node[below,midway] {X,Y};
 
 \end{tikzpicture}
-\caption{Principio di funzionamento di un microscopio \acrshort{afm}}
+\caption[Principio di funzionamento di un microscopio AFM]{
+	Principio di funzionamento di un microscopio \acrshort{afm}}
 \label{fig:afm_diag}
 \end{figure}
 
@@ -491,7 +494,8 @@ I microscopi \acrshort{afm} possono essere usati in diverse modalità, a seconda
 	\end{tikzpicture}
 	\subcaption{Senza contatto}
 \end{subfigure}
-\caption{Modalità di funzionamento di un microscopio \acrshort{afm}}
+\caption[Modalità di funzionamento di un microscopio AFM]{
+	Modalità di funzionamento di un microscopio \acrshort{afm}}
 \label{fig:afm_modes}
 \end{figure}
 
@@ -511,7 +515,7 @@ Nella modalità a contatto intermittente, il cantilever oscilla verticalmente al
 
 Altre informazioni ottenute da questo metodo sono l'ampiezza e fase dell'errore tra l'oscillazione del cantilever e il segnale di riferimento. Questo scostamento dal segnale pilota è causato dalla dissipazione di energia tra la punta e il campione, che può essere causato da delle deformazioni della superficie del campione o da forze di attrazione. Queste informazioni possono essere usate per ottenere proprietà viscoelastiche del campione e distinguere materiali diversi.\cite{bruker_phase_imaging}
 
-Al contrario della modalità a contatto, la foza laterale è trascurabile visto che la punta tocca il campione solo per un istante ed è maggiormente indicata per campioni biologici, che altrimenti si muoverebbero liberamente insieme alla punta.\cite{karrasch_1993}
+Al contrario della modalità a contatto, la forza laterale è trascurabile visto che la punta tocca il campione solo per un istante ed è maggiormente indicata per campioni biologici, che altrimenti si muoverebbero liberamente insieme alla punta.\cite{karrasch_1993}
 
 Questa modalità di operazione è più lenta rispetto alla modalità a contatto a causa del meccanismo di scansione. Mentre nella modalità a contatto intermittente il segnale è generato dalla modulazione in ampiezza del cantilever, nella modalità a contatto si usa la deflessione del cantilever, che varia molto più velocemente. Questa differenza si riflette anche nel comportamento del controllore: la modalità a contatto è più stabile ad alti guadagni, che invece possono generare forti artefatti o immagini rumorose nella modalità a contatto intermittente. I parametri del controllore devono quindi essere scelti con più attenzione. 
 
@@ -637,10 +641,75 @@ Per sua natura, un microscopio \acrshort{afm} è molto versatile e presenta molt
 
 Passando ai parametri di scansione, si possono impostare la velocità e l'area di scansione controllando opportunamente il sistema piezoelettrico su cui poggia il campione. L'area di scansione rappresenta il campo di osservazione del campione (es. 10 µm × 10 µm) ed influenza la risoluzione delle immagini. La velocità di scansione, espressa in µm/s o linee al secondo (Hz), è inversamente proporzionale alla qualità dell'immagine, ma con basse velocità aumenta il rischio di muovere parti del campione.
 
-È possile anche regolare dei parametri relativi all'interazione tra la punta e il campione, come l'ampiezza e la frequenza di oscillazione (solo in modalità oscillanti) e la forza di carico desiderata. Per regolare questi parametri si può operare sull'ingresso del sistema e sul guadagno dell'anello di feedback.
+È possile anche regolare dei parametri relativi all'interazione tra la punta e il campione, come l'ampiezza e la frequenza di oscillazione (solo in modalità oscillanti) e la forza di carico desiderata. Per regolare questi parametri si può operare sull'ingresso del sistema e sul guadagno dell'anello di feedback.\\
+
+\unsure{Sezione sulle applicazioni? Litografia, semiconduttori, biologia, polimeri,ecc}
 
 \section{SNOM}
 
+L'altra tecnica di microscopia usata per ottenere le immagini studiate in questa tesi è la microscopia ottica a scansione del campo vicino (\acrshort{snom}). Questa tecnica, pur impiegando raggi ottici, riesce a superare il limite di risoluzione sfruttando delle proprietà dei campi evanescenti. Ad \textit{Edward Hutchinson Synge} è attribuito il merito di aver concepito questa tecnica nel 1928,\cite{synge_1928} ma il primo microscopio \acrshort{snom} fu costruito solo nel 1984 da \textit{Dieter Pohl}.\cite{pohl_1984}
+
+\subsection{Campi evanescenti}
+
+I campi evanescenti possono essere descritti da onde piane della forma $\mathbf{E}e^{i(\mathbf{kr}-\omega t)}$. Queste onde sono caratterizzate dal fatto che almeno una componente del vettore d'onda \textbf{k}, che descrive la direzione di propagazione, è immaginaria. Nella direzione spaziale definita dalla componente immaginaria, l'onda non si propaga ma decade esponenzialmente. I campi evanescenti sono di grande importanza per lo studio e la comprensione dei campi ottici confinati a dimensioni inferiori alla lunghezza d'onda.\cite{novotny_2012}
+
+\subsection{Principio di funzionamento}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		% cantilever
+		\fill (-0.5,1) rectangle (5,1.1);
+		\node[above left] at (5,1.1) {Cantilever con apertura};
+		
+		%laser
+		\fill[top color=red!0, bottom color=red, middle color=red] 
+			(0.2,3) -- (0.2,1) -- (0,0) -- (-0.2,1) 
+			-- (-0.2,3) node[midway, above, sloped] {Laser}
+			-- cycle;
+			
+		%punta
+		\draw[thick, line cap=rect]  (-0.21,1) -- (0,0) -- (0.21,1);
+		
+
+		\begin{scope}
+			\clip (-2,0) arc (180:360:2) -- cycle;
+			\filldraw[inner color=Aquamarine!10, outer color=Aquamarine!20, dashed, draw=OliveGreen] 
+				(0,0) circle (2);
+		\end{scope}
+		\begin{scope}
+			\clip (-1.5,0) arc (180:360:1.5);
+			\filldraw[inner color=Aquamarine!20, outer color=Aquamarine!30, dashed, draw=OliveGreen] 
+				(0,0) circle (1.5);
+		\end{scope}
+		\begin{scope}
+			\clip (-1,0) arc (180:360:1);
+			\filldraw[inner color=Aquamarine!30, outer color=Aquamarine!40, dashed, draw=OliveGreen] 
+				(0,0) circle (1);
+		\end{scope}		
+		\begin{scope}
+			\clip (-0.5,0) arc (180:360:0.5);
+			\filldraw[inner color=orange!10, outer color=orange!30] (0,0) circle (0.5);
+		\end{scope}
+		
+		\node[above left, orange] at (-0.5,0) {Campo vicino};
+		\node[right, OliveGreen] at (2,-1) {Campo lontano};
+		%superficie campione
+		\draw[Aquamarine, line width=1mm, decorate, decoration={random steps,segment length=5pt,amplitude=3pt}] 
+			(-3,-0.2) node[left] {Superficie}
+			-- (3,-0.2);
+	\end{tikzpicture}
+	\caption[Principio di funzionamento di un microscopio a-SNOM]{
+		Principio di funzionamento di un microscopio \acrshort{asnom}}
+	\label{fig:asnom_diag}
+\end{figure}
+
+\subsection{Aperture SNOM}
+
+\subsection{Apertureless SNOM}
+
 \section{Batteri}
+
+Paolo
 
 \end{document}
