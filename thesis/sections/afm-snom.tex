@@ -785,10 +785,89 @@ I microscopi \acrshort{asnom} possono operare secondo diverse modalità, che dip
 
 \subsection{Apertureless SNOM}
 
-La microscopia SNOM di tipo scattering (\acrshort{ssnom}) utilizza una punta metallica netta o rivestita in metallo per sondare il campo elettrico locale in vicinanza al campione. Con una fonte di luce esterna a una frequenza a scelta, la punta metallica sparge la luce in base alla sua polarizzabilità. La presenza del campione sotto la punta metallica modifica la polarizzabilità della punta secondo la funzione dielettrica del campione. Scansionando la punta metallica sulla superficie del campione con un microscopio \acrshort{afm} in modalità a contatto intermittente (\textit{vedi} \ref{s:afm_ic}) si ottiene il segnale usato per formare l'immagine contenente informazioni sulle proprietà ottiche del campione.\cite{wang_2015}
+La microscopia SNOM di tipo scattering (\acrshort{ssnom}) utilizza una punta metallica o rivestita in metallo per sondare il campo elettrico locale vicino al campione. Con una fonte di luce esterna a una frequenza a scelta, la punta metallica sparge la luce in base alla sua polarizzabilità. La presenza del campione sotto la punta metallica modifica la polarizzabilità della punta secondo la funzione dielettrica del campione. Scansionando la punta metallica sulla superficie del campione con un microscopio \acrshort{afm} in modalità a contatto intermittente (\textit{vedi} \ref{s:afm_ic}) si ottiene il segnale usato per formare l'immagine contenente informazioni sulle proprietà ottiche del campione.\cite{wang_2015}
 
+Gli studi numerici delle interazioni nel campo vicino tra la punta e la superficie del campione usano tecniche di elaborazione diverse, come il modello a dipolo puntiforme e a dipolo finito.\cite{cvitkovic_2007}\\
+
+\begin{figure}[h]
+\begin{subfigure}{0.5\linewidth}
+	\centering
+	\includegraphics[keepaspectratio, height=\linewidth]{images/pdm.jpeg}
+	\subcaption{Point Dipole Model}
+\end{subfigure}
+\begin{subfigure}{0.5\linewidth}
+	\centering
+	\includegraphics[keepaspectratio, height=\linewidth]{images/fdm.jpeg}
+	\subcaption{Finite Dipole Model}
+\end{subfigure}
+\caption{Modelli di dipoli usati per elaborare le radiazioni nel campo vicino}
+\label{fig:dipole_model}
+\end{figure}
+
+Nel modello a dipolo puntiforme si modella la punta della sonda come un punto con un certo momento di dipolo \textbf{p} generato dal campo elettrico incidente $\mathbf{E}$. Il momento del dipolo è, quindi
+\begin{equation}
+	\mathbf{p}=\alpha\mathbf{E}
+\end{equation}
+dove $\alpha$ è il tensore di polarizzabilità della punta. Il campione genera un dipolo immagine che modifica il campo elettrico locale percepito dalla punta. La misurazione viene effettuata sulla radiazione prodotta da questo dipolo indotto. Questa approssimazione è buona per studi qualitativi ma ignora la geometria reale della punta e non tiene conto della distribuzione delle cariche lungo essa.\cite{wu_2005}
+
+Nel modello a dipolo finito si modella la punta come un oggetto esteso, come uno sferoide. Il momento di dipolo non è quindi localizzato in un solo punto, ma è distribuito lungo l'asse. Questo modello è più accurato, specialmente per punte lunghe, e tiene conto delle risonanze plasmoniche lungo la punta.\cite{jarzembski_2017}
+
+\subsection{Elaborazione del segnale}
+
+La rilevazione del segnale è effettuata da un interferometro di Michelson, con la particolarità che uno degli specchi è mobile. Questa tecnica di misura prende il nome di spettroscopia a trasformata di Fourier (\acrshort{fts}). Il segnale viene registrato mentre lo specchio è in movimento, creando un interferogramma, e poi convertito in uno spettro dalla trasformata.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+
+	%beam splitter
+	\filldraw[upper left=gray, lower right=gray] (-0.75,-0.75) rectangle (0.75,0.75);
+	\draw (-0.75,0.75) -- (0.75,-0.75) node[below right] {Beam-splitter};
+
+	%laser
+	\fill (-3.5,-0.25) rectangle (-2.5,0.25);
+	\draw[-{Latex}, line width=1mm, red] (-2.5,0) -- (0,0);
+	\node[above] at (-3,0.25) {Laser};
+	
+	%specchio riferimento
+	\draw[{Latex}-{Latex}, line width=1mm, red] (0,-2) -- (0,0);
+	\filldraw[left color=Aquamarine!60, right color=Aquamarine!30] (-1,-2) rectangle (1,-2.2)
+		node[right, yshift=0.5mm] {Specchio};
+	\draw[<->] (-1.3,-1.8) -- (-1.3,-2.4) 
+		node[midway, left, xshift=-1.75mm] {$\phi_c\cos\left(\omega_c t\right)$};
+		
+	%rilevatore
+	\draw[{Latex}-, line width=1mm, red] (0,2) -- (0,0);
+	\filldraw[fill=gray]  (-1,2) rectangle (1,2.2)
+		node[right, yshift=-1mm] {Rilevatore};
+	
+	%obiettivo
+	
+	\draw[line width=1.5mm]	(6,0.6) .. controls (6.65,0.6) and (7.75,-0) .. (7.75,-0.75);
+	\draw[{Latex}-{Latex},red, line width=0.5mm] (0,0) -- (7.3,0);
+	\draw[{Latex}-{Latex},red, line width=0.5mm] (7.3,0) -- (6.1,-1.75);
+	
+	\begin{scope}[ shift={(3.75,-2.05)}]
+	% campione
+		\shadedraw[left color=OliveGreen, right color=green!80!black] (0.5,0)
+		.. controls (1, 0.4) and (1.2, 0.3) .. (1.5,0.2)
+		.. controls (2,0.4) and (2.2,0.3) .. (2.5,0.2)
+		.. controls (2.8, 0.3) and (3, 0.4) .. (3.5,0);
+		%punta
+		\fill (2.15,0.75) -- (2.25,0.28) -- (2.35,0.75);
+		\fill (2.15,0.75)
+		.. controls (1.5,0.7) and (1,0.7) .. (0.1, 1)
+		-- (0.1, 0.9)
+		.. controls (1,0.6) and (1.5,0.6) .. (2.2,0.65);
+		%base
+		\fill (0,0) rectangle (4,-0.2);
+	\end{scope}
+
+\end{tikzpicture}
+\caption[Sistema di rilevazione a pseudo-eterodina per microscopia s-SNOM]{
+	Sistema di rilevazione a pseudo-eterodina per microscopia \acrshort{ssnom}}
+\end{figure}
 
 \section{Batteri}
-
 
 \end{document}
