@@ -78,7 +78,7 @@ Il sistema più semplice è composto da due lenti, una lente obiettivo vicina al
 
 Il microscopio ottico composto ha continuato ad essere sviluppato fino ad oggi e ne sono state create molte varianti per scopi più specializzati, come il microscopio a contrasto di fase (\acrshort{pcm})\cite{zernike_1955} o il microscopio confocale (\acrshort{clsm})\cite{pawley_2006}. In generale, oggi la microscopia ottica ha raggiunto altissimi livelli di prestazioni, sia ottiche che meccaniche, ma la cui risoluzione spaziale è rimasta bloccata dal limite di diffrazione della luce.
 
-\subsection{Apertura numerica}
+\subsection{Apertura numerica} \label{s:na}
 
 Il primo a definire questo limite fu \textit{Ernst Abbe} nel 1881, anno in cui pubblicò il suo lavoro sulla misura dell'apertura dei microscopi.\cite{abbe_1881} Questo limite, chiamato apertura numerica (\acrshort{na}), si basa sull'intervallo degli angoli con cui la luce può entrare o uscire dal microscopio  ed è comunemente usato in microscopia come parametro delle ottiche per valutarne la risoluzione. Questo numero è definito come il prodotto tra l'indice di rifrazione \textit{n} e il seno dell'apertura angolare della lente.
 
@@ -628,7 +628,7 @@ Il controllore PID agisce su questa funzione e il suo comportamento è composto 
 	\item Il termine \textbf{D} (\textit{azione derivativa}) è una stima delle variazioni future di $e(t)$
 \end{itemize}
 
-Il sistema di feedback comprende tre meccanismi principali:
+Il sistema di feedback comprende tre meccanismi principali: \cite{parisi}
 \begin{enumerate}
 	\item Il tubo piezoelettrico per il controllo del movimento e della posizione della punta rispetto alla superficie del campione
 	\item Il cantilever e il sistema ottico per la misura della distanza tra la sonda e la superficie del campione
@@ -655,6 +655,9 @@ I campi evanescenti possono essere descritti da onde piane della forma $\mathbf{
 
 \subsection{Principio di funzionamento}
 
+Come descritto nel paragrafo \ref{s:na}, un microscopio ottico tradizionale, per ottenere un immagine del campione, deve raccogliere tutta la luce diffratta nel campo lontano, che si propaga senza restrizioni.
+Al contrario, la microscopia \acrshort{snom} fa uso di un laser di eccitazione la cui luce è concentrata in un'apertura di diametro molto inferiore alla sua lunghezza d'onda, creando un campo evanescente dall'altro lato dell'apertura.\cite{betzig_1992} Quando il campione viene scansionato ad una piccola distanza sotto l'apertura (< 10 nm), la risoluzione ottica della luce trasmessa o riflessa è limitata solo dal diametro dell'apertura. Questi campi trasportano informazioni spaziali sul campione ad alta frequenza e permettono di arrivare a una risoluzione laterale di 6nm\cite{ma_2021} e una risoluzione verticale di 2nm.\cite{oshikane_2007}\\
+
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
@@ -671,45 +674,123 @@ I campi evanescenti possono essere descritti da onde piane della forma $\mathbf{
 		%punta
 		\draw[thick, line cap=rect]  (-0.21,1) -- (0,0) -- (0.21,1);
 		
-
+		%linee di campo
 		\begin{scope}
-			\clip (-2,0) arc (180:360:2) -- cycle;
+			\clip (-2,0) rectangle (2,-2);
+			
 			\filldraw[inner color=Aquamarine!10, outer color=Aquamarine!20, dashed, draw=OliveGreen] 
 				(0,0) circle (2);
-		\end{scope}
-		\begin{scope}
-			\clip (-1.5,0) arc (180:360:1.5);
 			\filldraw[inner color=Aquamarine!20, outer color=Aquamarine!30, dashed, draw=OliveGreen] 
 				(0,0) circle (1.5);
-		\end{scope}
-		\begin{scope}
-			\clip (-1,0) arc (180:360:1);
 			\filldraw[inner color=Aquamarine!30, outer color=Aquamarine!40, dashed, draw=OliveGreen] 
 				(0,0) circle (1);
-		\end{scope}		
-		\begin{scope}
-			\clip (-0.5,0) arc (180:360:0.5);
 			\filldraw[inner color=orange!10, outer color=orange!30] (0,0) circle (0.5);
 		\end{scope}
 		
 		\node[above left, orange] at (-0.5,0) {Campo vicino};
 		\node[right, OliveGreen] at (2,-1) {Campo lontano};
+		
 		%superficie campione
 		\draw[Aquamarine, line width=1mm, decorate, decoration={random steps,segment length=5pt,amplitude=3pt}] 
 			(-3,-0.2) node[left] {Superficie}
 			-- (3,-0.2);
 	\end{tikzpicture}
-	\caption[Principio di funzionamento di un microscopio a-SNOM]{
-		Principio di funzionamento di un microscopio \acrshort{asnom}}
+	\caption[Principio di funzionamento di un microscopio SNOM]{
+		Principio di funzionamento di un microscopio \acrshort{snom}}
 	\label{fig:asnom_diag}
 \end{figure}
 
+Poiché le onde evanescenti sono confinate a una regione prossima alla superficie del mezzo che le origina, è necessario portare il rilevatore entro l'imtervallo della lunghezza d'onda della radiazione utilizzata. Su queste onde si applica il \textit{principio di reciprocità di Helmholtz}, secondo cui il campo vicino può essere convertito in onde propaganti dal rilevatore. Grazie a questo principio, i raggi entranti e uscenti possono essere considerati uno come il reciproco dell'altro, permettendo di usare la sonda ottica sia come sorgente che come rilevatore.\cite{hapke_1993}
+
+Per questo, una delle limitazioni principali di questa tecnica sono una distanza di lavoro molto breve e una profondità di campo estremamente ridotta. Normalmente questi microscopi sono usati per studi di superficie, ma si possono anche usare per studiare regioni di interesse sotto la superficie, posto che siano entro il limite della profondità di campo.\cite{vobornik_2008}
+
+La struttura di un microscopio \acrshort{snom} è molto simile a quella di un microscopio \acrshort{afm}, in quanto sono entrambe tecninche di microscopia \acrshort{spm}, e per questo lo stesso macchinario può offrire entrambe le tecniche di acquisizione. Questi sistemi possono anche essere combinati con altre tecniche di imaging, come la spettroscopia Raman\cite{zhang_2017} o la spettroscopia infrarossa a trasformata di Fourier (\acrshort{ftir}).\cite{rotenberg_2014}
+
 \subsection{Aperture SNOM}
+
+Esistono diverse modalità di funzionamento e una delle caratteristiche principali è il tipo di sonda utilizzata. Nella microscopia \acrshort{asnom} questa sonda è installata nella punta, che ha un foro di dimensioni minori della lunghezza d'onda del raggio, da cui la luce può essere emessa o ricevuta. La luce è condotta alla punta da un cavo in fibra ottica monomodale e la punta ha uno strato metallico di rivestimento per riflettere i raggi. La dimensione dell'apertura può arrivare fino a circa 50nm e influenza la risoluzione spaziale delle immagini.\cite{antosiewicz_2011}
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.35\linewidth}
+	\centering
+	\begin{tikzpicture}
+		%sonda
+		\filldraw[fill=gray] (-2,0.75) node[above right] {Sonda ottica} 
+			-- (0,0.25) -- (0,-0.25) -- (-2,-0.75);
+		
+		%luce nella sonda
+		\fill[red!60] (-2,0.15) rectangle (0.3,-0.15);
+		\fill[red!50] (-2,0.13) rectangle (0.3,-0.13);
+		\fill[red!40] (-2,0.11) rectangle (0.3,-0.11);
+		\fill[red!30] (-2,0.09) rectangle (0.3,-0.09);
+		\fill[red!20] (-2,0.07) rectangle (0.3,-0.07);
+		\fill[red!10] (-2,0.05) rectangle (0.3,-0.05);
+		
+		%luce fuori sonda
+		\fill[red!60] (0.3,-0.15) -- (2,-1) -- (2,1) -- (0.3,0.15) -- cycle;
+		\fill[red!50] (0.3,-0.13) -- (2,-0.85) -- (2,0.85) -- (0.3,0.13) -- cycle;
+		\fill[red!40] (0.3,-0.11) -- (2,-0.70) -- (2,0.70) -- (0.3,0.11) -- cycle;
+		\fill[red!30] (0.3,-0.09) -- (2,-0.55) -- (2,0.55) -- (0.3,0.09) -- cycle;
+		\fill[red!20] (0.3,-0.07) -- (2,-0.40) -- (2,0.40) -- (0.3,0.07) -- cycle;
+		\fill[red!10] (0.3,-0.05) -- (2,-0.25) -- (2,0.25) -- (0.3,0.05) -- cycle;
+		
+		\draw (0,-0.25) -- (0,-1);
+		\draw (0.3,-0.15) -- (0.3,-1);
+		
+		\node[below] at (0.15,-1) {$\ll\lambda$};
+		\node[below] at (0.15, -1.5) {campo vicino};
+		\draw (0,-0.25) -- (0,-1);
+		
+		\draw[<->] (2.1,-1) -- (2.1,1) node[right,midway] {$\lambda$};
+	\end{tikzpicture}
+\subcaption{Schema}
+\end{subfigure}
+\begin{subfigure}{0.3 \linewidth}
+	\centering
+	\raisebox{0.5cm}{
+	\includegraphics[keepaspectratio, width=3cm]{images/snom_tip.jpeg}}
+	\subcaption{Punta reale \cite{tipsnano} }
+\end{subfigure}
+\begin{subfigure}{0.3 \linewidth}
+	\centering
+	\raisebox{0.25cm}{
+	\includegraphics[keepaspectratio, width=3cm]{images/snom_tip_front.jpeg}}
+	\subcaption{Vista sul foro}
+\end{subfigure}
+\caption[Ingrandimento sull'apertura della punta in un microscopio a-SNOM]{
+	Ingrandimento sull'apertura della punta in un microscopio \acrshort{asnom}}
+\label{fig:snom_probe}
+\end{figure}
+
+La maggior parte dei microscopi \acrshort{asnom} usa un metodo simile a quello dei microscopi \acrshort{afm} senza contatto (\textit{vedi} \ref{s:afm_nc}) basato sulla forza di taglio per controllare la distanza tra la punta e il campione. La sonda è messa in vibrazione alla sua frequenza di risonanza parallelamente alla superficie con un'ampiezza minore di 5nm. L'ampiezza e la fase di queste oscillazioni della fibra sono monitorate da un apposito sensore di spostamento.\cite{hecht_2000}
+
+\subsubsection{Modalità di operazione}
+
+I microscopi \acrshort{asnom} possono operare secondo diverse modalità, che dipendono principalmente dal percorso che compie la luce. Nella modalità più utilizzata la punta è usata sia per illuminare il campione che per raccogliere la luce generata nel campo vicino.\cite{alvarez_2006}\\
+
+\begin{figure}[h]
+	\includegraphics[keepaspectratio, width=\linewidth]{images/snom_apertures.png}
+	\caption[Modalità di illuminazione di un microscopio a-SNOM]{
+		Modalità di illuminazione di un microscopio \acrshort{asnom}}
+	\label{fig:snom_apertures}
+\end{figure}
+
+\begin{enumerate}[a)]
+	\item In questa configurazione, la luce viene emessa da un laser e convogliata alla punta dal cavo in fibra ottica. L'apertura escremamente ristretta della punta crea un campo evanescente sulla superficie del campione. Questo campo poi interagisce con il campione e la radiazione convertita viene diffusa e raccolta da un obiettivo ottico convenzionale nel campo lontano.
+	\item Al contrario della modalità di illuminazione, il campione è illuminato esternamente con luce di campo lontano (ad esempio un laser o una lampada), mentre la punta viene usata come un rivelatore. Le onde evanescenti sulla superficie del campione vengono convertite in onde propaganti dentro la punta e trasmesse al rilevatore.
+	\item In questo caso, la punta illumina il campione ed estrae anche la luce che ritorna. Sia l'emissione che la raccolta avvengono attraverso la stessa apertura. In questo caso è necessario installare un dispositivo che separi i due flussi di luce.
+	\item[d-e)] Queste modalità sono simili alle prime, con la differenza che si basano sulla luce riflessa per effetturare le misure.
+\end{enumerate}
 
 \subsection{Apertureless SNOM}
 
+La microscopia SNOM di tipo scattering (\acrshort{ssnom}) utilizza una punta metallica netta o rivestita in metallo per sondare il campo elettrico locale in vicinanza al campione. Con una fonte di luce esterna a una frequenza a scelta, la punta metallica sparge la luce in base alla sua polarizzabilità. La presenza del campione sotto la punta metallica modifica la polarizzabilità della punta secondo la funzione dielettrica del campione. Scansionando la punta metallica sulla superficie del campione con un microscopio \acrshort{afm} in modalità a contatto intermittente (\textit{vedi} \ref{s:afm_ic}) si ottiene il segnale usato per formare l'immagine contenente informazioni sulle proprietà ottiche del campione.\cite{wang_2015}
+
+tbc...
+
 \section{Batteri}
 
-Paolo
+mrekk 2000pp
 
 \end{document}
