@@ -1,4 +1,4 @@
-function win2d = gaussian2d(imageSize, realSize, filterSize)
-    win2d = gausswin(imageSize(1),realSize(1)/filterSize(1)) * ...
-            gausswin(imageSize(2),realSize(2)/filterSize(2))';
+function win2d = gaussian2d(imageSize, std)
+    win2d = gausswin(imageSize(1),std(1)) * ...
+            gausswin(imageSize(2),std(2))';
 end
