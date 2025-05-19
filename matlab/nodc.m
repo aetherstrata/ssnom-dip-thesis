@@ -1,4 +1,4 @@
-function filtered = nzfc(image)
+function filtered = nodc(image)
 % NODC Set the DC component of an image to 0
 %   filtered = NODC(image) remove the center pixel of the Fourier transform of this image
 

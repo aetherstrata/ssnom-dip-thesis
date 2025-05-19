@@ -1,3 +1,3 @@
 function ds = loadImages()
-    ds = imageDatastore('../SSNOMBACTER', 'IncludeSubfolders',true, 'LabelSource','none');
+    ds = imageDatastore('SSNOMBACTER', 'IncludeSubfolders',true, 'LabelSource','none');
 end
