@@ -57,12 +57,13 @@ Ogni scansione è inoltre provvista di un file \texttt{.txt} con i parametri di 
 In \Gls{microbiologia}, i batteri sono un regno (\textit{Bacteria}) comprendente organismi unicellulari procarioti, le cui dimensioni possono variare tra circa $0.2$ \micro m e $30$ \micro m.\cite{goker_2024} I batteri sono stati tra le prime forme di vita ad apparire sulla Terra e sono presenti nella maggior parte dei suoi habitat. Alcuni batteri sono innocui, o perfino utili\cite{mccutcheon_2021}, per gli altri esseri viventi ma altre specie possono vivere a spese loro e arrecargli danni, anche gravi.\cite{johnson_2018}
 \medskip
 
-\begin{wrapfigure}{r}{0.6\textwidth}
-	\includegraphics[keepaspectratio, width=\linewidth]{images/batteri_morfologia.png}
+\begin{figure}[h]
+	\centering
+	\includegraphics[keepaspectratio, width=0.95\linewidth]{images/batteri_morfologia.png}
 	\caption[Tipiche forme di aggregati batterici]{
 		Tipiche forme di aggregati batterici \cite{deho_galli_2020}}
 	\label{fig:bacteria_morphology}
-\end{wrapfigure}
+\end{figure}
 
 \subsection{Morfologia}
 
@@ -70,9 +71,7 @@ Le dimensioni ridotte dei batteri fa sì che il loro rapporto superficie/volume 
 
 Essendo organismi unicellulari, i batteri presentano una limitata varietà di forme, che si possono raggruppare in questi gruppi: \textbf{Cocchi}, \textbf{Bacilli}, \textbf{Coccobacilli}, \textbf{Spirali}, \textbf{Elicoidali}.
 
-\subsubsection{Bacilli}
-
-Un \textbf{bacillo}, anche chiamato \textit{batterio bacilliforme}, è un microrganismo a forma di bastoncino. I bacilli si trovano in molti gruppi batterici, ma esiste anche un genere tassonomico chiamato \textit{Bacillus}. I bacilli di solito si dividono sullo stesso piano e sono solitari, ma possono anche combinarsi in agglomerati:
+Un \textbf{bacillo}, anche chiamato \textit{batterio bacilliforme}, è un microrganismo a forma di bastoncino. Esiste anche un genere tassonomico chiamato \textit{Bacillus} ma i bacilli si possono trovare anche in molti altri gruppi batterici. I bacilli di solito si dividono sullo stesso piano e sono solitari, ma possono anche combinarsi in agglomerati:
 
 \begin{itemize}
 	\itemsep0em 
@@ -81,9 +80,7 @@ Un \textbf{bacillo}, anche chiamato \textit{batterio bacilliforme}, è un micror
 	\item I coccobacilli hanno una forma più ovale, simile ai cocchi.
 \end{itemize}
 
-\subsubsection{Cocchi}
-
-Un \textbf{cocco}, anche chiamato \textit{batterio coccoide}, è un microrganismo la cui forma è pressochè sferica, cioè quando la sua sfericità è vicina a $1$. I batteri coccoidi si presentano spesso in disposizioni caratteristiche e anche queste forme hanno nomi specifici: \cite{zapun_2008}
+Un \textbf{cocco}, anche chiamato \textit{batterio coccoide}, è un microrganismo la cui forma è pressochè sferica. I batteri coccoidi si presentano spesso in disposizioni caratteristiche e anche queste forme hanno nomi specifici: \cite{zapun_2008}
 
 \begin{itemize}
 	\itemsep0em 
@@ -156,7 +153,21 @@ Un’altra forma di adesione piliforme sono i curli, presenti in ceppi di \texti
 
 Molte adesine, oltre a favorire l’adesione, giocano un ruolo nella fuga dal sistema immunitario dell’ospite. Sia i batteri Gram-negativi che quelli Gram-positivi esprimono una vasta gamma di adesine, che si legano a un ampio numero di bersagli cellulari, come immunoglobuline, glicoproteine, glicolipidi e proteine della matrice extracellulare.\cite{finlay_1997}
 
-In conclusione, l’adesione dei batteri all’ospite è un processo complesso, che coinvolge numerosi tipi di adesine e meccanismi fondamentali non solo per l’inizio dell’infezione, ma anche per la sopravvivenza e la diffusione del patogeno.
+In conclusione, l’adesione dei batteri all’ospite è un processo complesso, che coinvolge numerosi tipi di adesine e meccanismi fondamentali non solo per l’inizio dell’infezione, ma anche per la sopravvivenza e la diffusione del patogeno.\bigskip
+
+\subsection{Gruppo ESKAPE}
+
+Tra i ceppi batterici esaminati in SSNOMBACTER sono presenti alcuni ceppi patogeni altamente virulenti e resistenti a terapie antibiotiche. Questo gruppo di sei ceppi prende il nome di \textbf{ESKAPE}, formato dalle lettere iniziali dei suoi membri:
+
+\begin{itemize}
+	\itemsep0em
+	\item \textit{Enterococcus faecium}
+	\item \textit{Staphylococcus aureus}
+	\item \textit{Klebsiella pneumoniae}
+	\item \textit{Acinetobacter baumannii}
+	\item \textit{Pseudomonas aeruginosa}
+	\item \textit{Enterobacter spp}
+\end{itemize}
 
 \begin{table}[h!t]
 	\centering
@@ -264,5 +275,11 @@ In conclusione, l’adesione dei batteri all’ospite è un processo complesso, 
 			ATCC: American Type Culture Collection
 	\end{tabular}}
 \end{table}
+
+I ceppi batterici di questo gruppo, sia Gram-positivi che Gram-negativi, possono evadere gli antibiotici comunemente usati grazie alla loro resistenza multifarmaco.\cite{eskape} Di conseguenza, questi batteri rappresentano una seria minaccia per la sanità globale poichè sono la causa principale delle infezioni correlate all'assistenza (ICA) e pongono un grave rischio per pazienti immunocompromessi.\cite{rice_2008}
+
+Questi batteri possono essere trovati in ambienti naturali, come terreni o specchi d'acqua, ma possono essere anche trasportati in altri posti a causa di una contaminazione, come superfici, tessuti, strumenti o mani. Essengo dei patogeni opportunistici, è possibile che un paziente venga infettato da uno di questi batteri dopo un intervento chirurgico.\cite{cdc_2019}
+
+A causa delle pressioni e dei fattori selettivi naturali e innaturali, la resistenza agli antibiotici nei batteri di solito emerge attraverso una mutazione genetica o acquisisce geni resistenti agli antibiotici (\acrlong{arg} --- \acrshort{arg}) attraverso il trasferimento orizzontale di geni, un processo di scambio genetico attraverso il quale la resistenza agli antibiotici può diffondersi ad altri esemplari senza ricorrere alla riproduzione.\cite{madigan_2015}
 
 \end{document}
