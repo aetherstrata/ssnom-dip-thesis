@@ -1,17 +1,14 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
-\chapter{AFM - SNOM}
-Le immagini prese in esame in questa tesi sono state prodotte con un microscopio NeaSNOM. In questo capitolo viene descritta la sua struttura e le sue modalità di funzionamento...
-\change{Imposta una introduzione quando finisci il capitolo}
-\section{Storia della Microscopia}
+\chapter{Tecniche di microscopia a super-risoluzione}
 
-I primi microscopi composti costruiti risalgono al 17\textdegree\ secolo, oltre 400 anni fa. È in quest'epoca che si riuscì a vedere per la prima volta i microrganismi che abitano la Terra ed ebbe inizio lo studio della \gls{microbiologia}. \textit{Robert Hooke} osservò le pareti cellulari e usò per la prima volta il termine ``cellula" \cite{fara_2009, micrographia}, mentre \textit{Antoine van Leeuwenhoek} sviluppò dei microscopi semplici (a singola lente) con ingrandimenti molto superiori a quelli degli strumenti contemporanei e fu il primo ad osservare microrganismi, come batteri e globuli rossi.\cite{lane_2015, dobell_1923, corliss_1975, jessup_2024}
+\section{Microscopi ottici}
 
-\subsection{Microscopio ottico composto}
+I primi microscopi furono costruiti nel 17\textdegree\ secolo, oltre 400 anni fa e furono utilizzati per vedere per la prima volta i microrganismi che abitano la Terra. In quest'epoca ebbe inizio lo studio della \gls{microbiologia}. Lo studioso \textit{Robert Hooke} osservò le pareti cellulari e usò per la prima volta il termine ``cellula" \cite{fara_2009, micrographia}. Nel 1663 \textit{Antoine van Leeuwenhoek} fabbricò artigianalmente dei microscopi semplici, a singola lente, con ingrandimenti molto superiori rispetto a quelli esistenti a quell'epoca e fu il primo ad osservare microrganismi, come batteri, protozoi e globuli rossi.\cite{lane_2015, dobell_1923, corliss_1975, jessup_2024}
 
-Il microscopio ottico composto ingrandisce l'immagine del campione usando delle lenti. Il campione può essere illuminato facendolo attraversare dalla luce sul lato opposto all'obiettivo (microscopia a luce trasmessa) oppure riflettendocela sopra (microscopia a luce riflessa).
+Il microscopio ottico composto ingrandisce l'immagine del campione usando due o più lenti. Il campione viene illuminato usanto una sorgente di luce sul lato opposto all'obiettivo (microscopia a luce trasmessa) oppure sullo stesso lato (microscopia a luce riflessa).
 
-Il sistema più semplice è composto da due lenti, una lente obiettivo vicina al campione da esaminare, e una lente oculare vicina all'osservatore. Il campione è prima messo a fuoco dalla lente obiettivo dentro al microscopio in un'immagine reale, poiché è creata dalla convergenza dei raggi di luce, poi questa immagine viene nuovamente ingrandita dalla lente oculare che crea una nuova immagine, stavolta virtuale visto che è creata da proiezioni di raggi divergenti. L'osservatore quindi vedrà un'immagine ingrandita, invertita e virtuale del campione esaminato.
+Il sistema più semplice è composto da due lenti, una lente obiettivo vicina al campione da esaminare, e una lente oculare vicina all'osservatore. Il campione è prima messo a fuoco dalla lente obiettivo dentro al microscopio in un'immagine reale, che è creata dalla convergenza dei raggi di luce, poi questa immagine viene nuovamente ingrandita dalla lente oculare che crea una immagine virtuale, generata dalle proiezioni di raggi divergenti. L'osservatore quindi vede un'immagine ingrandita, invertita e virtuale del campione esaminato.
 
 \begin{figure}[h]
 \centering
@@ -76,23 +73,23 @@ Il sistema più semplice è composto da due lenti, una lente obiettivo vicina al
 \label{fig:com_diag}
 \end{figure}
 
-Il microscopio ottico composto ha continuato ad essere sviluppato fino ad oggi e ne sono state create molte varianti per scopi più specializzati, come il microscopio a contrasto di fase (\acrshort{pcm})\cite{zernike_1955} o il microscopio confocale (\acrshort{clsm})\cite{pawley_2006}. In generale, oggi la microscopia ottica ha raggiunto altissimi livelli di prestazioni, sia ottiche che meccaniche, ma la cui risoluzione spaziale è rimasta bloccata dal limite di diffrazione della luce.
+Il microscopio ottico composto ha continuato ad evolversi fino ad oggi, dando origine a numerose varianti per scopi più specializzati, come il microscopio a contrasto di fase (\acrshort{pcm})\cite{zernike_1955} o il microscopio confocale (\acrshort{clsm})\cite{pawley_2006}. In generale, oggi la microscopia ottica ha raggiunto prestazioni molto elevate, sia dal punto di vista ottico che meccanico, ma la cui risoluzione spaziale è rimasta limitata dal principio di diffrazione della luce.
 
 \subsection{Apertura numerica} \label{s:na}
 
-Il primo a definire questo limite fu \textit{Ernst Abbe} nel 1881, anno in cui pubblicò il suo lavoro sulla misura dell'apertura dei microscopi.\cite{abbe_1881} Questo limite, chiamato apertura numerica (\acrshort{na}), si basa sull'intervallo degli angoli con cui la luce può entrare o uscire dal microscopio  ed è comunemente usato in microscopia come parametro delle ottiche per valutarne la risoluzione. Questo numero è definito come il prodotto tra l'indice di rifrazione \textit{n} e il seno dell'apertura angolare della lente.
+Il primo a definire questo limite fu \textit{Ernst Abbe} nel 1881, quando pubblicò il suo lavoro sulla misura dell'apertura dei microscopi.\cite{abbe_1881} Tale limite, chiamato apertura numerica (\acrshort{na}), misura l'angolo di accettazione massimodei raggi da parte di una lente, ed è usato in microscopia come parametro per valutarne la risoluzione delle ottiche. L'apertura numerica è definito come il prodotto tra l'indice di rifrazione \textit{n} e il seno dell'apertura angolare della lente.
 
 \begin{equation}
 	\mathit{NA}=n\sin\theta
 \end{equation}
 
-Da questa formula, Abbe continuò il suo lavoro arrivando a definire anche la distanza minima tra due elementi diversi affinché si possano apprezzare attraverso un microscopio.\cite{abbe_1882}
+Da questa formula, Abbe continuò il suo lavoro arrivando a definire anche il potere risolutivo, cioè la distanza minima tra due oggetti diversi affinché possano essere distinti.\cite{abbe_1882}
 
 \begin{equation}
 d=\frac{\lambda}{2\mathit{NA}}=\frac{\lambda}{2n\sin\theta}
 \end{equation}
 
-Usando l'aria come mezzo di trasmissione si ha un indice di rifrazione di 1, mentre si può arrivare fino a circa 1.5 immergendo il campione e l'obiettivo in olio. Per quanto riguarda l'apertura angolare massima,  teoricamente può arrivare fino a 180\degree, il che si traduce in un valore di $\theta=90$\degree, ma ad ora le lenti con la più alta apertura angolare mai realizzate si fermano approssimativamente a 144\degree, che corrisponde a un valore di $\sin\left(\theta=72\degree\right) \approx 0.95$.\cite{leica_aperture}\\
+Quando l'aria è usata come mezzo di trasmissione, si ha un indice di rifrazione pari a $1$, mentre si può arrivare fino a circa $n=1.5$ immergendo il campione e l'obiettivo in olio. L'apertura angolare massima teorica è di 180\degree, il che si traduce in un valore di $\theta=90$\degree, tuttavia le lenti presenti ad oggi in commerco presentano un'apertura angolare di 144\degree, che corrisponde a un valore di $\sin\left(\theta=72\degree\right) \approx 0.95$.\cite{leica_aperture}\\
 
 \begin{figure}[h]
 \centering
@@ -134,17 +131,17 @@ Usando l'aria come mezzo di trasmissione si ha un indice di rifrazione di 1, men
 \label{fig:na_diag}
 \end{figure}
 
-Per migliorare la risoluzione oltre il limite dei 250nm, ottenibili usando lunghezze d'onda dello spettro visibile, si possono scegliere onde elettromagnetiche a lunghezza minore, come i raggi X o UV, oppure raggi di altra natura, come i fasci di elettroni. Queste tecniche portano a risoluzioni maggiori ma anche a delle controindicazioni, come una scarsa risposta da parte del campione oppure tossicità.\cite{hell_2007}
+Per migliorare il potere risolutivo oltre il limite dei $250$ nm, per le lunghezze d'onda dello spettro visibile, si possono usare onde elettromagnetiche con lunghezza minore, come i raggi $X$ o i raggi ultravioletti, oppure raggi di altra natura, come i fasci di elettroni. Queste tecniche portano a risoluzioni maggiori ma presentano anche delle criticità, come una scarsa risposta da parte del campione oppure tossicità.\cite{hell_2007}
 
-\subsection{Microscopio elettronico}
+\section{Microscopio elettronico}
 
-La scoperta che i raggi di elettroni si comportano come onde con lunghezze d'onda più corte della luce visibile aprì nuove opportunità. I primi esemplari furono sviluppati nel 1931 da \textit{Max Knoll} e \textit{Ernst Ruska}\cite{oatley1982early} e già due anni dopo furono in grado di apprezzare dettagli oltre il limite dei microscopi ottici tradizionali.\cite{physics_nobel}
+La scoperta che i raggi di elettroni si comportano come onde con lunghezze d'onda molto più corte della luce visibile aprì nuove possibilità per l'osservazione dei dettagli microscopici. I primi prototipi di microscopi lettronici furono realizzati da \textit{Max Knoll} e \textit{Ernst Ruska}\cite{oatley1982early} e già nel 1933 furono in grado di osservare strutture oltre il limite imposto dai microscopi ottici tradizionali.\cite{physics_nobel}
 
-I microscopi elettronici utilizzano un fascio di elettroni al posto della luce e delle lenti magnetiche invece che ottiche. Usando raggi di elettroni invece che di luce, questi microscopi non misurano l'interazione tra materia e luce ma tra materia ed elettroni, aprendo le porte a nuovi campi di studio.
+I microscopi elettronici utilizzano un fascio di elettroni al posto della luce e delle lenti magnetiche al posto delle lenti ottiche. Usando raggi di elettroni invece che di luce, questi microscopi non misurano l'interazione tra materia e luce ma tra materia ed elettroni, aprendo le porte a nuovi campi di studio.
 
-Nei primi microscopi elettronici, il campione da esaminare è posto tra il cannone elettronico e il rilevatore e l'immagine si forma in base a come gli elettroni vengono trasmessi attraverso il campione, che deve essere molto sottile (meno di 100nm). Questo tipo di microscopi si chiama microscopio elettronico \textit{a trasmissione} (\acrshort{tem}) e i modelli più recenti possono arrivare a risoluzioni spaziali fino a 0.5\AA\ (50pm).\cite{rolf_2009}
+Il campione da esaminare è posto tra il cannone elettronico e il rilevatore e l'immagine si forma in base a come gli elettroni vengono trasmessi attraverso il campione, che deve essere molto sottile (meno di $100$ nm). Questo tipo di microscopi si chiama microscopio elettronico \textit{a trasmissione} (\acrlong{tem} --- \acrshort{tem}) e i modelli più recenti possono arrivare a risoluzioni spaziali fino a $0.5$ \AA\ ($50$ pm).\cite{rolf_2009}
 
-Un altro tipo molto usato di microscopi elettronici è quello \textit{a scansione} (\acrshort{sem}), in cui non si rileva il fascio trasmesso attraverso il campione bensì i raggi secondari che sono generati dalla loro interazione (come elettroni secondari o raggi X). Questa tecnica può ottenere immagini tridimensionali e non richiede un campione sottile quanto la \acrshort{tem}. Modelli recenti di \acrshort{sem} possono arrivare a risoluzioni spaziali fino a 0.4nm.\cite{hitachi_sem}
+Un altro tipo di microscopio elettronico è quello \textit{a scansione} (\acrlong{sem} --- \acrshort{sem}), in cui non si rileva il fascio trasmesso attraverso il campione, bensì i raggi secondari che sono generati dall'interazione del fascio con il campione (come elettroni secondari o raggi X). Questa tecnica può generare immagini tridimensionali e non richiede un campione sottile quanto la \acrshort{tem}. Modelli recenti di \acrshort{sem} possono arrivare a risoluzioni spaziali fino a $0.4$ nm.\cite{hitachi_sem}\bigskip
 
 \begin{figure}[h]
 \centering
@@ -245,13 +242,13 @@ Un altro tipo molto usato di microscopi elettronici è quello \textit{a scansion
 \label{fig:em_diag}
 \end{figure}
 
+
 Una limitazione di questi tipi di microscopi è che il campione deve essere conduttivo, altrimenti gli elettroni si accumulano sulla superficie del campione e lo caricano, distorcendo l'immagine. Per questo motivo, i campioni non conduttivi devono essere rivestiti con uno strato di metallo (come oro o carbonio) per permettere la conduzione degli elettroni.
 
+\section{Microscopio a effetto tunnel}
 
-\subsection{Microscopio a effetto tunnel}
-
-La branca di microscopia di cui fa parte quello di interesse in questa tesi è lam microscopia a scansione di sonda (\acrshort{spm}) e fu fondata nel 1981 con l'invenzione del microscopio a effetto tunnel (\acrshort{stm}).\cite{ieee_spm}
-Questi microscopi rilevano la superficie del campione usando una punta minuscola su cui è imposta una differenza di potenziale con il piano di osservazione. Mantenendo l'altezza della punta costante, si può misurare direttamente la variazione di corrente attraverso il campione in movimento, mentre per misurarne l'altezza si può mantenere costante la corrente e applicare un feedback al motore piezoelettrico che regola l'altezza della punta. Avendo una risoluzione di 0.1nm, questa tecnica permette di osservare singoli atomi, ma può essere usata solo se il campione è conduttivo.\cite{bai_2000}
+La microscopia a scansione di sonda (\acrshort{spm}) fu sviluppata nel 1981 con l'invenzione del microscopio a effetto tunnel (\acrshort{stm}).\cite{ieee_spm}
+Questo tipo di microscopi rileva la superficie del campione usando una minuscola punta su cui è imposta una differenza di potenziale con il piano di osservazione. Mantenendo l'altezza della punta costante, si può misurare direttamente la variazione di corrente attraverso il campione in movimento, mentre per misurarne l'altezza si può mantenere costante la corrente e applicare un feedback al motore piezoelettrico che regola l'altezza della punta. Avendo una risoluzione di $0.1$ nm, questa tecnica permette di osservare singoli atomi, ma può essere usata solo se il campione è conduttivo.\cite{bai_2000}
 
 \begin{figure}[h]
 \centering
@@ -309,13 +306,11 @@ Questi microscopi rilevano la superficie del campione usando una punta minuscola
 \label{fig:stm_diag}
 \end{figure}
 
-\section{AFM}
+\section{Atomic Force Microscopy}
 
 Una delle tecniche di microscopia che sono state usate per acquisire le immagini trattate in questa tesi è la microscopia a forza atomica (\acrshort{afm}). Questa tecnica è stata sviluppata nel 1986 da \textit{Gerd Binnig} e \textit{Heinrich Rohrer} ed è un altro tipo di tecnica di microscopia \acrshort{spm} che, permettendo di osservare campioni non conduttivi, a differenza della microscopia \acrshort{stm}, ha aperto la strada a nuove applicazioni.\cite{binnig_1986}
 
-\subsection{Principio di funzionamento}
-
-I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a un braccio elastico (\textit{cantilever}), che viene fatta scorrere sulla superficie del campione. La dimensione della punta è importante perché influisce sulla risoluzione spaziale dell'immagine, che può arrivare anche a frazioni di nanometri. La fabbricazione di punte con un raggio così piccolo è uno dei limiti tecnici della microscopia \acrshort{afm} e il loro spessore minuscolo fa si che possano essere facilmente danneggiate.\\
+I microscopi \acrshort{afm} usano una punta di diametro di circa $10$ nm fissata a un braccio elastico (\textit{cantilever}), che viene fatta scorrere sulla superficie del campione. La dimensione della punta è importante perché influisce sulla risoluzione spaziale dell'immagine, che può essere minore di un nanometro. La fabbricazione di punte con un raggio così piccolo è una delle limitazioni principali della microscopia \acrshort{afm} e il loro spessore minuscolo fa si che possano essere facilmente danneggiate.\\
 
 \begin{figure}[H]
 	\centering
@@ -338,11 +333,11 @@ I microscopi \acrshort{afm} usano una punta di diametro di circa 10nm fissata a 
 \label{fig:afm_tip}
 \end{figure}
 
-Durante la scansione, la punta viene inclinata verso l'alto e il basso a causa della forza di interazione con il campione, che può essere di tipo repulsivo o attrattivo in base alla modalità di scansione. Queste inclinazioni vengono misurate da un raggio laser che viene riflesso dal cantilever su un fotodiodo a quadranti. L'inclinazione del cantilever deflette il raggio laser, che si sposta fra i quadranti del fotodiodo, e la variazione della corrente tra i quadranti viene poi convertita in una variazione di altezza della punta, che viene usata per generare l'immagine del campione.
+Durante la scansione, la punta viene inclinata verso l'alto e il basso a causa della forza di interazione con il campione, che può essere di tipo repulsivo o attrattivo in base alla modalità di scansione. Queste inclinazioni vengono misurate da un raggio laser che viene riflesso dal cantilever su un fotodiodo a quadranti. L'inclinazione del cantilever deflette il raggio laser, che si sposta fra i quadranti del fotodiodo, e il segnale misurato dal fotodiodo viene poi convertito in una variazione di altezza della punta, che viene usata per generare l'immagine del campione.
 
-Per effettuare la scansione, il piatto su cui poggia il campione viene spostato da degli elementi piezoelettrici, che possono espandersi e contrarsi con una precisione nanometrica variando una piccola tensione imposta (mV). Questi elementi piezoelettrici sono in grado di muoversi in tre direzioni (X, Y, Z) e sono controllati da un sistema elettronico che regola il movimento del campione in modo da mantenere il segnale di riferimento costante.
+Per effettuare la scansione, il supporto su cui poggia il campione viene spostato da un sistema piezoelettrico, che può espandersi e contrarsi con una precisione nanometrica applicando una piccola tensione imposta, dell'ordine dei mV. Gli elementi piezoelettrici sono in grado di muoversi in tre direzioni $(X, Y, Z)$ e sono controllati da un sistema elettronico che regola il movimento del campione in modo da mantenere il segnale di riferimento costante.
 
-Con questo sistema si possono apprezzare variazioni di altezza fino a 0.01nm.\cite{sun_2018}
+Con questo sistema si possono apprezzare variazioni di altezza fino a $0.01$ nm.\cite{sun_2018}
 
 \begin{figure}[h]
 \centering
@@ -499,21 +494,21 @@ I microscopi \acrshort{afm} possono essere usati in diverse modalità, a seconda
 \label{fig:afm_modes}
 \end{figure}
 
-\subsection{Modalità a contatto} \label{s:afm_contact}
+\subsection{Modalità a contatto} \label{s:afm_c}
 
 Nella modalità a contatto la forza normale, quindi l'inclinamento verticale del cantilever, è mantenuta costante durante la scansione. Quando la punta si sposta sopra una parte protrudente del campione, il cantilever viene spinto verso l'alto e si crea un errore sull'inclinazione verticale. Per correggere questo errore, il controllore alza la punta finché l'errore non si annulla. Quando si incontrano delle depressioni nel campione si opera il procedimento opposto, abbassando la punta.
 
-Questa modalità permette anche di misurare le forze di attrito tra la superficie del campione e la punta ma non è utilizzabile su campioni biologici perché troppo delicati. La forza esercitata dalla punta può provocare stimoli meccanici non sostenibili per delle cellule e deformare biomolecole.\cite{zhong_1993}
+Questa modalità permette anche di misurare le forze di attrito tra la superficie del campione e la punta ma non è utilizzabile su campioni biologici perché troppo delicati. La forza esercitata dalla punta può provocare stimoli meccanici non sostenibili per delle cellule e deformare le biomolecole.\cite{zhong_1993}
 
-Idealmente, la forza dovrebbe essere minore di 100pN per essere utilizzabile su biomolecole e nell'ordine dei nN per le cellule. Per questo motivo, vengono usati dei cantilever con una bassa costante elastica per diminuire il rumore, aumentare la sensibilità e diminuire la forza di interazione.\cite{wang_2018}
+Idealmente, la forza dovrebbe essere minore di $100$ pN per essere utilizzabile su biomolecole e nell'ordine dei nN per le cellule. Per questo motivo, vengono usati dei cantilever con una bassa costante elastica per diminuire il rumore, aumentare la sensibilità e diminuire la forza di interazione.\cite{wang_2018}
 
 Un altro problema dell'uso di modalità a contatto è la possibilità che cellule poco aderenti o particelle di sporco si attacchino al cantilever.
 
-\subsection{Modalità a contatto intermittente} \label{s:afm_ic}
+\subsection{Modalità a contatto infermittente} \label{s:afm_ic}
 
 Nella modalità a contatto intermittente, il cantilever oscilla verticalmente alla sua frequenza di risonanza, o poco meno. Quando la punta scansiona il campione, la sua altezza diminuisce l'ampiezza delle oscillazioni del cantilever che vengono misurate dal fotodiodo. Il segnale di controllo viene regolato in modo che, nel punto più basso del ciclo di oscillazione, la punta tocchi appena il campione. L'ampiezza di queste oscillazioni è quindi una misura delle interazioni tra la punta e il campione. Muovere la punta in alto e in basso, im modo da mantenere la stessa ampiezza di oscillazione, permette di ottenere una topografia del campione.
 
-Altre informazioni ottenute da questo metodo sono l'ampiezza e fase dell'errore tra l'oscillazione del cantilever e il segnale di riferimento. Questo scostamento dal segnale pilota è causato dalla dissipazione di energia tra la punta e il campione, che può essere causato da delle deformazioni della superficie del campione o da forze di attrazione. Queste informazioni possono essere usate per ottenere proprietà viscoelastiche del campione e distinguere materiali diversi.\cite{bruker_phase_imaging}
+Altre informazioni che si possono ottenere sono l'ampiezza e la fase dell'errore tra l'oscillazione del cantilever e il segnale di riferimento. Questo scostamento dal segnale di riferimento è causato dalla dissipazione di energia tra la punta e il campione, che può essere dovuta dalle deformazioni della superficie del campione o da forze di attrazione. Queste informazioni possono essere usate per ottenere proprietà viscoelastiche del campione e distinguere materiali diversi.\cite{bruker_phase_imaging}
 
 Al contrario della modalità a contatto, la forza laterale è trascurabile visto che la punta tocca il campione solo per un istante ed è maggiormente indicata per campioni biologici, che altrimenti si muoverebbero liberamente insieme alla punta.\cite{karrasch_1993}
 
@@ -521,11 +516,11 @@ Questa modalità di operazione è più lenta rispetto alla modalità a contatto 
 
 \subsection{Modalità senza contatto} \label{s:afm_nc}
 
-Nella modalità senza contatto, la punta non tocca mai il campione ma mantiene comunque un'alta sensibilità alla sua topologia. Per fare ciò, la punta deve trovarsi abbastanza vicino al campione da entrare nel suo campo di forze, ma senza passare nella regione attrattiva usata per le modalità a contatto, quindi la scansione con questa modalità è eseguita esclusivamente nella regione attrattiva.
+Nella modalità senza contatto, la punta non tocca mai il campione ma mantiene comunque un'alta sensibilità alla sua topologia. Per fare ciò, la punta deve trovarsi abbastanza vicino al campione da entrare nel suo campo di forze, ma senza passare nella regione attrattiva usata per le modalità a contatto.
 
-Questa scelta comporta l'uso di un cantilever molto rigido e farlo rimanere molto vicino alla superficie del campione per osservare come cambiano l'ampiezza e la fase della sua oscillazione, evitando che salti nel regime repulsivo. Questi sono effetti della variazione della frequenza di oscillazione in risposta alle forze applicate dalla superficie sulla punta (forze di van der Waals).
+Questa scelta comporta l'uso di un cantilever molto rigido che rimane molto vicino alla superficie del campione per osservare come cambiano l'ampiezza e la fase della sua oscillazione, evitando che passi al regime repulsivo. Questi sono effetti della variazione della frequenza di oscillazione in risposta alle forze applicate dalla superficie sulla punta (forze di van der Waals).
 
-Per questa modalità si usa un cantilever ad alta frequenza di risonanza, tipicamente compresa tra 300 e 400 kHz, e bassa ampiezza di oscillazione, di circa 10nm.\cite{giessibil_1999} Come per la modalità a contatto intermittente, la velocità di scansione è più bassa di quella della modalità a contatto, ma queste proprietà del cantilever permettono di avere velocità maggiori della modalità a contatto intermittente.
+Per questa modalità si usa un cantilever ad alta frequenza di risonanza, tipicamente compresa tra $300$ e $400$ kHz, e bassa ampiezza di oscillazione, di circa $10$ nm.\cite{giessibil_1999} Come per la modalità a contatto intermittente, la velocità di scansione è più bassa di quella della modalità a contatto, ma queste proprietà del cantilever permettono di avere velocità maggiori della modalità a contatto intermittente.
 
 Non entrando mai nella regione ripulsiva, questa modalità presenta il più basso rischio di danneggiare o contaminare la punta e il campione.\cite{ho_1996}
 
@@ -564,14 +559,11 @@ Non entrando mai nella regione ripulsiva, questa modalità presenta il più bass
 \label{fig:waals}
 \end{figure}
 
-\subsection{Modulazione in frequenza}
-
 Le modalità descritte nei paragrafi precedenti fanno tipicamente uso della modulazione in ampiezza. L'uso della modulazione in frequenza è limitato in quanto richiede attrezzature specifiche e un ambiente a vuoto ultra spinto. Usare una modalità oscillante a modulazione in frequenza ha anche dei vantaggi, come una risoluzione più alta.\cite{sugawara_1995}
-
 
 \subsection{Sistema di controllo}
 
-Il controllo del sistema è affidato a un controllore \acrshort{pid}, di gran lunga il tipo di sistema di controllo più usato (il 95\% di tutti i problemi di controllo si possono risolvere con questo sistema).\cite{astrom_2010}
+Il controllo del sistema è affidato a un controllore \acrshort{pid} (\acrlong{pid}), di gran lunga il tipo di sistema di controllo più usato (nel 95\% di tutti i casi).\cite{astrom_2010}
 
 \begin{figure}[h]
 \centering
@@ -637,28 +629,20 @@ Il sistema di feedback comprende tre meccanismi principali: \cite{parisi}
 	\item Il circuito di controllo per mantenere una deflessione costante correggendo la tensione applicata al tubo piezoelettrico
 \end{enumerate}
 
-\subsection{Parametri del sistema}
+Per sua natura, un microscopio \acrshort{afm} è molto versatile e presenta molti parametri che si possono regolare per ottimizzare la resa delle immagini. Partendo da quelli più generali, si può impostare una modalità operativa, come quelle descritte sopra (\textit{vedi} \ref{s:afm_c}, \ref{s:afm_ic}, \ref{s:afm_nc}), e un tipo di cantilever che più si adattano al campione scelto.
 
-Per sua natura, un microscopio \acrshort{afm} è molto versatile e presenta molti parametri che si possono regolare per ottimizzare la resa delle immagini. Partendo da quelli più generali, si può impostare una modalità operativa, come quelle descritte sopra (\textit{vedi} \ref{s:afm_contact}, \ref{s:afm_ic}, \ref{s:afm_nc}), e un tipo di cantilever che più si adattano al campione scelto.
-
-Passando ai parametri di scansione, si possono impostare la velocità e l'area di scansione controllando opportunamente il sistema piezoelettrico su cui poggia il campione. L'area di scansione rappresenta il campo di osservazione del campione (es. 10 µm × 10 µm) ed influenza la risoluzione delle immagini. La velocità di scansione, espressa in µm/s o linee al secondo (Hz), è inversamente proporzionale alla qualità dell'immagine, ma con basse velocità aumenta il rischio di muovere parti del campione.
+Passando ai parametri di scansione, si possono impostare la velocità e l'area di scansione controllando opportunamente il sistema piezoelettrico su cui poggia il campione. L'area di scansione rappresenta il campo di osservazione del campione (es. $10$ µm $\times$ $10$ µm) ed influenza la risoluzione delle immagini. La velocità di scansione, espressa in µm/s o linee al secondo (Hz), è inversamente proporzionale alla qualità dell'immagine, ma con basse velocità aumenta il rischio di muovere parti del campione.
 
 È possibile anche regolare dei parametri relativi all'interazione tra la punta e il campione, come l'ampiezza e la frequenza di oscillazione (solo in modalità oscillanti) e la forza di carico desiderata. Per regolare questi parametri si può operare sull'ingresso del sistema e sul guadagno dell'anello di feedback.\\
 
-\unsure{Sezione sulle applicazioni? Litografia, semiconduttori, biologia, polimeri,ecc}
+\section{Scanning Near-field Optical Microscopy}
 
-\section{SNOM}
+L'altra tecnica di microscopia usata per ottenere le immagini studiate in questa tesi è la microscopia ottica a scansione del campo vicino (\acrlong{snom} --- \acrshort{snom}). Questa tecnica riesce a superare il limite di risoluzione sfruttando delle proprietà dei campi evanescenti. Ad \textit{Edward Hutchinson Synge} è attribuito il merito di aver proposto per primo questa tecnica nel 1928,\cite{synge_1928} ma il primo microscopio \acrshort{snom} fu costruito solo nel 1984 da \textit{Dieter Pohl}.\cite{pohl_1984}
 
-L'altra tecnica di microscopia usata per ottenere le immagini studiate in questa tesi è la microscopia ottica a scansione del campo vicino (\acrshort{snom}). Questa tecnica, pur impiegando raggi ottici, riesce a superare il limite di risoluzione sfruttando delle proprietà dei campi evanescenti. Ad \textit{Edward Hutchinson Synge} è attribuito il merito di aver concepito questa tecnica nel 1928,\cite{synge_1928} ma il primo microscopio \acrshort{snom} fu costruito solo nel 1984 da \textit{Dieter Pohl}.\cite{pohl_1984}
-
-\subsection{Campi evanescenti}
-
-I campi evanescenti possono essere descritti da onde piane della forma $\mathbf{E}e^{i(\mathbf{kr}-\omega t)}$. Queste onde sono caratterizzate dal fatto che almeno una componente del vettore d'onda \textbf{k}, che descrive la direzione di propagazione, è immaginaria. Nella direzione spaziale definita dalla componente immaginaria, l'onda non si propaga ma decade esponenzialmente. I campi evanescenti sono di grande importanza per lo studio e la comprensione dei campi ottici confinati a dimensioni inferiori alla lunghezza d'onda.\cite{novotny_2012}
-
-\subsection{Principio di funzionamento}
+I campi evanescenti possono essere descritti da onde piane della forma $\mathbf{E}e^{i(\mathbf{kr}-\omega t)}$, che sono caratterizzate dal fatto che almeno una componente del vettore d'onda \textbf{k}, che descrive la direzione di propagazione, è immaginaria. Nella direzione spaziale definita dalla componente immaginaria, l'onda non si propaga ma decade esponenzialmente. I campi evanescenti sono di grande importanza per lo studio e la comprensione dei campi ottici confinati a dimensioni inferiori alla lunghezza d'onda.\cite{novotny_2012}
 
 Come descritto nel paragrafo \ref{s:na}, un microscopio ottico tradizionale, per ottenere un immagine del campione, deve raccogliere tutta la luce diffratta nel campo lontano, che si propaga senza restrizioni.
-Al contrario, la microscopia \acrshort{snom} fa uso di un laser di eccitazione la cui luce è concentrata in un'apertura di diametro molto inferiore alla sua lunghezza d'onda, creando un campo evanescente dall'altro lato dell'apertura.\cite{betzig_1992} Quando il campione viene scansionato ad una piccola distanza sotto l'apertura (< 10 nm), la risoluzione ottica della luce trasmessa o riflessa è limitata solo dal diametro dell'apertura. Questi campi trasportano informazioni spaziali sul campione ad alta frequenza e permettono di arrivare a una risoluzione laterale di 6nm\cite{ma_2021} e una risoluzione verticale di 2nm.\cite{oshikane_2007}\\
+Al contrario, la microscopia \acrshort{snom} utilizza un laser la cui luce è concentrata in un'apertura di diametro molto inferiore alla sua lunghezza d'onda, creando un campo evanescente dall'altro lato dell'apertura.\cite{betzig_1992} Quando il campione viene scansionato ad una piccola distanza sotto l'apertura ($<10$ nm), la risoluzione ottica della luce trasmessa o riflessa è limitata solo dal diametro dell'apertura. I campi evanescenti trasportano informazioni ad alte frequenze spaziali sul campione e permettono di arrivare a una risoluzione laterale di $6$ nm\cite{ma_2021} e una risoluzione verticale di $2$ nm.\cite{oshikane_2007}\\
 
 \begin{figure}[h]
 	\centering
@@ -704,13 +688,11 @@ Al contrario, la microscopia \acrshort{snom} fa uso di un laser di eccitazione l
 
 Poiché le onde evanescenti sono confinate a una regione prossima alla superficie del mezzo che le origina, è necessario portare il rilevatore entro l'itervallo della lunghezza d'onda della radiazione utilizzata. Su queste onde si applica il \textit{principio di reciprocità di Helmholtz}, secondo cui il campo vicino può essere convertito in onde propaganti dal rilevatore. Grazie a questo principio, i raggi entranti e uscenti possono essere considerati uno come il reciproco dell'altro, permettendo di usare la sonda ottica sia come sorgente che come rilevatore.\cite{hapke_1993}
 
-Per questo, una delle limitazioni principali di questa tecnica sono una distanza di lavoro molto breve e una profondità di campo estremamente ridotta. Normalmente questi microscopi sono usati per studi di superficie, ma si possono anche usare per studiare regioni di interesse sotto la superficie, posto che siano entro il limite della profondità di campo.\cite{vobornik_2008}
-
-La struttura di un microscopio \acrshort{snom} è molto simile a quella di un microscopio \acrshort{afm}, in quanto sono entrambe tecninche di microscopia \acrshort{spm}, e per questo lo stesso macchinario può offrire entrambe le tecniche di acquisizione. Questi sistemi possono anche essere combinati con altre tecniche di imaging, come la spettroscopia Raman\cite{zhang_2017} o la spettroscopia infrarossa a trasformata di Fourier (\acrshort{ftir}).\cite{rotenberg_2014}
+Per questo motivo, una delle limitazioni principali di questa tecnica è la distanza di lavoro molto breve e una profondità di campo estremamente ridotta. Normalmente questi microscopi sono usati per studi di superficie, ma si possono anche usare per studiare regioni di interesse sotto la superficie, posto che siano entro il limite della profondità di campo.\cite{vobornik_2008}
 
 \subsection{Aperture SNOM}
 
-Esistono diverse modalità di funzionamento e una delle caratteristiche principali è il tipo di sonda utilizzata. Nella microscopia \acrshort{asnom} questa sonda è installata nella punta, che ha un foro di dimensioni minori della lunghezza d'onda del raggio, da cui la luce può essere emessa o ricevuta. La luce è condotta alla punta da un cavo in fibra ottica monomodale e la punta ha uno strato metallico di rivestimento per riflettere i raggi. La dimensione dell'apertura può arrivare fino a circa 50nm e influenza la risoluzione spaziale delle immagini.\cite{antosiewicz_2011}
+Nella microscopia \acrshort{asnom} la sonda ottica è installata nella punta, che ha un foro di dimensioni minori della lunghezza d'onda del raggio, da cui la luce può essere emessa o ricevuta. La luce è condotta alla punta da un cavo in fibra ottica monomodale e la punta ha uno strato metallico di rivestimento per riflettere i raggi. La dimensione dell'apertura può arrivare fino a circa $50$ nm e influenza la risoluzione spaziale delle immagini.\cite{antosiewicz_2011}
 
 \begin{figure}[h]
 \centering
@@ -765,7 +747,7 @@ Esistono diverse modalità di funzionamento e una delle caratteristiche principa
 \label{fig:snom_probe}
 \end{figure}
 
-La maggior parte dei microscopi \acrshort{asnom} usa un metodo simile a quello dei microscopi \acrshort{afm} senza contatto (\textit{vedi} \ref{s:afm_nc}) basato sulla forza di taglio per controllare la distanza tra la punta e il campione. La sonda è messa in vibrazione alla sua frequenza di risonanza parallelamente alla superficie con un'ampiezza minore di 5nm. L'ampiezza e la fase di queste oscillazioni della fibra sono monitorate da un apposito sensore di spostamento.\cite{hecht_2000}
+La maggior parte dei microscopi \acrshort{asnom} usa un metodo simile a quello dei microscopi \acrshort{afm} senza contatto (\textit{vedi} \ref{s:afm_nc}) basato sulla forza di taglio per controllare la distanza tra la punta e il campione. La sonda è messa in vibrazione alla sua frequenza di risonanza parallelamente alla superficie con un'ampiezza minore di $5$ nm. L'ampiezza e la fase di queste oscillazioni della fibra sono monitorate da un apposito sensore di spostamento.\cite{hecht_2000}
 
 \subsubsection{Modalità di operazione}
 
@@ -779,17 +761,19 @@ I microscopi \acrshort{asnom} possono operare secondo diverse modalità, che dip
 \end{figure}
 
 \begin{enumerate}[a)]
-	\item In questa configurazione, la luce viene emessa da un laser e convogliata alla punta dal cavo in fibra ottica. L'apertura estremamente ristretta della punta crea un campo evanescente sulla superficie del campione. Questo campo poi interagisce con il campione e la radiazione convertita viene diffusa e raccolta da un obiettivo ottico convenzionale nel campo lontano.
+	\item In questa configurazione, la luce viene emessa da un laser e trasmessa alla punta dal cavo in fibra ottica. L'apertura estremamente ristretta della punta crea un campo evanescente sulla superficie del campione. Questo campo poi interagisce con il campione e la radiazione convertita viene diffusa e raccolta da un obiettivo ottico convenzionale nel campo lontano.
 	\item Al contrario della modalità di illuminazione, il campione è illuminato esternamente con luce dal campo lontano (ad esempio un laser o una lampada), mentre la punta viene usata come un rivelatore. Le onde evanescenti sulla superficie del campione vengono convertite in onde propaganti dentro la punta e trasmesse al rilevatore.
-	\item In questo caso, la punta illumina il campione ed estrae anche la luce che ritorna. Sia l'emissione che la raccolta avvengono attraverso la stessa apertura. In questo caso è necessario installare un dispositivo che separi i due flussi di luce.
+	\item In questo caso, la punta illumina il campione e riceve anche la luce riflessa. Sia l'emissione che la raccolta avvengono attraverso la stessa apertura. In questo caso è necessario installare un dispositivo che separi i due flussi di luce.
 	\item[d-e)] Queste modalità sono simili alle prime, con la differenza che si basano sulla luce riflessa per effettuare le misure.
 \end{enumerate}
 
 \subsection{Apertureless SNOM}
 
-La microscopia SNOM di tipo scattering (\acrshort{ssnom}) utilizza una punta metallica o rivestita in metallo per sondare il campo elettrico locale vicino al campione. Con una fonte di luce esterna a una frequenza a scelta, la punta metallica sparge la luce in base alla sua polarizzabilità. La presenza del campione sotto la punta metallica modifica la polarizzabilità della punta secondo la funzione dielettrica del campione. Scansionando la punta metallica sulla superficie del campione con un microscopio \acrshort{afm} in modalità a contatto intermittente (\textit{vedi} \ref{s:afm_ic}) si ottiene il segnale usato per formare l'immagine contenente informazioni sulle proprietà ottiche del campione.\cite{wang_2015}
+La struttura di un microscopio \textit{apertureless SNOM}, anche detto di tipo scattering (\acrshort{ssnom}),  è molto simile a quella di un microscopio \acrshort{afm}, in quanto sono entrambe tecniche di microscopia \acrshort{spm}, e per questo lo stesso macchinario può offrire entrambe le tecniche di acquisizione. Questi sistemi possono anche essere combinati con altre tecniche di imaging, come la spettroscopia Raman\cite{zhang_2017} o la spettroscopia infrarossa a trasformata di Fourier (\acrshort{ftir}) \cite{rotenberg_2014}.
 
-Gli studi numerici delle interazioni nel campo vicino tra la punta e la superficie del campione usano tecniche di elaborazione diverse, come il modello a dipolo puntiforme e a dipolo finito.\cite{cvitkovic_2007}\\
+In questo caso si utilizza una punta metallica o rivestita in metallo per sondare il campo elettrico locale vicino al campione. Con una fonte di luce esterna a una frequenza a scelta, la punta metallica sparge la luce in base alla sua polarizzabilità. La presenza del campione sotto la punta metallica modifica la polarizzabilità della punta in funzione della costante dielettrica del campione. Scansionando la punta metallica sulla superficie del campione con un microscopio \acrshort{afm} in modalità a contatto intermittente (\textit{vedi} \ref{s:afm_ic}) si ottiene il segnale usato per formare l'immagine contenente informazioni sulle proprietà ottiche del campione.\cite{wang_2015}
+
+I modelli numerici per lo studio delle interazioni nel campo vicino tra la punta e la superficie del campione usano tecniche di elaborazione diverse, come il modello a dipolo puntiforme e a dipolo finito.\cite{cvitkovic_2007}\\
 
 \begin{figure}[h]
 \begin{subfigure}{0.5\linewidth}
@@ -806,19 +790,17 @@ Gli studi numerici delle interazioni nel campo vicino tra la punta e la superfic
 \label{fig:dipole_model}
 \end{figure}
 
-Nel modello a dipolo puntiforme si modella la punta della sonda come un punto con un certo momento di dipolo \textbf{p} generato dal campo elettrico incidente $\mathbf{E}$. Il momento del dipolo è, quindi
+Nel modello a dipolo puntiforme la punta della sonda è modellizzata come un punto con un certo momento di dipolo \textbf{p} generato dal campo elettrico incidente $\mathbf{E}$. Il momento del dipolo è, quindi
 \begin{equation}
 	\mathbf{p}=\alpha\mathbf{E}
 \end{equation}
 dove $\alpha$ è il tensore di polarizzabilità della punta. Il campione genera un dipolo immagine che modifica il campo elettrico locale percepito dalla punta. La misurazione viene effettuata sulla radiazione prodotta da questo dipolo indotto. Questa approssimazione è buona per studi qualitativi ma ignora la geometria reale della punta e non tiene conto della distribuzione delle cariche lungo essa.\cite{wu_2005}
 
-Nel modello a dipolo finito si modella la punta come un oggetto esteso, come uno sferoide. Il momento di dipolo non è quindi localizzato in un solo punto, ma è distribuito lungo l'asse. Questo modello è più accurato, specialmente per punte lunghe, e tiene conto delle risonanze plasmoniche lungo la punta.\cite{jarzembski_2017}
+Nel modello a dipolo finito la punta è rappresentata come un oggetto esteso, come uno sferoide. Il momento di dipolo non è quindi localizzato in un solo punto, ma è distribuito lungo l'asse. Questo modello è più accurato, specialmente per punte lunghe, e tiene conto delle risonanze plasmoniche lungo la punta.\cite{jarzembski_2017}
 
-\subsection{Elaborazione del segnale}
+La rilevazione del segnale è effettuata da un interferometro di Michelson, con la particolarità che uno degli specchi è mobile. Questa tecnica di misura prende il nome di spettroscopia a trasformata di Fourier (\acrshort{fts}). Il segnale viene registrato mentre lo specchio è in movimento, creando un interferogramma, e poi convertito in uno spettro dalla trasformata.\cite{moreno_2017}
 
-La rilevazione del segnale è effettuata da un interferometro di Michelson, con la particolarità che uno degli specchi è mobile. Questa tecnica di misura prende il nome di spettroscopia a trasformata di Fourier (\acrshort{fts}). Il segnale viene registrato mentre lo specchio è in movimento, creando un interferogramma, e poi convertito in uno spettro dalla trasformata.
-
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{tikzpicture}
 
@@ -868,18 +850,6 @@ La rilevazione del segnale è effettuata da un interferometro di Michelson, con 
 \end{tikzpicture}
 \caption[Sistema di rilevazione a pseudo-eterodina per microscopia s-SNOM]{
 	Sistema di rilevazione a pseudo-eterodina per microscopia \acrshort{ssnom}}
-\end{figure}
-
-\subsection{Analisi correlativa}
-La microscopia \acrshort{ssnom} ha suscitato interesse negli ultimi anni, ma il suo impiego nella \gls{microbiologia} è rimasto limitato, soprattutto per le difficoltà nell'interpretare i dati a causa della scarsa disponibilità dei dati. Come accennato in precedenza, un microscopio può offrire più tecniche di microscopia per studiare più proprietà dello stesso materiale nello stesso momento, per questo recenti studi 
-hanno accoppiato un sistema di microscopia \acrshort{ssnom} ad altri sistemi per avere un contesto noto per analizzare i dati provenienti dal campo vicino, come la microscopia \acrfull{afm} o \acrshort{clsm}.\cite{stanciu_2017}
-
-\begin{figure}[h]
-\centering
-\includegraphics[keepaspectratio, height=\linewidth]{images/multimodal_system.jpg}
-\caption[Sistema multimodale per l'acquisizione di immagini correlative]{
-	Sistema multimodale per l'acquisizione di immagini correlative \cite{stanciu_2017}}
-\label{fig:multimodal_system}
 \end{figure}
 
 \end{document}
