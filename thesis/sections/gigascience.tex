@@ -8,17 +8,17 @@ Le immagini elaborate in questa tesi sono prese dal dataset di SSNOMBACTER, pubb
 
 Queste immagini sono state generate da un microscopio NeaSNOM in modalità a contatto intermittente usando un laser con una lunghezza d'onda di $1,550$ \micro m ($6,451.61$ \gls{cm-1}) e un cantilever placcato in oro con un raggio alla punta minore di $35$ nm, una frequenza di risonanza di 65kHz e una costante elastica di $0.5\ N/m$. (HQ:NSC19/Cr-Au)\cite{micromasch}
 
-Per ogni specie batterica sono state generate almeno 3 immagini su regioni diverse con un campo visivo di 10 \micro m × 10 \micro m, e almeno una con un campo visivo ingrandito, tra 2 \micro m × 2 \micro m e 4 \micro m × 4 \micro m, in base alle dimensioni della specie selezionata. Sono state generate sia immagini \acrshort{snom} che \acrshort{afm} della stessa regione esaminata per avere una caratterizzazione piú completa e dettagliata delle specie batteriche, potendo infatti ricavare sia proprietà ottiche che topologiche o morfologiche usando degli appositi algoritmi di elaborazione. 
+Per ogni specie batterica sono state generate almeno 3 immagini su regioni diverse con un campo visivo di 10 \micro m × 10 \micro m, e almeno una con un campo visivo ingrandito, tra 2 \micro m × 2 \micro m e 4 \micro m × 4 \micro m, in base alle dimensioni della specie selezionata. Sono state generate sia immagini \acrshort{snom} che \acrshort{afm} della stessa regione esaminata per avere una caratterizzazione più completa e dettagliata delle specie batteriche, potendo infatti ricavare sia proprietà ottiche che topologiche o morfologiche usando degli appositi algoritmi di elaborazione. 
 
 Le immagini \acrshort{ssnom} provvedono l'ampiezza e la fase dello spettro, da cui è possibile ricavare le proprietà dielettriche del campione, mentre le immagini \acrshort{afm} ne provvedono la topografia e le proprietà viscoelastiche. L'oggetto di questa tesi è comparare i due tipi di immagini e verificare quali caratteristiche morfologiche possono essere estratte da esse.
 
-I dati delle scansioni sono disponibili sia in formato \textit{Gwyddion Simple Fields}\cite{gwyddion} (\texttt{.gsf})\footnote{La specifica del file è disponibile online\\URL: \url{https://gwyddion.net/documentation/user-guide-en/gsf.html}}, in cui sono disponibili i valori reali delle scansioni, sia come immagini \texttt{.tiff} con valori compresi tra $0$ e $255$. Ogni scansione è locata in una cartella a sè e i nomi dei file seguono questo modello:
+I dati delle scansioni sono disponibili sia in formato \textit{Gwyddion Simple Fields}\cite{gwyddion} (\texttt{.gsf})\footnote{La specifica del file è disponibile online\\URL: \url{https://gwyddion.net/documentation/user-guide-en/gsf.html}}, in cui sono disponibili i valori reali delle scansioni, sia come immagini \texttt{.tiff} con valori interi compresi tra $0$ e $255$. Ogni scansione è locata in una cartella a sé e i nomi dei file seguono questo modello:
 
 \begin{center}
 [ceppo batterico] [numero FOV] [abbreviazione tipo immagine]
 \end{center}
 
-Ogni scansione è inoltre provvista di un file \texttt{.txt} con i parametri di acquisizione usati, come il tempo di integrazione, la frequenza di oscillazione della punta, i parametri del controlore \acrshort{pid}, la sorgente laser e la frequenza di modulazione.
+Ogni scansione è inoltre provvista di un file \texttt{.txt} con i parametri di acquisizione usati, come il tempo di integrazione, la frequenza di oscillazione della punta, i parametri del controllore \acrshort{pid}, la sorgente laser e la frequenza di modulazione.
 
 \begin{table}[h!t]
 \centering
@@ -67,7 +67,7 @@ In \Gls{microbiologia}, i batteri sono un regno (\textit{Bacteria}) comprendente
 
 \subsection{Morfologia}
 
-Le dimensioni ridotte dei batteri fa sì che il loro rapporto superficie/volume sia in genere molto più elevato di quello delle cellule eucariote (dimensioni lineari tipiche nell’ordine delle decine di \micro m), con ovvie conseguenze sulla velocità con cui avvengono gli scambi molecolari tra cellula e ambiente, il trasporto di nutrienti, la crescita, la divisione cellulare e, di conseguenza, anche l’evoluzione. \cite{deho_galli_2020}
+Le dimensioni ridotte dei batteri fa sì che il loro rapporto superficie/volume sia in genere molto più elevato di quello delle cellule eucariote (dimensioni lineari tipiche nell'ordine delle decine di \micro m), con ovvie conseguenze sulla velocità con cui avvengono gli scambi molecolari tra cellula e ambiente, il trasporto di nutrienti, la crescita, la divisione cellulare e, di conseguenza, anche l'evoluzione. \cite{deho_galli_2020}
 
 Essendo organismi unicellulari, i batteri presentano una limitata varietà di forme, che si possono raggruppare in questi gruppi: \textbf{Cocchi}, \textbf{Bacilli}, \textbf{Coccobacilli}, \textbf{Spirali}, \textbf{Elicoidali}.
 
@@ -80,7 +80,7 @@ Un \textbf{bacillo}, anche chiamato \textit{batterio bacilliforme}, è un micror
 	\item I coccobacilli hanno una forma più ovale, simile ai cocchi.
 \end{itemize}
 
-Un \textbf{cocco}, anche chiamato \textit{batterio coccoide}, è un microrganismo la cui forma è pressochè sferica. I batteri coccoidi si presentano spesso in disposizioni caratteristiche e anche queste forme hanno nomi specifici: \cite{zapun_2008}
+Un \textbf{cocco}, anche chiamato \textit{batterio coccoide}, è un microrganismo la cui forma è pressoché sferica. I batteri coccoidi si presentano spesso in disposizioni caratteristiche e anche queste forme hanno nomi specifici: \cite{zapun_2008}
 
 \begin{itemize}
 	\itemsep0em 
@@ -131,9 +131,9 @@ Questi fattori possono essere sia necessari, ovvero che la presenza o meno del s
 
 L'adesione ad una cellula ospite, o una matrice extracellulare, è un fattore importante per stabilire l'abilità di un microrganismo a provocare danni all'ospite. Questa adesione è mediata da molecole specifiche chiamate adesine, che possono essere proteiche e si suddividono principalmente in due categorie: adesine afimbriali (non filamentose) e fimbrie o pili, strutture filamentose presenti soprattutto nei batteri Gram-negativi (rari nei Gram-positivi).
 
-I pili si osservano al microscopio elettronico come strutture simili a peli e sono fondamentali per l’adesione in batteri patogeni (come \textit{Vibrio cholerae}), che è influenzata in particolar modo dalle proteine sull'estremità dei pili.\cite{fallman_2005} Altri batteri possiedono più geni per la produzione di fimbrie, e solo la rimozione combinata di tutti questi operoni ha dimostrato di ridurre significativamente la virulenza, suggerendo che i fattori di adesione possono compensarsi a vicenda.
+I pili si osservano al microscopio elettronico come strutture simili a peli e sono fondamentali per l'adesione in batteri patogeni (come \textit{Vibrio cholerae}), che è influenzata in particolar modo dalle proteine sull'estremità dei pili.\cite{fallman_2005} Altri batteri possiedono più geni per la produzione di fimbrie, e solo la rimozione combinata di tutti questi operoni ha dimostrato di ridurre significativamente la virulenza, suggerendo che i fattori di adesione possono compensarsi a vicenda.
 
-Un’altra forma di adesione piliforme sono i curli, presenti in ceppi di \textit{Escherichia coli} e \textit{Salmonella}.\cite{kenny_1997} Queste strutture sottili e irregolari sono altamente stabili e si legano a proteine dell’ospite come plasminogeno e fibronectina. Anche se i meccanismi di assemblaggio delle fimbrie variano, condividono caratteristiche strutturali comuni.\cite{soto_1999}\smallskip
+Un'altra forma di adesione piliforme sono i curli, presenti in ceppi di \textit{Escherichia coli} e \textit{Salmonella}.\cite{kenny_1997} Queste strutture sottili e irregolari sono altamente stabili e si legano a proteine dell'ospite come plasminogeno e fibronectina. Anche se i meccanismi di assemblaggio delle fimbrie variano, condividono caratteristiche strutturali comuni.\cite{soto_1999}\smallskip
 
 \begin{figure}[h]
 	\begin{subfigure}{0.5\linewidth}
@@ -151,9 +151,9 @@ Un’altra forma di adesione piliforme sono i curli, presenti in ceppi di \texti
 	\label{fig:ecoli}
 \end{figure}
 
-Molte adesine, oltre a favorire l’adesione, giocano un ruolo nella fuga dal sistema immunitario dell’ospite. Sia i batteri Gram-negativi che quelli Gram-positivi esprimono una vasta gamma di adesine, che si legano a un ampio numero di bersagli cellulari, come immunoglobuline, glicoproteine, glicolipidi e proteine della matrice extracellulare.\cite{finlay_1997}
+Molte adesine, oltre a favorire l'adesione, giocano un ruolo nella fuga dal sistema immunitario dell'ospite. Sia i batteri Gram-negativi che quelli Gram-positivi esprimono una vasta gamma di adesine, che si legano a un ampio numero di bersagli cellulari, come immunoglobuline, glicoproteine, glicolipidi e proteine della matrice extracellulare.\cite{finlay_1997}
 
-In conclusione, l’adesione dei batteri all’ospite è un processo complesso, che coinvolge numerosi tipi di adesine e meccanismi fondamentali non solo per l’inizio dell’infezione, ma anche per la sopravvivenza e la diffusione del patogeno.\bigskip
+In conclusione, l'adesione dei batteri all'ospite è un processo complesso, che coinvolge numerosi tipi di adesine e meccanismi fondamentali non solo per l'inizio dell'infezione, ma anche per la sopravvivenza e la diffusione del patogeno.\bigskip
 
 \subsection{Gruppo ESKAPE}
 
@@ -276,10 +276,16 @@ Tra i ceppi batterici esaminati in SSNOMBACTER sono presenti alcuni ceppi patoge
 	\end{tabular}}
 \end{table}
 
-I ceppi batterici di questo gruppo, sia Gram-positivi che Gram-negativi, possono evadere gli antibiotici comunemente usati grazie alla loro resistenza multifarmaco.\cite{eskape} Di conseguenza, questi batteri rappresentano una seria minaccia per la sanità globale poichè sono la causa principale delle infezioni correlate all'assistenza (ICA) e pongono un grave rischio per pazienti immunocompromessi.\cite{rice_2008}
+I ceppi batterici di questo gruppo, sia Gram-positivi che Gram-negativi, possono evadere gli antibiotici comunemente usati grazie alla loro resistenza multifarmaco.\cite{eskape} Di conseguenza, questi batteri rappresentano una seria minaccia per la sanità globale poiché sono la causa principale delle infezioni correlate all'assistenza (ICA) e pongono un grave rischio per pazienti immunocompromessi.\cite{rice_2008}
 
-Questi batteri possono essere trovati in ambienti naturali, come terreni o specchi d'acqua, ma possono essere anche trasportati in altri posti a causa di una contaminazione, come superfici, tessuti, strumenti o mani. Essengo dei patogeni opportunistici, è possibile che un paziente venga infettato da uno di questi batteri dopo un intervento chirurgico.\cite{cdc_2019}
+Questi batteri possono essere trovati in ambienti naturali, come terreni o specchi d'acqua, ma possono essere anche trasportati in altri luoghi a causa di una contaminazione, come superfici, tessuti, strumenti o mani. Essendo dei patogeni opportunistici, è possibile che un paziente venga infettato da uno di questi batteri dopo un intervento chirurgico.\cite{cdc_2019}
 
 A causa delle pressioni e dei fattori selettivi naturali e innaturali, la resistenza agli antibiotici nei batteri di solito emerge attraverso una mutazione genetica o acquisisce geni resistenti agli antibiotici (\acrlong{arg} --- \acrshort{arg}) attraverso il trasferimento orizzontale di geni, un processo di scambio genetico attraverso il quale la resistenza agli antibiotici può diffondersi ad altri esemplari senza ricorrere alla riproduzione.\cite{madigan_2015}
+
+\subsection{Plasticità morfologica}
+
+Alcune specie di batteri posseggono, inoltre, la capacità di modificare la loro forma e dimensioni in risposta a condizioni ambientali avverse, chiamata plasticità morfologica. Questa adattabilità consente ai batteri di sopravvivere e proliferare in ambienti ostili, come quelli caratterizzati da stress nutrizionali, esposizione a antibiotici o attacchi del sistema immunitario dell'ospite. Questa strategia è fondamentale nella sopravvivenza dei batteri, permettendo loro di adattarsi e persistere in condizioni avverse per poi ritornare alla forma originale una volta ripristinate le condizioni favorevoli.\cite{justice_2008}\bigskip
+
+\noindent Studiare questi fenomeni attraverso l'uso di tecniche di microscopia a super-risoluzione è di fondamentale importanza per comprendere meglio queste interazioni a livello molecolare e poter potenzialmente sviluppare dei farmaci più efficaci.
 
 \end{document}
