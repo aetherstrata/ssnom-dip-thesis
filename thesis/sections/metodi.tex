@@ -1,0 +1,214 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\chapter{Metodi}
+
+Nel lavoro svolto in questa tesi sono state prese in esame le immagini di topografia \acrshort{afm} e le ampiezze della $2^a$ e $3^a$ armonica \acrshort{ssnom} per valutare l'efficacia di diverse tecniche di riduzione del rumore su questo tipo di immagini. È importante studiare il rumore perché dipende anche dal tempo di integrazione per pixel del microscopio: impostare un periodo di tempo più alto permette di avere immagini con meno rumore a discapito di un tempo di scansione più lungo. Usare delle tecniche di riduzione del rumore su immagini ottenute con un tempo di integrazione basso, $3$ms nel caso delle immagini del dataset SSNOMBACTER, permette di aumentare la qualità delle immagini senza dover aumentare il tempo richiesto per l'acquisizione delle immagini.\cite{baiz_2025}
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.3\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o0a.png}
+		\caption{O0A}
+	\end{subfigure}
+	\begin{subfigure}{0.3\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o1a.png}
+		\caption{O1A}
+	\end{subfigure}
+	\begin{subfigure}{0.3\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o2a.png}
+		\caption{O2A}
+	\end{subfigure}\\[4pt]
+	\begin{subfigure}{0.3\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o3a.png}
+		\caption{O3A}
+	\end{subfigure}
+	\begin{subfigure}{0.3\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o4a.png}
+		\caption{O4A}
+	\end{subfigure}
+	\begin{subfigure}{0.3\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o5a.png}
+		\caption{O5A}
+	\end{subfigure}
+	\caption[Immagini in ampiezza SNOM di esemplari di \textit{Klebsiella pneumoniae}]{
+		Immagini in ampiezza \acrshort{snom} di esemplari di \textit{Klebsiella pneumoniae} \cite{ssnombacter_data}}
+\end{figure}
+
+Nelle immagini \acrshort{ssnom}, oltre a una maggiore rilevanza dei dettagli di superficie, sono presenti diversi tipi di rumore in diverse quantità nelle immagini delle varie armoniche registrate, che invece sono assenti o molto ridotti nelle immagini di topografia. Le armoniche di maggior interesse sono di solito la $2^a$ e la $3^a$.
+
+\section{Tecniche di riduzione del rumore}
+
+\subsection{Filtro guassiano}
+
+Il \textbf{filtro gaussiano} è uno dei filtri più usati nell'elaborazione delle immagini ed ha applicazioni in vari campi, come tecnica di sfocatura, di riduzione del rumore e di riduzione dei dettagli. Sia nel dominio spaziale che nel dominio della frequenza, il filtro gaussiano è un filtro lineare passa-basso efficace in particolare per rimuovere il rumore soggetto a una distribuzione normale.
+
+\begin{equation}
+	G(x) = e^{\large-\frac{x^2}{2\sigma^2}}
+\end{equation}
+
+Il parametro $\sigma$ determina la larghezza della funzione. Nel campo dell'elaborazione delle immagini si usa una funzione gaussiana discreta con media nulla come filtro di smussamento.\cite{ito_2000}
+
+\begin{equation}
+	G[i,j] = e^{\large-\frac{i^2+j^2}{2\sigma^2}}
+\end{equation}
+
+Inoltre, la funzione gaussiana possiede alcune importanti proprietà: \cite{wang_2014,getreuer_2013}
+
+\begin{enumerate}
+	\itemsep0em
+	\item La funzione gaussiana bidimensioname ha simmetria rotazionale. In generale, non si conosce la direzione dei bordi nelle immagini e non si può prestabilire se applicare più smussamento in una direzione rispetto all'altra prima di filtrare. Avere una simmetria rotazionale significa che il filtro gaussiano non si rivolge in nessuna direzione nelle successive elaborazioni delle immagini.
+	\item La funzione gaussiana è una funzione a valore singolo. Il filtro gaussiano utilizza una media ponderata dell'intorno dei pixel per sostituire il valore del pixel centrale. Il peso è monotono decrescente con la distanza dal punto centrale quindi avrà scarso effetto sui pixel che sono lontani dal centro.
+	\item La larghezza del filtro gaussiano è caratterizzata dal parametro $\sigma$. Più grande è, maggiore sarà lo smussamento e la banda di frequenza del filtro gaussiano. Regolando questo parametro di smussamento, si può ottenere un compromesso tra uno smussamento eccessiva e uno insufficiente.
+	\item La funzione gaussiana è separabile. Questa proprietà è importante per la complessità computazionale di questo filtro, in quanto si può applicare una funzione gaussiana 1D in una direzione e poi nell'altra, riducendo la complessità da $O(N^2)$ a $O(2N)$.
+	\begin{equation}
+		e^{\large-\frac{x^2+y^2}{2\sigma^2}}=e^{\large-\frac{x^2}{2\sigma^2}}e^{\large-\frac{y^2}{2\sigma^2}}
+	\end{equation}
+	\item Lo spettro della trasformata di Fourier della funzione gaussiana è esso stesso una funzione gaussiana. Questa proprietà può essere di aiuto per ridurre dei segnali ad alta frequenza dalle immagini e mantenere segnali più utili.
+	\begin{equation}
+		\hat{G}[u,v] = \hat{G_1}[u]\cdot\hat{G_1}[v] = \sum_{n=0}^{N-1}G[n]e^{-2\pi i\frac{nu}{N}}\cdot\sum_{m=0}^{M-1}G[m]e^{-2\pi i\frac{mv}{M}}
+	\end{equation}
+\end{enumerate}
+
+\subsection{Filtro box}
+
+Il \textbf{filtro box} è un filtro lineare costante nel dominio spaziale in cui ogni pixel dell'immagine viene sostituito con la media aritmetica dei valori dei pixel nel suo intorno di raggio $r$. Grazie al \textit{Teorema di Lindeberg-Lévy}, una ripetuta applicazione di questo filtro può essere usata per approssimare un filtro gaussiano.\cite{getreuer_2013}
+
+\begin{equation}
+	\operatorname{box}[i,j] = \frac{1}{(2r+1)^2}\sum_{n=-r}^{r}\sum_{m=-r}^{r} I(x+n, y+m)
+\end{equation}
+
+Utilizzando dei pesi uguali per tutti gli elementi dell'intorno, può essere implementato utilizzando un algoritmo di accumulo molto più semplice, che è nettamente più veloce rispetto all'utilizzo di un algoritmo di finestra mobile, passando da una complessità temporale di $O(m^2n^2)$ ad una di $O(m^2)$, dove $m$ è la grandezza dell'immagine e $n$ è la grandezza della finestra.\cite{jarosz_2001}
+
+Questo filtro, a differenza del filtro gaussiano, non può essere utilizzato efficacemente nel dominio delle frequenze in quanto si trasforma in un seno cardinale ed ha supporto spaziale infinito. Dovendo essere limitato in banda per essere utilizzato, può provocare degli artefatti di ringing nelle regioni in cui il valore del segnale cambia repentinamente. Questo comportamento prende il nome di \textit{fenomeno di Gibbs}.\cite{carslaw_1925}
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/box_spatial.png}
+		\caption{Filtro}
+	\end{subfigure}
+	\hspace{20pt}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/box_spectrum.png}
+		\caption{Spettro}
+	\end{subfigure}
+	\caption{Esempio di filtro box}
+\end{figure}
+
+\begin{equation}
+	\begin{aligned}
+		\operatorname{box}(u,v) \quad\overset{\mathcal{F}}{\longrightarrow}\quad \hat{B}(x,y) &=  \frac{1}{a^2}\int_{-a/2}^{a/2}e^{2\pi iux}\,du\int_{-a/2}^{a/2}e^{2\pi ivy}\,dv =\\
+		\boxed{a = 2r + 1} \qquad\quad &= \operatorname{sinc}(ax)\cdot\operatorname{sinc}(ay)
+	\end{aligned}
+\end{equation}\\[-10pt]
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/ringing_orignal.png}
+		\caption{Immagine originale}
+	\end{subfigure}
+	\hspace{20pt}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/ringing_artifact.png}
+		\caption{Immagine con artefatti}
+	\end{subfigure}
+	\caption[Artefatti di un filtro passa-basso ideale]{
+		Artefatti di un filtro passa-basso \cite{ringingImage}}
+\end{figure}
+
+\subsection{Filtro mediana}
+
+Il \textbf{filtro mediana} è un filtro simile al filtro box, con la differenza che ogni pixel dell'immagine è sostituito dalla mediana dei valori dei pixel nel suo intorno invece che la media, quindi non è un filtro lineare. Questo filtro è largamente usato nell'elaborazione delle immagini perché, sotto alcune condizioni, permette di rimuovere il rumore senza modificare i dettagli dell'immagine.\cite{rezaee_2021}
+
+Per piccole quantità di rumore gaussiano, il filtro mediano si è dimostrato essere migliore del filtro gaussiano per rimuovere il rumore preservando i bordi per una determinata dimensione della finestra.\cite{castro_2009} Questo filtro è invece particolarmente efficace su rumori di tipo impulsivo, come il rumore \textit{salt \& pepper} e il rumore \textit{Schottky}.\cite{arce_2004}\\
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/bs_o2p.png}
+		\caption{Immagine originale}
+	\end{subfigure}
+	\hspace{20pt}
+	\begin{subfigure}{0.4\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, width=\linewidth]{images/bs_o2p_medfilt.png}
+		\caption{Immagine con filtro mediana $3\times3$}
+	\end{subfigure}
+	\caption[Immagine s-SNOM O2P di esemplari di \textit{Bacillus subtilis}]{
+		Immagine \acrshort{ssnom} O2P di esemplari di \textit{Bacillus subtilis}}
+\end{figure}
+
+\subsection{Filtro Wiener}
+
+Il \textbf{filtro Wiener} è un filtro originariamente ideato per calcolare una stima statistica di un segnale sconosciuto usando un segnale correlato come input, di cui si conosce la componente di rumore, e filtrarlo per produrre la stima. Questo filtro, ideato da \textit{Norbert Wiener} nel 1942,\cite{wiener_1942} ha l'obiettivo di  minimizzare l'errore quadratico medio (\acrshort{mse}) tra il processo stocastico stimato e il processo desiderato.\cite{oppenheimer_2010}
+
+Per usare questo filtro, l'immagine e il suo rumore vengono considerati come variabili aleatorie. L'obiettivo è trovare una stima dell'immagine non corrotta $\hat{f}$ tale che l'errore quadratico medio tra di esse sia minimizzato. Questo filtro viene spesso usato anche per rimuovere una sfocatura di movimento tramite deconvoluzione. 
+
+\begin{equation}
+	\text{MSE} = \mathbb{E}\left[\left(f-\hat{f}\right)^2\right]
+\end{equation}
+\\[-10pt]
+Per fare ciò bisogna rispettare dei presupposti: \cite{bergamasco_2016}
+
+\begin{itemize}
+	\itemsep0em
+	\item Il rumore e l'immagine non devono essere correlati.
+	\item Il rumore o l'immagine deve essere centrato, cioè a media nulla.
+	\item I livelli di intensità nella stima sono una funzione lineare dei livelli nell'immagine degradata.
+\end{itemize}
+
+\begin{align}
+	\hat{F}(u,v) &= \left[\frac{1}{H(u,v)}\cdot\frac{\left|H(u,v)\right|^2}{\left|H(u,v)\right|^2+S_\eta(u,v)/S_f(u,v)}\right]G(u,v)\\[5pt]
+	H(u,v) &= \text{Funzione di degradazione} \nonumber \\
+	\left|H(u,v)\right|^2 &= \text{Spettro di potenza di } H \nonumber \\
+	S_\eta(u,v) &= \text{Spettro di potenza del rumore} \nonumber \\
+	S_f(u,v) &= \text{Spettro di potenza dell'immagine non degradata} \nonumber 
+\end{align}
+
+Se il rumore è bianco allora il suo spettro di potenza sarà costante per tutto il dominio. Usando un'approssimazione ragionevole di $S_f(u,v)$ è possibile sostituire il rapporto con un termine costante.
+
+\begin{equation}
+	\hat{F}(u,v)= \left[\frac{1}{H(u,v)} \cdot \frac{\left|H(u,v)\right|^2}{\left|H(u,v)\right|^2+k}\right] G(u,v)
+\end{equation}
+
+\subsection{Filtro bilaterale}
+
+Il \textbf{filtro bilaterale} smussa le immagini preservando i bordi allo stesso tempo per mezzo di una combinazione non lineare di valori nell'intorno del pixel. Questo filtro combina l'intensità dei pixel sia in base alla loro vicinanza geometrica che alla loro somiglianza fotometrica e preferisce valori vicini tra loro rispetto a valori distanti sia nel dominio che nel codominio.\cite{tomasi_1998}
+
+\begin{equation}
+	I_f(x) = \frac{1}{k(x)}\iint_{-\infty}^{\infty}I(x)c(\xi,x)s(f(\xi),f(x))\,d\xi
+\end{equation}
+\\[-10pt]
+La funzione $s(f(\xi),f(x))$ misura la somiglianza fotometrica tra il punto $x$ al centro dell'intorno e il punto vicino $\xi$ mentre la funzione $c(\xi,x)$ ne misura la vicinanza geometrica. La funzione $k(x)$ definisce il fattore di normalizzazione.
+
+\begin{equation}
+	k(x) = \iint_{-\infty}^{\infty}c(\xi,x)s(f(\xi),f(x))\,d\xi
+\end{equation}
+\\[-10pt]
+Un caso importante del filtro bilaterale è quello in cui sia la funzione di vicinanza che la funzione di similarità sono funzioni gaussiane della distanza euclidea tra i loro argomenti.
+
+\begin{align}
+	c(\xi,x) &= \exp\left[-\frac{1}{2}\left(\frac{||\xi-x||}{\sigma_d}\right)^2\right]\\
+	s(\xi,x) &= \exp\left[-\frac{1}{2}\left(\frac{||f(\xi)-f(x)||}{\sigma_r}\right)^2\right]
+\end{align}
+
+La diffusione geometrica $\sigma_d$ nel dominio viene scelta in base alla quantità di filtraggio passa-basso desiderata. Allo stesso modo, la diffusione fotometrica $\sigma_r$ nel codominio dell'immagine viene impostata per ottenere la quantità desiderata di combinazione di valori dei pixel.
+
+\subsection{Filtro a media non locale}
+
+\subsection{Filtro guidato}
+
+\end{document}
