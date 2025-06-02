@@ -1195,8 +1195,8 @@
 }
 
 @article{yabuuchi_1971,
-	title={<i>Achromobacter xylosoxidans</i> n. sp. from Human Ear Discharge},
-	author={Eiko YABUUCHI and Akio OHYAMA},
+	title={Achromobacter xylosoxidans n. sp. from Human Ear Discharge},
+	author={Eiko Yabuuchi and Akio Ohyama},
 	journal={Japanese Journal of Microbiology},
 	volume={15},
 	number={5},
@@ -1461,3 +1461,83 @@
 	keywords={Filtering;Color;Low pass filters;Photometry;Imaging phantoms;Pixel;Shape measurement;Smoothing methods;Computer science;Humans},
 	doi={10.1109/ICCV.1998.710815}
 }
+
+@book{wyszecki_2000,
+	author    = {Günther Wyszecki and W. S. Stiles},
+	title     = {Color Science: Concepts and Methods, Quantitative Data and Formulae},
+	edition   = {2},
+	publisher = {Wiley},
+	year      = {2000},
+	address   = {New York},
+	isbn      = {978-0-471-39918-6}
+}
+
+@INPROCEEDINGS{buades_2005,
+	author={Buades, A. and Coll, B. and Morel, J.-M.},
+	booktitle={2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR'05)}, 
+	title={A non-local algorithm for image denoising}, 
+	year={2005},
+	volume={2},
+	number={},
+	pages={60-65 vol. 2},
+	keywords={Image denoising;Noise reduction;Algorithm design and analysis;Smoothing methods;Wiener filter;Filtering;Noise measurement;Digital images;Pixel;White noise},
+	doi={10.1109/CVPR.2005.38}
+}
+
+@article{buades_2011,
+	title   = {Non-Local Means Denoising},
+	author  = {Buades, Antoni and Coll, Bartomeu and Morel, Jean-Michel},
+	journal = {Image Processing On Line},
+	volume  = {1},
+	pages   = {208--212},
+	year    = {2011},
+	url    = {https://doi.org/10.5201/ipol.2011.bcm_nlm}
+}
+
+@inproceedings{durand_2002,
+	author = {Durand, Fr\'{e}do and Dorsey, Julie},
+	title = {Fast bilateral filtering for the display of high-dynamic-range images},
+	year = {2002},
+	isbn = {1581135211},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	url = {https://doi.org/10.1145/566570.566574},
+	doi = {10.1145/566570.566574},
+	abstract = {We present a new technique for the display of high-dynamic-range images, which reduces the contrast while preserving detail. It is based on a two-scale decomposition of the image into a base layer, encoding large-scale variations, and a detail layer. Only the base layer has its contrast reduced, thereby preserving detail. The base layer is obtained using an edge-preserving filter called the bilateral filter. This is a non-linear filter, where the weight of each pixel is computed using a Gaussian in the spatial domain multiplied by an influence function in the intensity domain that decreases the weight of pixels with large intensity differences. We express bilateral filtering in the framework of robust statistics and show how it relates to anisotropic diffusion. We then accelerate bilateral filtering by using a piecewise-linear approximation in the intensity domain and appropriate subsampling. This results in a speed-up of two orders of magnitude. The method is fast and requires no parameter setting.},
+	booktitle = {Proceedings of the 29th Annual Conference on Computer Graphics and Interactive Techniques},
+	pages = {257–266},
+	numpages = {10},
+	keywords = {weird maths, tone mapping, image processing, edge-preserving filtering, contrast reduction},
+	location = {San Antonio, Texas},
+	series = {SIGGRAPH '02}
+}
+
+@article{petschnigg_2004,
+	author = {Petschnigg, Georg and Szeliski, Richard and Agrawala, Maneesh and Cohen, Michael and Hoppe, Hugues and Toyama, Kentaro},
+	title = {Digital photography with flash and no-flash image pairs},
+	year = {2004},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	volume = {23},
+	number = {3},
+	issn = {0730-0301},
+	url = {https://doi.org/10.1145/1015706.1015777},
+	doi = {10.1145/1015706.1015777},
+	abstract = {Digital photography has made it possible to quickly and easily take a pair of images of low-light environments: one with flash to capture detail and one without flash to capture ambient illumination. We present a variety of applications that analyze and combine the strengths of such flash/no-flash image pairs. Our applications include denoising and detail transfer (to merge the ambient qualities of the no-flash image with the high-frequency flash detail), white-balancing (to change the color tone of the ambient image), continuous flash (to interactively adjust flash intensity), and red-eye removal (to repair artifacts in the flash image). We demonstrate how these applications can synthesize new images that are of higher quality than either of the originals.},
+	journal = {ACM Trans. Graph.},
+	month = {08},
+	pages = {664–672},
+	numpages = {9},
+	keywords = {Noise removal, bilateral filtering, detail transfer, flash photography, image fusion, image processing, red-eye removal, sharpening, white balancing}
+}
+
+@ARTICLE{he_2013,
+	author={He, Kaiming and Sun, Jian and Tang, Xiaoou},
+	journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+	title={Guided Image Filtering}, 
+	year={2013},
+	volume={35},
+	number={6},
+	pages={1397-1409},
+	keywords={Image edge detection;Kernel;Smoothing methods;Joints;Histograms;Laplace equations;Jacobian matrices;Edge-preserving filtering;bilateral filter;linear time filtering},
+	doi={10.1109/TPAMI.2012.213}}

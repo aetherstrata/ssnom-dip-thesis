@@ -10,7 +10,7 @@ Il microscopio ottico composto ingrandisce l'immagine del campione usando due o 
 
 Il sistema più semplice è composto da due lenti, una lente obiettivo vicina al campione da esaminare, e una lente oculare vicina all'osservatore. Il campione è prima messo a fuoco dalla lente obiettivo dentro al microscopio in un'immagine reale, che è creata dalla convergenza dei raggi di luce, poi questa immagine viene nuovamente ingrandita dalla lente oculare che crea una immagine virtuale, generata dalle proiezioni di raggi divergenti. L'osservatore quindi vede un'immagine ingrandita, invertita e virtuale del campione esaminato.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{tikzpicture}
 	% lente obiettivo
@@ -91,7 +91,7 @@ d=\frac{\lambda}{2\mathit{NA}}=\frac{\lambda}{2n\sin\theta}
 
 Quando l'aria è usata come mezzo di trasmissione, si ha un indice di rifrazione pari a $1$, mentre si può arrivare fino a circa $n=1.5$ immergendo il campione e l'obiettivo in olio. L'apertura angolare massima teorica è di 180\degree, il che si traduce in un valore di $\theta=90$\degree, tuttavia le lenti presenti ad oggi in commerco presentano un'apertura angolare di 144\degree, che corrisponde a un valore di $\sin\left(\theta=72\degree\right) \approx 0.95$.\cite{leica_aperture}\\
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{tikzpicture}
 	%primo obiettivo
@@ -143,7 +143,7 @@ Il campione da esaminare è posto tra il cannone elettronico e il rilevatore e l
 
 Un altro tipo di microscopio elettronico è quello \textit{a scansione} (\acrlong{sem} --- \acrshort{sem}), in cui non si rileva il fascio trasmesso attraverso il campione, bensì i raggi secondari che sono generati dall'interazione del fascio con il campione (come elettroni secondari o raggi X). Questa tecnica può generare immagini tridimensionali e non richiede un campione sottile quanto la \acrshort{tem}. Modelli recenti di \acrshort{sem} possono arrivare a risoluzioni spaziali fino a $0.4$ nm.\cite{hitachi_sem}\bigskip
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{subfigure}[t]{4.5cm}
 	\centering
@@ -250,7 +250,7 @@ Una limitazione di questi tipi di microscopi è che il campione deve essere cond
 La microscopia a scansione di sonda (\acrshort{spm}) fu sviluppata nel 1981 con l'invenzione del microscopio a effetto tunnel (\acrshort{stm}).\cite{ieee_spm}
 Questo tipo di microscopi rileva la superficie del campione usando una minuscola punta su cui è imposta una differenza di potenziale con il piano di osservazione. Mantenendo l'altezza della punta costante, si può misurare direttamente la variazione di corrente attraverso il campione in movimento, mentre per misurarne l'altezza si può mantenere costante la corrente e applicare un feedback al motore piezoelettrico che regola l'altezza della punta. Avendo una risoluzione di $0.1$ nm, questa tecnica permette di osservare singoli atomi, ma può essere usata solo se il campione è conduttivo.\cite{bai_2000}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{tikzpicture}
 	% punta
@@ -335,9 +335,7 @@ I microscopi \acrshort{afm} usano una punta di diametro di circa $10$ nm fissata
 
 Durante la scansione, la punta viene inclinata verso l'alto e il basso a causa della forza di interazione con il campione, che può essere di tipo repulsivo o attrattivo in base alla modalità di scansione. Queste inclinazioni vengono misurate da un raggio laser che viene riflesso dal cantilever su un fotodiodo a quadranti. L'inclinazione del cantilever deflette il raggio laser, che si sposta fra i quadranti del fotodiodo, e il segnale misurato dal fotodiodo viene poi convertito in una variazione di altezza della punta, che viene usata per generare l'immagine del campione.
 
-Per effettuare la scansione, il supporto su cui poggia il campione viene spostato da un sistema piezoelettrico, che può espandersi e contrarsi con una precisione nanometrica applicando una piccola tensione imposta, dell'ordine dei mV. Gli elementi piezoelettrici sono in grado di muoversi in tre direzioni $(X, Y, Z)$ e sono controllati da un sistema elettronico che regola il movimento del campione in modo da mantenere il segnale di riferimento costante.
-
-Con questo sistema si possono apprezzare variazioni di altezza fino a $0.01$ nm.\cite{sun_2018}
+Per effettuare la scansione, il supporto su cui poggia il campione viene spostato da un sistema piezoelettrico, che può espandersi e contrarsi con una precisione nanometrica applicando una piccola tensione imposta, dell'ordine dei mV. Gli elementi piezoelettrici sono in grado di muoversi in tre direzioni $(X, Y, Z)$ e sono controllati da un sistema elettronico che regola il movimento del campione in modo da mantenere il segnale di riferimento costante. Con questo sistema si possono apprezzare variazioni di altezza fino a $0.01$ nm.\cite{sun_2018}
 
 \begin{figure}[h]
 \centering
@@ -410,7 +408,14 @@ Con questo sistema si possono apprezzare variazioni di altezza fino a $0.01$ nm.
 \label{fig:afm_diag}
 \end{figure}
 
-I microscopi \acrshort{afm} possono essere usati in diverse modalità, a seconda del tipo di interazione che si vuole misurare. Queste modalità possono essere divise in tre categorie principali.\\
+I microscopi \acrshort{afm} possono essere usati in diverse modalità, a seconda del tipo di interazione che si vuole misurare. Queste modalità possono essere divise in tre categorie principali:
+
+\begin{itemize}
+	\itemsep0em
+	\item Modalità a contatto
+	\item Modalità a contatto intermittente
+	\item Modalità senza contatto
+\end{itemize}
 
 \begin{figure}[h]
 \centering
@@ -526,7 +531,7 @@ Non entrando mai nella regione ripulsiva, questa modalità presenta il più bass
 
 \vspace{2mm}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{tikzpicture}[domain=1.93:4, samples=200, scale=2.6]
 	%assi
@@ -565,7 +570,7 @@ Le modalità descritte nei paragrafi precedenti fanno tipicamente uso della modu
 
 Il controllo del sistema è affidato a un controllore \acrshort{pid} (\acrlong{pid}), di gran lunga il tipo di sistema di controllo più usato (nel 95\% di tutti i casi).\cite{astrom_2010}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{tikzpicture}
 	
@@ -644,7 +649,7 @@ I campi evanescenti possono essere descritti da onde piane della forma $\mathbf{
 Come descritto nel paragrafo \ref{s:na}, un microscopio ottico tradizionale, per ottenere un immagine del campione, deve raccogliere tutta la luce diffratta nel campo lontano, che si propaga senza restrizioni.
 Al contrario, la microscopia \acrshort{snom} utilizza un laser la cui luce è concentrata in un'apertura di diametro molto inferiore alla sua lunghezza d'onda, creando un campo evanescente dall'altro lato dell'apertura.\cite{betzig_1992} Quando il campione viene scansionato ad una piccola distanza sotto l'apertura ($<10$ nm), la risoluzione ottica della luce trasmessa o riflessa è limitata solo dal diametro dell'apertura. I campi evanescenti trasportano informazioni ad alte frequenze spaziali sul campione e permettono di arrivare a una risoluzione laterale di $6$ nm\cite{ma_2021} e una risoluzione verticale di $2$ nm.\cite{oshikane_2007}\\
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}
 		% cantilever
