@@ -3,36 +3,36 @@
 
 \chapter{Metodi}
 
-Nel lavoro svolto in questa tesi sono state prese in esame le immagini di topografia \acrshort{afm} e le ampiezze della $2^a$ e $3^a$ armonica \acrshort{ssnom} per valutare l'efficacia di diverse tecniche di riduzione del rumore su questo tipo di immagini. È importante studiare il rumore perché dipende anche dal tempo di integrazione per pixel del microscopio: impostare un periodo di tempo più alto permette di avere immagini con meno rumore a discapito di un tempo di scansione più lungo. Usare delle tecniche di riduzione del rumore su immagini ottenute con un tempo di integrazione basso, $3$ms nel caso delle immagini del dataset SSNOMBACTER, permette di aumentare la qualità delle immagini senza dover aumentare il tempo richiesto per l'acquisizione delle immagini.\cite{baiz_2025}
+Nel lavoro svolto in questa tesi sono state prese in esame le immagini di topografia \acrshort{afm} e le ampiezze della $2^a$ e $3^a$ armonica \acrshort{ssnom}, in quanto quelle di maggior interesse, per valutare l'efficacia di diverse tecniche di riduzione del rumore su questo tipo di immagini. È importante studiare il rumore perché dipende anche dal tempo di integrazione per pixel del microscopio: impostare un periodo di tempo più alto permette di avere immagini con meno rumore a discapito di un tempo di scansione più lungo. Usare delle tecniche di riduzione del rumore su immagini ottenute con un tempo di integrazione basso, $3$ms nel caso delle immagini del dataset SSNOMBACTER, permette di aumentare la qualità delle immagini senza dover aumentare il tempo richiesto per l'acquisizione delle immagini.\cite{baiz_2025} 
 
 \begin{figure}[ht]
 	\centering
-	\begin{subfigure}{0.3\linewidth}
+	\begin{subfigure}{0.32\linewidth}
 		\centering
 		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o0a.png}
 		\caption{O0A}
 	\end{subfigure}
-	\begin{subfigure}{0.3\linewidth}
+	\begin{subfigure}{0.32\linewidth}
 		\centering
 		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o1a.png}
 		\caption{O1A}
 	\end{subfigure}
-	\begin{subfigure}{0.3\linewidth}
+	\begin{subfigure}{0.32\linewidth}
 		\centering
 		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o2a.png}
 		\caption{O2A}
 	\end{subfigure}\\[4pt]
-	\begin{subfigure}{0.3\linewidth}
+	\begin{subfigure}{0.32\linewidth}
 		\centering
 		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o3a.png}
 		\caption{O3A}
 	\end{subfigure}
-	\begin{subfigure}{0.3\linewidth}
+	\begin{subfigure}{0.32\linewidth}
 		\centering
 		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o4a.png}
 		\caption{O4A}
 	\end{subfigure}
-	\begin{subfigure}{0.3\linewidth}
+	\begin{subfigure}{0.32\linewidth}
 		\centering
 		\includegraphics[keepaspectratio, width=\linewidth]{images/kp_o5a.png}
 		\caption{O5A}
@@ -41,7 +41,7 @@ Nel lavoro svolto in questa tesi sono state prese in esame le immagini di topogr
 		Immagini in ampiezza \acrshort{snom} di esemplari di \textit{Klebsiella pneumoniae} \cite{ssnombacter_data}}
 \end{figure}
 
-Nelle immagini \acrshort{ssnom}, oltre a una maggiore rilevanza dei dettagli di superficie, sono presenti diversi tipi di rumore in diverse quantità nelle immagini delle varie armoniche registrate, che invece sono assenti o molto ridotti nelle immagini di topografia. Le armoniche di maggior interesse sono di solito la $2^a$ e la $3^a$.
+Nelle immagini \acrshort{ssnom}, oltre a una maggiore rilevanza dei dettagli di superficie, sono presenti diversi tipi di rumore in diverse quantità nelle immagini delle varie armoniche registrate, che invece sono assenti o molto ridotti nelle immagini di topografia.
 
 \section{Tecniche di riduzione del rumore}
 
@@ -341,5 +341,77 @@ Il filtro NLM non confronta solo le intensità dei singoli pixel, ma anche la co
 \end{figure}
 
 \subsection{Filtro BM3D}
+
+Il \textbf{filtro BM3D} (Block-Matching and 3D Filtering) è un'estensione del filtro a media non locale che fa uso di una migliore rappresentazione sparsa nel dominio di trasformazione.\cite{manjon_2008}
+
+Il primo passo consiste nel suddividere l’immagine in blocchi (patch) di dimensioni fisse e poi raggruppare insieme i blocchi simili da un algoritmo di block-matching, formando un tensore tridimensionale (gruppo) in cui ogni strato del volume è un blocco simile. Questi blocchi non sono necessariamente disgiunti ma possono anche sovrapporsi parzialmente.
+
+Una volta raccolti i blocchi simili, è possibile applicare delle funzioni di trasformazione (come DCT o wavelet) per rappresentare questi gruppi in modo più compatto. Nello spazio trasformato, il rumore appare come elementi sparsi, mentre i dati reali (cioè i dettagli coerenti tra i blocchi) si concentrano in poche componenti. Si può quindi applicare un filtro sulla trasformata, come un filtro Wiener, per ridurre il rumore, eliminando i coefficienti minori.\cite{maggioni_2013}
+
+Dopo il filtraggio, il tensore viene ricostruito tramite la trasformata inversa e i blocchi ripuliti vengono reinseriti nell’immagine. Dato che un pixel può comparire in più blocchi, l’immagine finale si ottiene come media pesata di tutti i contributi.\cite{dabov_2007}
+
+\section{Metodi di valutazione}
+
+Per misurare l'efficacia di questi filtri sono stati presi in considerazione diversi metodi di valutazione. La mancanza di immagini senza rumore di riferimento impedisce l'uso di metodi di valutazione full-reference (\acrshort{friqa}) ampiamente utilizzati, come \acrshort{psnr}\cite{korhonen_2012}, \acrshort{ssim}\cite{wang_2004} e \acrshort{cnr}.\cite{rodriguez_2018} La difficoltà nel valutare la qualità di queste immagini deriva anche dalla mancanza di valutazioni soggettive di esperti nel campo e dalla limitata quantità di letteratura su questo argomento.
+
+In questo lavoro sono stati usati alcuni sistemi di valutazione cieca (\acrshort{nriqa}) basati su modelli statistici, come \acrshort{brisque}\cite{mittal_2011}, \acrshort{niqe}\cite{mittal_2013} e \acrshort{piqe}\cite{venkatanath_2015}, usando i loro modelli predefiniti. Questi sistemi valutano la qualità dell'immagine con un punteggio da 0 in su, dove 0 corrisponde alla massima qualità. Oltre ai punteggi di questi modelli è stata misurata anche la variazione totale dell'immagine (\acrshort{tv}).
+
+È stata inoltre condotta un'analisi correlativa tra le proprietà delle immagini di ampiezza \acrshort{snom} prese in esame e le corrispettive immagini di topografia \acrshort{afm}, in quanto questa immagine contiene una quantità di rumore molto inferiore rispetto alla prima.
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.4\linewidth}
+		\includegraphics[keepaspectratio, width=\linewidth]{images/sa_zoom_z.png}
+		\caption{Topografia \acrshort{afm}}
+	\end{subfigure}\hspace{12pt}
+	\begin{subfigure}{0.4425\linewidth}
+		\includegraphics[keepaspectratio, width=\linewidth]{images/local_std_z.png}
+		\caption{Deviazione standard topografia}
+	\end{subfigure}\\[4pt]
+	\begin{subfigure}{0.4\linewidth}
+		\includegraphics[keepaspectratio, width=\linewidth]{images/sa_zoom_o3a.png}
+		\caption{Ampiezza \acrshort{ssnom} --- $3^a$ armonica}
+	\end{subfigure}\hspace{12pt}
+	\begin{subfigure}{0.4425\linewidth}
+		\includegraphics[keepaspectratio, width=\linewidth]{images/local_std_o3a.png}
+		\caption{Deviazione standard ampiezza \acrshort{ssnom}}
+	\end{subfigure}
+	\caption[Confronto della deviazione standard locale tra immagini AFM e SNOM]{
+		Confronto della deviazione standard locale tra immagini \acrshort{afm} e \acrshort{snom}}
+\end{figure}
+
+\subsection{Analisi correlativa}
+
+Le immagini di topografia \acrshort{afm} e ampiezza \acrshort{snom}, anche se condividono delle informazioni spaziali correlate, non possono essere esaminate con i metodi di valutazione full-reference poiché non rappresentano lo stesso contenuto. Le prime sono una mappa altimetrica del campione, mentre le seconde catturano le interazioni ottiche nel campo vicino, che dipendono dai materiali del campione.
+
+Per svolgere questa analisi sono stati presi in considerazione quattro parametri:
+
+\begin{enumerate}
+	\itemsep0em
+	\item Indice di Dice sui bordi
+	\item Mutua informazione delle immagini
+	\item Errore quadratico medio dell'entropia
+	\item Congruenza di fase
+\end{enumerate}
+
+L'indice di Dice è usato per misurare la somiglianza tra due campioni studiando la presenza o assenza di elementi in comune, in questo caso la sovrapposizione tra l'immagine dei bordi della topografia e dell'ampiezza \acrshort{snom}. Un valore vicino a $1$ indica un'ottima sovrapposizione dei bordi mentre uno vicino a $0$ indica una scarsa sovrapposizione.\cite{carass_2020}
+
+\begin{equation}
+	S = 2\cdot \frac{\left|E_{X} \cap  E_{Y}\right|}{\left|E_{X}\right| + \left|E_{Y}\right|}
+\end{equation}
+
+La mutua informazione (\acrshort{mi}) è una misura statistica che quantifica quante informazioni una variabile contiene su un'altra, in questo caso un'immagine.\cite{shannon_1948} Questa misura è strettamente collegata al concetto di entropia di una variabile ed è ampiamente utilizzata nella correlazione e registrazione di immagini multimodale in cui vengono confrontati due diversi tipi di immagini,\cite{viola_1997} ad esempio RM e TAC,\cite{mclaughlin_2004, veninga_2004} usata in questo caso su \acrshort{afm} e \acrshort{ssnom}. La mutua informazione è nulla se $X$ e $Y$ sono variabili indipendenti.
+\begin{equation}
+	\begin{aligned}
+		I(X,Y)  &= \sum_{x\in X}\sum_{y\in Y} p(x,y) \log\left(\frac{p(x,y)}{p_1(x)p_2(y)}\right) =\\
+		&= H(X) + H(Y) - H(X,Y)
+	\end{aligned}
+\end{equation}
+
+L'entropia è una misura della complessità spaziale dell'immagine, per cui regioni con un'alta entropia presentano strutture fine, texture o bordi marcati mentre regioni con un'entropia bassa presentano superfici lisce o uniformi. Ricavando l'errore quadratico medio dell'entropia rispetto all'immagine di topografia si può stimare la differenza di dettagli o rumore tra le due. Se l'errore è piccolo allora le due immagini avranno complessità spaziale simile negli stessi punti, mentre se è alto le strutture locali saranno differenti.
+\begin{equation}
+	\text{MSE} = \frac{1}{N}\sum_i\left(H_1(i)-H_2(i)\right)^2
+\end{equation}
+
 
 \end{document}
