@@ -354,7 +354,7 @@ Dopo il filtraggio, il tensore viene ricostruito tramite la trasformata inversa 
 
 Per misurare l'efficacia di questi filtri sono stati presi in considerazione diversi metodi di valutazione. La mancanza di immagini senza rumore di riferimento impedisce l'uso di metodi di valutazione full-reference (\acrshort{friqa}) ampiamente utilizzati, come \acrshort{psnr}\cite{korhonen_2012}, \acrshort{ssim}\cite{wang_2004} e \acrshort{cnr}.\cite{rodriguez_2018} La difficoltà nel valutare la qualità di queste immagini deriva anche dalla mancanza di valutazioni soggettive di esperti nel campo e dalla limitata quantità di letteratura su questo argomento.
 
-In questo lavoro sono stati usati alcuni sistemi di valutazione cieca (\acrshort{nriqa}) basati su modelli statistici, come \acrshort{brisque}\cite{mittal_2011}, \acrshort{niqe}\cite{mittal_2013} e \acrshort{piqe}\cite{venkatanath_2015}, usando i loro modelli predefiniti. Questi sistemi valutano la qualità dell'immagine con un punteggio da 0 in su, dove 0 corrisponde alla massima qualità. Oltre ai punteggi di questi modelli è stata misurata anche la variazione totale dell'immagine (\acrshort{tv}).
+In questo lavoro sono stati usati alcuni sistemi di valutazione cieca (\acrshort{nriqa}) basati su modelli statistici di immagini naturali, come \acrshort{brisque}\cite{mittal_2011}, \acrshort{niqe}\cite{mittal_2013} e \acrshort{piqe}\cite{venkatanath_2015}, usando i loro modelli predefiniti. Questi sistemi valutano la qualità dell'immagine con un punteggio da 0 in su, dove 0 corrisponde alla massima qualità. Oltre ai punteggi di questi modelli è stata misurata anche la variazione totale dell'immagine (\acrshort{tv}).
 
 È stata inoltre condotta un'analisi correlativa tra le proprietà delle immagini di ampiezza \acrshort{snom} prese in esame e le corrispettive immagini di topografia \acrshort{afm}, in quanto questa immagine contiene una quantità di rumore molto inferiore rispetto alla prima.
 
@@ -382,9 +382,9 @@ In questo lavoro sono stati usati alcuni sistemi di valutazione cieca (\acrshort
 
 \subsection{Analisi correlativa}
 
-Le immagini di topografia \acrshort{afm} e ampiezza \acrshort{snom}, anche se condividono delle informazioni spaziali correlate, non possono essere esaminate con i metodi di valutazione full-reference poiché non rappresentano lo stesso contenuto. Le prime sono una mappa altimetrica del campione, mentre le seconde catturano le interazioni ottiche nel campo vicino, che dipendono dai materiali del campione.
+Le immagini di topografia \acrshort{afm} e ampiezza \acrshort{snom}, anche se condividono delle informazioni spaziali correlate, non possono essere esaminate con i metodi di valutazione full-reference tradizionali poiché non rappresentano lo stesso contenuto. Le prime sono una mappa altimetrica del campione, mentre le seconde catturano le interazioni ottiche nel campo vicino, che dipendono dai materiali del campione.
 
-Per svolgere questa analisi sono stati presi in considerazione quattro parametri:
+Per svolgere questa analisi sono stati presi in considerazione cinque parametri:
 
 \begin{enumerate}
 	\itemsep0em
@@ -392,15 +392,16 @@ Per svolgere questa analisi sono stati presi in considerazione quattro parametri
 	\item Mutua informazione delle immagini
 	\item Errore quadratico medio dell'entropia
 	\item Congruenza di fase
+	\item Modulo dei gradienti
 \end{enumerate}
 
-L'indice di Dice è usato per misurare la somiglianza tra due campioni studiando la presenza o assenza di elementi in comune, in questo caso la sovrapposizione tra l'immagine dei bordi della topografia e dell'ampiezza \acrshort{snom}. Un valore vicino a $1$ indica un'ottima sovrapposizione dei bordi mentre uno vicino a $0$ indica una scarsa sovrapposizione.\cite{carass_2020}
+L'\textbf{indice di Dice} è usato per misurare la somiglianza tra due campioni studiando la presenza o assenza di elementi in comune, in questo caso la sovrapposizione tra l'immagine dei bordi della topografia e dell'ampiezza \acrshort{snom}. Un valore vicino a $1$ indica un'ottima sovrapposizione dei bordi mentre uno vicino a $0$ indica una scarsa sovrapposizione.\cite{carass_2020}
 
 \begin{equation}
 	S = 2\cdot \frac{\left|E_{X} \cap  E_{Y}\right|}{\left|E_{X}\right| + \left|E_{Y}\right|}
 \end{equation}
 
-La mutua informazione (\acrshort{mi}) è una misura statistica che quantifica quante informazioni una variabile contiene su un'altra, in questo caso un'immagine.\cite{shannon_1948} Questa misura è strettamente collegata al concetto di entropia di una variabile ed è ampiamente utilizzata nella correlazione e registrazione di immagini multimodale in cui vengono confrontati due diversi tipi di immagini,\cite{viola_1997} ad esempio RM e TAC,\cite{mclaughlin_2004, veninga_2004} usata in questo caso su \acrshort{afm} e \acrshort{ssnom}. La mutua informazione è nulla se $X$ e $Y$ sono variabili indipendenti.
+La \textbf{mutua informazione} (\acrshort{mi}) è una misura statistica che quantifica quante informazioni una variabile contiene su un'altra, in questo caso un'immagine.\cite{shannon_1948} Questa misura è strettamente collegata al concetto di entropia di una variabile ed è ampiamente utilizzata nella correlazione e registrazione di immagini multimodale in cui vengono confrontati due diversi tipi di immagini,\cite{viola_1997} ad esempio RM e TAC,\cite{mclaughlin_2004, veninga_2004} usata in questo caso su \acrshort{afm} e \acrshort{ssnom}. La mutua informazione è nulla se $X$ e $Y$ sono variabili indipendenti.
 \begin{equation}
 	\begin{aligned}
 		I(X,Y)  &= \sum_{x\in X}\sum_{y\in Y} p(x,y) \log\left(\frac{p(x,y)}{p_1(x)p_2(y)}\right) =\\
@@ -408,10 +409,38 @@ La mutua informazione (\acrshort{mi}) è una misura statistica che quantifica qu
 	\end{aligned}
 \end{equation}
 
-L'entropia è una misura della complessità spaziale dell'immagine, per cui regioni con un'alta entropia presentano strutture fine, texture o bordi marcati mentre regioni con un'entropia bassa presentano superfici lisce o uniformi. Ricavando l'errore quadratico medio dell'entropia rispetto all'immagine di topografia si può stimare la differenza di dettagli o rumore tra le due. Se l'errore è piccolo allora le due immagini avranno complessità spaziale simile negli stessi punti, mentre se è alto le strutture locali saranno differenti.
+L'\textbf{entropia} è una misura della complessità spaziale dell'immagine, per cui regioni con un'alta entropia presentano strutture fine, texture o bordi marcati mentre regioni con un'entropia bassa presentano superfici lisce o uniformi. Ricavando l'errore quadratico medio dell'entropia rispetto all'immagine di topografia si può stimare la differenza di dettagli o rumore tra le due. Se l'errore è piccolo allora le due immagini avranno complessità spaziale simile negli stessi punti, mentre se è alto le strutture locali saranno differenti.
 \begin{equation}
-	\text{MSE} = \frac{1}{N}\sum_i\left(H_1(i)-H_2(i)\right)^2
+	\text{MSE} = \frac{1}{N}\sum_{i\in\Omega}\left(H_1(i)-H_2(i)\right)^2
 \end{equation}
 
+Un'altra misura per la stima delle strutture locali è la \textbf{congruenza di fase} (\acrlong{pc} --- \acrshort{pc}), secondo la quale le caratteristiche sono percepite in punti in cui le componenti di Fourier sono massime in fase. La congruenza di fase fornisce un modello semplice ma biologicamente plausibile di come il sistema visivo umano rileva e identifica le caratteristiche di un'immagine.\cite{kovesi_1999,morrone_1988}
+
+Nel caso di segnali unidimensionali, questi si possono scomporre in $N$ componenti armoniche con ampiezza locale $A_n(x)$ e fase locale $\phi_n(x)$. La congruenza di fase nella posizione $x$ sarà il massimo allineamento di queste fasi. Quando tutte le fasi sono allineate, i termini del coseno valgono $1$ e di conseguenza si avrà $\text{PC} = 1$, mentre quando sono casuali il numeratore tende a $0$.
+\begin{align}
+	\text{PC}(x) &= \underset{\bar{\phi}(x)}{\max}\frac{\sum_n A_n(x) \cos\left(\phi_n(x) - \bar{\phi}(x)\right)}{\sum_n A_n(x)}\\[10pt]
+	\bar{\phi}(x) &= \tan^{-1}\left(\frac{\sum_n A_n(x)\sin\phi_n(x)}{\sum_n A_n(x)\cos\phi_n(x)}\right)
+\end{align}
+
+Questo metodo non può essere usato per segnali bidimensionali come le immagini perché la trasformata di Hilbert non è definita per spazi multidimensionali e la trasformata di Fourier non è adatta a localizzare spazialmente le informazioni in frequenza. I sistemi moderni utilizzano una banca di filtri log-Gabor in diverse scale spaziali $s$ e orientamenti $o$ per misurare la congruenza di fase. Questo è implementato con delle paia di filtri in quadratura, in cui uno è pari $M^e_{s,o}$ e l'altro è dispari $M^o_{s,o}$.\cite{kovesi_2003}
+\begin{align}
+	\text{PC}(\mathbf{x}) &= \frac{\sum_o \mathcal{E}_o(\mathbf{x}) - T_o}{\sum_o\sum_s A_{s,o}(\mathbf{x})+\varepsilon}\\[6pt]
+	\mathcal{E}_o(\mathbf{x}) &= \sqrt{\left(\sum_s I(\mathbf{x}) * M^e_{s,o}\right)^2 + \left(\sum_s I(\mathbf{x}) * M^o_{s,o}\right)^2}\\[6pt]
+	A_{s,o}(\mathbf{x}) &= \sqrt{\left(I(\mathbf{x}) * M^e_{s,o}\right)^2 + \left(I(\mathbf{x}) * M^o_{s,o}\right)^2}
+\end{align}
+
+la congruenza di fase è combinata con l'\textbf{ampiezza dei gradienti} per formare l'indice \acrshort{fsim}, usato per misurare la similarità strutturale di due immagini in modo indipendente dall'intensità delle immagini.\cite{zhang_2011} Per calcolare i gradienti è usato l'operatore di Scharr.\cite{jahne_1999}
+\begin{equation}
+	G_x(\mathbf{x}) = \frac{1}{16}\begin{bmatrix}
+		3 & 0 & -3 \\
+		10 & 0 & -10 \\
+		3 & 0 & -3
+	\end{bmatrix} * I(\mathbf{x}) \qquad
+	G_y(\mathbf{x}) = \frac{1}{16}\begin{bmatrix}
+		3 & 10 & 3 \\
+		0 & 0 & 0 \\
+		-3 & -10 & 3 
+	\end{bmatrix} * I(\mathbf{x})
+\end{equation}
 
 \end{document}
