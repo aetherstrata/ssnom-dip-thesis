@@ -5,9 +5,9 @@
 
 \section{Metodi di valutazione}
 
-Per misurare l'efficacia di questi filtri sono stati presi in considerazione diversi metodi di valutazione. La mancanza di immagini senza rumore di riferimento impedisce l'uso di metodi di valutazione full-reference (\acrshort{friqa}) ampiamente utilizzati, come \acrshort{psnr}\cite{korhonen_2012}, \acrshort{ssim}\cite{wang_2004} e \acrshort{cnr}.\cite{rodriguez_2018} La difficoltà nel valutare la qualità di queste immagini deriva anche dalla mancanza di valutazioni soggettive di esperti nel campo e dalla limitata quantità di letteratura su questo argomento.
+Per misurare l'efficacia di questi filtri sono stati presi in considerazione diversi metodi di valutazione. La mancanza di immagini senza rumore di riferimento impedisce l'uso di metodi di valutazione full-reference (\acrshort{friqa}) ampiamente utilizzati, come \acrshort{psnr}\cite{korhonen_2012} (\acrlong{psnr}), \acrshort{ssim}\cite{wang_2004} (\acrlong{ssim}) e \acrshort{cnr}\cite{rodriguez_2018} (\acrlong{cnr}). La difficoltà nel valutare la qualità di queste immagini deriva anche dalla mancanza di valutazioni soggettive di esperti nel campo e dalla limitata quantità di letteratura su questo argomento.
 
-In questo lavoro sono stati usati alcuni sistemi di valutazione cieca (\acrshort{nriqa}) basati su modelli statistici di immagini naturali, come \acrshort{brisque}\cite{mittal_2011}, \acrshort{niqe}\cite{mittal_2013} e \acrshort{piqe}\cite{venkatanath_2015}, usando i loro modelli predefiniti. Questi sistemi valutano la qualità dell'immagine con un punteggio da 0 in su, dove 0 corrisponde alla massima qualità. Oltre ai punteggi di questi modelli è stata misurata anche la variazione totale dell'immagine (\acrshort{tv}).
+In questo lavoro sono stati usati alcuni sistemi di valutazione cieca (\acrshort{nriqa}) basati su modelli statistici di immagini naturali, come \acrshort{brisque}\cite{mittal_2011} (\acrlong{brisque}), \acrshort{niqe}\cite{mittal_2013} (\acrlong{niqe}) e \acrshort{piqe}\cite{venkatanath_2015} (\acrlong{piqe}), usando i loro modelli predefiniti. Questi sistemi valutano la qualità dell'immagine con un punteggio da 0 in su, dove 0 corrisponde alla massima qualità. Oltre ai punteggi di questi modelli è stata misurata anche la variazione totale dell'immagine (\acrshort{tv}).
 
 È stata inoltre condotta un'analisi correlativa tra le proprietà delle immagini di ampiezza \acrshort{snom} prese in esame e le corrispettive immagini di topografia \acrshort{afm}, in quanto questa immagine contiene una quantità di rumore molto inferiore rispetto alla prima.
 
@@ -347,7 +347,7 @@ Passando agli ultimi metodi di valutazione che confrontano le caratteristiche de
 	\label{fig:ef_nlm}
 \end{figure}
 
-Questi filtri si basano entrambi sulla metodologia a media non locale e questo si nota soprattutto sulla grande riduzione del rumore presente sull piano di osservazione, mantenendo però inalterate le strutture dei campioni. Questo tipo di filtri però mantiene anche il rumore impulsivo sui campioni quindi, in base alle esigenze, potrebbero servire altri step di elaborazione per ottenere dei risultati migliori. In particolare, il filtro \acrshort{bm3d} è controllato da molti parametri e facendo uno studio più approfondito potrebbe portare dei risultati anche migliori del filtro \acrshort{nlm}. In questo lavoro è stato usato il profilo VN proposto da Hou et al.\cite{hou_2011}
+Questi filtri si basano entrambi sulla metodologia a media non locale e questo si nota soprattutto sulla grande riduzione del rumore presente sul piano di osservazione, mantenendo però inalterate le strutture dei campioni. Questo tipo di filtri però mantiene anche il rumore impulsivo sui campioni quindi, in base alle esigenze, potrebbero servire altri step di elaborazione per ottenere dei risultati migliori. In particolare, il filtro \acrshort{bm3d} è controllato da molti parametri e facendo uno studio più approfondito potrebbe portare dei risultati anche migliori del filtro \acrshort{nlm}. In questo lavoro è stato usato il profilo VN proposto da Hou et al.\cite{hou_2011}
 
 \newpage
 \null
@@ -423,7 +423,7 @@ Questi filtri si basano entrambi sulla metodologia a media non locale e questo s
 \newpage
 \null
 \vfill
-\begin{figure}[!ht]
+\begin{figure}[!h]
 	\centering
 	\begin{tikzpicture}
 		\pgfplotstableread[col sep=comma]{data2.csv}\datatable
@@ -892,8 +892,9 @@ L'ispezione visiva può essere anche eseguita utilizzando l'immagine dell'ampiez
 		\caption{NLM}
 	\end{subfigure}
 	\caption{Ispezione visiva multicanale di un'immagine della $2^a$ armonica}
+	\label{fig:multichannel}
 \end{figure} 
 
-Si può notare come il filtro mediana abbia rimosso il rumore impulsivo presente soprattutto sui bordi del batterio preservando comunque dei bordi definiti, ma sono diminuiti i dettagli delle strutture interne. Al contrario, il filtro NLM ha preservato i bordi e i dettagli del campione ma non è riuscito a rimuovere il rumore impulsivo sui bordi, tuttavia ha svolto un lavoro nettamente migliore nel rimuovere le imperfezioni sul piano di osservazione lasciando però inalterato il batterio.
+Si può notare come il filtro mediana abbia rimosso il rumore impulsivo presente soprattutto sui bordi del batterio preservando comunque dei bordi definiti, ma sono diminuiti i dettagli delle strutture interne. Al contrario, il filtro NLM ha preservato i bordi e i dettagli del campione ma non è riuscito a rimuovere il rumore impulsivo sui bordi, tuttavia ha svolto un lavoro nettamente migliore nel rimuovere le imperfezioni sul piano di osservazione lasciando però inalterato il batterio. In questo caso il rumore impulsivo dell'immagine originale è basso, molto minore dell'immagine presa in considerazione nelle pagine precedenti, quindi può avere esito migliore applicare un filtro \acrshort{nlm}.
 
 \end{document}
