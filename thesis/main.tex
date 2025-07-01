@@ -1,5 +1,7 @@
 \documentclass[a4paper, 11pt, italian, oneside]{book}
 
+% in questo file è dichiarata la struttura d'insieme della tesi
+% tutte le dipendenze, le impostazioni globali e i comandi personalizzati sono gestiti dentro il file preamble.sty
 \usepackage{preamble}
 
 \author{Davide Pierotti}
@@ -43,7 +45,7 @@
 
 \makeatother
 
-\subfile{sections/acknowledgements}
+\subfile{sections/dedica} % opzionale
 
 %----------------------------------------------------------------------------------------
 %	TOC
@@ -64,18 +66,17 @@
 \pagenumbering{arabic}
 \pagestyle{headings}
 
+% ogni capitolo è sviluppato in un file isolato
 \subfile{sections/introduzione}
 \subfile{sections/afm-snom}
 \subfile{sections/gigascience}
 \subfile{sections/metodi}
 \subfile{sections/risultati}
 \subfile{sections/conclusioni}
-
-\appendix
-\subfile{sections/appendice}
+\subfile{sections/acknowledgements}
 
 %----------------------------------------------------------------------------------------
-%	END SECTION
+%	TITLE SECTION
 %----------------------------------------------------------------------------------------
 
 \backmatter

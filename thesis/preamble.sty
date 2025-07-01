@@ -1,9 +1,8 @@
 \ProvidesPackage{preamble}
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{textcomp}
+\usepackage[utf8]{inputenc}			%codifica caratteri
 \usepackage{xargs}
-\usepackage{babel}
+\usepackage{babel}					%localizzazaione italiana dei pacchetti (se presente :P)
 \usepackage[autostyle]{csquotes}
 \usepackage{amsmath,amsfonts,amsthm}%per gli ambienti matematici
 \usepackage{graphicx}				%per le immagini raster
@@ -18,9 +17,9 @@
 	backend=biber,
 	sorting=none,
 	eprint=false
-]{biblatex}
+]{biblatex}							%gestione della bibliografia
 \usepackage{textcomp}
-\usepackage{geometry}
+\usepackage{geometry}				%gestione impaginamento
 \usepackage{verbatim}
 \usepackage{makeidx}
 \usepackage{color}
@@ -33,15 +32,14 @@
 \usepackage[shortlabels]{enumitem}  %liste con lettere come indici
 \usepackage{appendix}
 \usepackage{hyperref}
-\usepackage[acronym, section]{glossaries}
+\usepackage[acronym, section]{glossaries}	%generatore del glossario
 \usepackage{fancyhdr}
-\usepackage{lipsum}
 \usepackage[pdftex, dvipsnames]{xcolor,colortbl}
 
-\usepackage[most]{tcolorbox}
+\usepackage[most]{tcolorbox}		%utile per avere dei rettangoli a sfondo colorato per note, teoremi, ecc
 \tcbuselibrary{skins,breakable}
 
-\usepackage{tikz}
+\usepackage{tikz}					%linguaggio per creare grafica vettoriale dentro latex
 \usetikzlibrary{math}
 \usetikzlibrary{calc}
 \usetikzlibrary{shadings}
@@ -50,13 +48,15 @@
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{positioning}
 \usetikzlibrary{spy}
-\usepackage{pgfplots}
+
+\usepackage{pgfplots}				%pacchetto compagno di tikz per generare grafici
 \usepackage{pgfplotstable}
 \pgfplotsset{compat=1.18}
 
 \setlength{\marginparwidth}{2.5cm}
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 
+% Questi comandi possono essere usati per mettere dei commenti visuali nel testo in fase di elaborazione
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
 \newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
@@ -70,6 +70,7 @@
 
 \newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
 
+% Imposta i margini e l'interlinea
 \linespread{1.5}
 \geometry{a4paper, top=3cm, bottom=3cm, left=3.5cm, right=3cm,heightrounded,bindingoffset=5mm}
 
@@ -89,13 +90,10 @@
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\arraystretch}{1.2}
 
-\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}					 % Create horizontal rule command with 1 argument of height
-
-%\definecolor{LightGray}{gray}{0.9}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}		% Create horizontal rule command with 1 argument of height
 
 \makeglossaries
 \loadglsentries{glossary}
-
 \addbibresource{references.bib}
 
 \renewcommand{\cite}[1]{\textsuperscript{[}\supercite{#1}\textsuperscript{]}}

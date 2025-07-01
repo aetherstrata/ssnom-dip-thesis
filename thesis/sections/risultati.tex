@@ -5,7 +5,7 @@
 
 \section{Metodi di valutazione}
 
-Per misurare l'efficacia di questi filtri sono stati presi in considerazione diversi metodi di valutazione. La mancanza di immagini senza rumore di riferimento impedisce l'uso di metodi di valutazione full-reference (\acrshort{friqa}) ampiamente utilizzati, come \acrshort{psnr}\cite{korhonen_2012} (\acrlong{psnr}), \acrshort{ssim}\cite{wang_2004} (\acrlong{ssim}) e \acrshort{cnr}\cite{rodriguez_2018} (\acrlong{cnr}). La difficoltà nel valutare la qualità di queste immagini deriva anche dalla mancanza di valutazioni soggettive di esperti nel campo e dalla limitata quantità di letteratura su questo argomento.
+Per misurare l'efficacia dell'uso del filtri descritti nel precedente capitolo, sono stati presi in considerazione diversi metodi di valutazione. La mancanza di immagini senza rumore di riferimento impedisce l'uso di metodi di valutazione full-reference (\acrshort{friqa}), come \acrshort{psnr}\cite{korhonen_2012} (\acrlong{psnr}), \acrshort{ssim}\cite{wang_2004} (\acrlong{ssim}) e \acrshort{cnr}\cite{rodriguez_2018} (\acrlong{cnr}). La difficoltà nel valutare la qualità di queste immagini deriva anche dalla mancanza di valutazioni soggettive di esperti nel campo e dalla limitata quantità di letteratura su questo argomento.
 
 In questo lavoro sono stati usati alcuni sistemi di valutazione cieca (\acrshort{nriqa}) basati su modelli statistici di immagini naturali, come \acrshort{brisque}\cite{mittal_2011} (\acrlong{brisque}), \acrshort{niqe}\cite{mittal_2013} (\acrlong{niqe}) e \acrshort{piqe}\cite{venkatanath_2015} (\acrlong{piqe}), usando i loro modelli predefiniti. Questi sistemi valutano la qualità dell'immagine con un punteggio da 0 in su, dove 0 corrisponde alla massima qualità. Oltre ai punteggi di questi modelli è stata misurata anche la variazione totale dell'immagine (\acrshort{tv}).
 
@@ -35,9 +35,9 @@ In questo lavoro sono stati usati alcuni sistemi di valutazione cieca (\acrshort
 
 \subsection{Analisi correlativa}
 
-Le immagini di topografia \acrshort{afm} e ampiezza \acrshort{snom}, anche se condividono delle informazioni spaziali correlate, non possono essere esaminate con i metodi di valutazione full-reference tradizionali poiché non rappresentano lo stesso contenuto. Le prime sono una mappa altimetrica del campione, mentre le seconde catturano le interazioni ottiche nel campo vicino, che dipendono dall'indice di rifrazione del campione.
+Le immagini di topografia \acrshort{afm} e ampiezza \acrshort{snom}, anche se condividono delle informazioni spaziali correlate, non possono essere esaminate con i metodi di valutazione \textit{full-reference} tradizionali poiché non rappresentano lo stesso contenuto. Le prime sono una mappa altimetrica del campione, mentre le seconde catturano le interazioni ottiche nel campo vicino, che dipendono dall' indice di rifrazione del campione.
 
-Per svolgere questa analisi sono stati presi in considerazione cinque parametri:
+Per svolgere quest'analisi sono stati presi in considerazione cinque parametri:
 
 \begin{enumerate}
 	\itemsep0em
@@ -71,18 +71,18 @@ Un'altra misura per la stima delle strutture locali è la \textbf{congruenza di 
 
 Nel caso di segnali unidimensionali, questi si possono scomporre in $N$ componenti armoniche con ampiezza locale $A_n(x)$ e fase locale $\phi_n(x)$. La congruenza di fase nella posizione $x$ sarà il massimo allineamento di queste fasi. Quando tutte le fasi sono allineate, i termini del coseno valgono $1$ e di conseguenza si avrà $\text{PC} = 1$, mentre quando sono casuali il numeratore tende a $0$.
 \begin{align}
-	\text{PC}(x) &= \underset{\bar{\phi}(x)}{\max}\frac{\sum_n A_n(x) \cos\left(\phi_n(x) - \bar{\phi}(x)\right)}{\sum_n A_n(x)}\\[10pt]
+	\text{PC}(x) &= \underset{\bar{\phi}(x)}{\max}\frac{\sum_n A_n(x) \cos\left(\phi_n(x) - \bar{\phi}(x)\right)}{\sum_n A_n(x)}\\[6pt]
 	\bar{\phi}(x) &= \tan^{-1}\left(\frac{\sum_n A_n(x)\sin\phi_n(x)}{\sum_n A_n(x)\cos\phi_n(x)}\right)
 \end{align}
 
-Questo metodo non può essere usato per segnali bidimensionali come le immagini perché la trasformata di Hilbert non è definita per spazi multidimensionali e la trasformata di Fourier non è adatta a localizzare spazialmente le informazioni in frequenza. I sistemi moderni utilizzano una banca di filtri log-Gabor in diverse scale spaziali $s$ e orientamenti $o$ per misurare la congruenza di fase. Questo è implementato con delle paia di filtri in quadratura, in cui uno è pari $M^e_{s,o}$ e l'altro è dispari $M^o_{s,o}$.\cite{kovesi_2003}
+Questo metodo non può essere usato per segnali bidimensionali come le immagini perché la trasformata di Hilbert non è definita per spazi multidimensionali e la trasformata di Fourier non è adatta a localizzare spazialmente le informazioni in frequenza. I sistemi moderni utilizzano una banca di filtri log-Gabor in diverse scale spaziali $s$ e orientamenti $o$ per misurare la congruenza di fase. Questo è implementato con delle paia di filtri di quadratura, in cui uno è pari $M^e_{s,o}$ e l'altro è dispari $M^o_{s,o}$.\cite{kovesi_2003}
 \begin{align}
 	\text{PC}(\mathbf{x}) &= \frac{\sum_o \mathcal{E}_o(\mathbf{x}) - T_o}{\sum_o\sum_s A_{s,o}(\mathbf{x})+\varepsilon}\\[6pt]
 	\mathcal{E}_o(\mathbf{x}) &= \sqrt{\left(\sum_s I(\mathbf{x}) * M^e_{s,o}\right)^2 + \left(\sum_s I(\mathbf{x}) * M^o_{s,o}\right)^2}\\[6pt]
 	A_{s,o}(\mathbf{x}) &= \sqrt{\left(I(\mathbf{x}) * M^e_{s,o}\right)^2 + \left(I(\mathbf{x}) * M^o_{s,o}\right)^2}
 \end{align}
 
-la congruenza di fase è combinata con l'\textbf{ampiezza dei gradienti} per formare l'indice \acrshort{fsim}, usato per misurare la similarità strutturale di due immagini in modo indipendente dall'intensità delle immagini.\cite{zhang_2011} Per calcolare i gradienti è usato l'operatore di Scharr.\cite{jahne_1999}
+La congruenza di fase è combinata con l'\textbf{ampiezza dei gradienti} per formare l'indice \acrshort{fsim}, usato per misurare la similarità strutturale di due immagini in modo indipendente dall'intensità delle immagini.\cite{zhang_2011} Per calcolare i gradienti è usato l'operatore di Scharr.\cite{jahne_1999}
 \begin{equation}
 	G_x(\mathbf{x}) = \frac{1}{16}\begin{bmatrix}
 		3 & 0 & -3 \\
@@ -163,7 +163,7 @@ Questo comportamento deriva dal fatto che il filtro mediana è un buon filtro da
 	\label{fig:ef1}
 \end{figure}
 
-In blu invece sono evidenziati gli outlier nella tabella: il filtro guidato e il filtro gaussiano con $\sigma = 2$. Questi filtri presentano dei valori di media in \acrshort{brisque} e \acrshort{piqe} molto superiori rispetto a tutti gli altri filtri esaminati. Questo si può notare anche nei valori medi della variazione totale, dove questi due filtri hanno ha media molto minore degli altri filtri.
+In blu invece sono evidenziati gli outlier nella tabella: il filtro guidato e il filtro gaussiano con $\sigma = 2$. Questi filtri presentano dei valori di media in \acrshort{brisque} e \acrshort{piqe} molto superiori rispetto a tutti gli altri filtri esaminati e anche dell'immagine originale. Questo si può notare anche nei valori medi della variazione totale, dove questi due filtri hanno ha media molto minore degli altri filtri.
 
 \begin{table}[h]
 	\centering
@@ -221,28 +221,6 @@ Il filtro guassiano ad alta varianza smussa eccessivamente l'immagine, facendo p
 	\caption{Immagine della figura \ref{fig:ef1} elaborata con filtro gaussiano e guidato}
 \end{figure}
 
-Sono visibili anche nella tabella della scala \acrshort{fsim} i valori dei scartatati, a dimostrazione che l'ispezione visiva è uno step importante per la validazione dei risultati, in mancanza di dati di  riferimento.\medskip
-
-\begin{table}[ht]
-	\centering
-	\begin{tabular}{r||cc|cc}
-		&  \multicolumn{2}{c|}{O2A} &  \multicolumn{2}{c}{O3A}  \\
-		\acrshort{fsim}\hspace{10pt} & Valore & Diff & Valore & Diff \\		\hline\hline
-		Orignale   		& 0.899 & ---   & 0.889 & --- \\
-		NLM         	& \textbf{0.924} & \textbf{0.025} & \textbf{0.926} & \textbf{0.037} \\
-		Mediana     	& 0.915 & 0.016 & 0.912 & 0.023 \\
-		Bilaterale    	& 0.915 & 0.016 & 0.908 & 0.019 \\
-		Wiener        	& 0.915 & 0.016 & 0.911 & 0.022 \\
-		Gaussiana 0.5 	& 0.906 & 0.007 & 0.898 & 0.009 \\
-		Gaussiana 2   	& \textcolor{blue}{\textbf{0.930}} & \textcolor{blue}{\textbf{0.031}} & \textcolor{blue}{\textbf{0.932}} & \textcolor{blue}{\textbf{0.043}} \\
-		Rettangolare 	& 0.917 & 0.018 & 0.914 & 0.025 \\
-		Guidato        	& \textcolor{blue}{\textbf{0.929}} & \textcolor{blue}{\textbf{0.030}} & \textcolor{blue}{\textbf{0.931}} & \textcolor{blue}{\textbf{0.042}} \\
-		BM3D   			& 0.918 & 0.019     & 0.922 & 0.033
-	\end{tabular}
-	\caption[Valori medi della scala FSIM]{
-		Valori medi della scala \acrshort{fsim}}
-\end{table}
-
 Il filtro rettangolare si posiziona al primo posto nelle tabelle della variazione totale, con il filtro mediana che segue in seconda posizione con valori simili. I due filtri producono immagini con una quantità simile di rumore bianco sul piano di osservazione ma presentano dei comportamenti molto diversi in corrispondenza di regioni con variazioni di intensità elevate.\bigskip
 
 \begin{figure}[ht]
@@ -281,6 +259,28 @@ Il filtro rettangolare si posiziona al primo posto nelle tabelle della variazion
 	\caption{Confronto tra filtro rettangolare e mediana}
 	\label{fig:ef_bm}
 \end{figure}
+
+Sono visibili anche nella tabella della scala \acrshort{fsim} i valori dei filtri scartatati, a dimostrazione che l'ispezione visiva è uno step importante per la validazione dei risultati, in mancanza di dati di riferimento.\medskip
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{r||cc|cc}
+		&  \multicolumn{2}{c|}{O2A} &  \multicolumn{2}{c}{O3A}  \\
+		\acrshort{fsim}\hspace{10pt} & Valore & Diff & Valore & Diff \\		\hline\hline
+		Orignale   		& 0.899 & ---   & 0.889 & --- \\
+		NLM         	& \textbf{0.924} & \textbf{0.025} & \textbf{0.926} & \textbf{0.037} \\
+		Mediana     	& 0.915 & 0.016 & 0.912 & 0.023 \\
+		Bilaterale    	& 0.915 & 0.016 & 0.908 & 0.019 \\
+		Wiener        	& 0.915 & 0.016 & 0.911 & 0.022 \\
+		Gaussiana 0.5 	& 0.906 & 0.007 & 0.898 & 0.009 \\
+		Gaussiana 2   	& \textcolor{blue}{\textbf{0.930}} & \textcolor{blue}{\textbf{0.031}} & \textcolor{blue}{\textbf{0.932}} & \textcolor{blue}{\textbf{0.043}} \\
+		Rettangolare 	& 0.917 & 0.018 & 0.914 & 0.025 \\
+		Guidato        	& \textcolor{blue}{\textbf{0.929}} & \textcolor{blue}{\textbf{0.030}} & \textcolor{blue}{\textbf{0.931}} & \textcolor{blue}{\textbf{0.042}} \\
+		BM3D   			& 0.918 & 0.019     & 0.922 & 0.033
+	\end{tabular}
+	\caption[Valori medi della scala FSIM]{
+		Valori medi della scala \acrshort{fsim}}
+\end{table}
 
 Il filtro mediana elimina le variazioni isolate ma trasforma le curve in gradini definiti, mentre si può notare come il filtro rettangolare generi degli artefatti nelle regioni dove prima era presente una grande variazione di intensità, come si può osservare dalle striscie verticali e orizzontali presenti nella figura \ref{fig:ef_bm} in corrispondenza del rumore impulsivo.
 
@@ -347,11 +347,10 @@ Passando agli ultimi metodi di valutazione che confrontano le caratteristiche de
 	\label{fig:ef_nlm}
 \end{figure}
 
-Questi filtri si basano entrambi sulla metodologia a media non locale e questo si nota soprattutto sulla grande riduzione del rumore presente sul piano di osservazione, mantenendo però inalterate le strutture dei campioni. Questo tipo di filtri però mantiene anche il rumore impulsivo sui campioni quindi, in base alle esigenze, potrebbero servire altri step di elaborazione per ottenere dei risultati migliori. In particolare, il filtro \acrshort{bm3d} è controllato da molti parametri e facendo uno studio più approfondito potrebbe portare dei risultati anche migliori del filtro \acrshort{nlm}. In questo lavoro è stato usato il profilo VN proposto da Hou et al.\cite{hou_2011}
+Questi filtri si basano entrambi sulla metodologia a media non locale e questo si nota soprattutto sulla grande riduzione del rumore presente sul piano di osservazione, mantenendo però inalterate le strutture dei campioni. Questo tipo di filtri però mantiene anche il rumore impulsivo sui campioni quindi, in base alle esigenze, potrebbero servire altri step di elaborazione per ottenere dei risultati migliori. In particolare, il filtro \acrshort{bm3d} è controllato da molti parametri e facendo uno studio più approfondito potrebbe portare a dei risultati anche migliori del filtro \acrshort{nlm}. In questo lavoro è stato usato il profilo VN proposto da Hou et al.\cite{hou_2011}
 
 \newpage
 \null
-\vfill
 \begin{figure}[!ht]
 	\centering
 	\begin{subfigure}{0.3\linewidth}
@@ -419,11 +418,9 @@ Questi filtri si basano entrambi sulla metodologia a media non locale e questo s
 			Quarta riga: Entropia locale dell'immagine
 	\end{tabular}}
 \end{figure}
-\vfill
 \newpage
 \null
-\vfill
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\begin{tikzpicture}
 		\pgfplotstableread[col sep=comma]{data2.csv}\datatable
@@ -516,8 +513,8 @@ Questi filtri si basano entrambi sulla metodologia a media non locale e questo s
 			xtick=data,
 			xticklabels={},
 			ybar,
-			ymin=0,ymax=8000,
-			ytick={0,2000, 4000, 6000, 8000},
+			ymin=0,ymax=10000,
+			ytick={0,2500,5000,7500,10000},
 			yticklabel style={
 				/pgf/number format/fixed,
 				/pgf/number format/precision=2
@@ -542,8 +539,8 @@ Questi filtri si basano entrambi sulla metodologia a media non locale e questo s
 			xtick=data,
 			xticklabels={},
 			ybar,
-			ymin=0.85,ymax=1,
-			ytick={0.85,0.90,0.95,1},
+			ymin=0.92,ymax=1,
+			ytick={0.92,0.94,0.96,0.98,1},
 			yticklabel style={
 				/pgf/number format/fixed,
 				/pgf/number format/precision=2
@@ -643,232 +640,231 @@ Questi filtri si basano entrambi sulla metodologia a media non locale e questo s
 	\end{tikzpicture}
 	\caption{Grafici a barre delle medie di valutazione per immagini O2A}
 \end{figure}
-\vfill
+\null
 \newpage
 \null
-\vfill
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\begin{tikzpicture}
 		\pgfplotstableread[col sep=comma]{data3.csv}\datatable
 		
-		\begin{axis}[ 
-			width=7cm, height=5cm,
-			legend style={legend columns=-1},
-			ylabel=BRISQUE,
-			xtick=data,
-			xticklabels={},
-			ybar,
-			ymin=0,ymax=60,
-			ytick={0,15,30,45,60},
-			yticklabel style={
-				/pgf/number format/fixed,
-				/pgf/number format/precision=2
-			},
-			xticklabel style={rotate=90, anchor=east},
-			xtick pos=bottom]
-			\addplot [
-			color=red,fill,
-			error bars/.cd,
-			y dir=both,
-			y explicit,
-			error bar style = {color=black, line width=1pt}
-			] 
-			table [x expr=\coordindex, y={meanBRISQUE}, y error={semBRISQUE}] \datatable;
-		\end{axis}
+			\begin{axis}[ 
+				width=7cm, height=5cm,
+				legend style={legend columns=-1},
+				ylabel=BRISQUE,
+				xtick=data,
+				xticklabels={},
+				ybar,
+				ymin=0,ymax=60,
+				ytick={0,15,30,45,60},
+				yticklabel style={
+					/pgf/number format/fixed,
+					/pgf/number format/precision=2
+				},
+				xticklabel style={rotate=90, anchor=east},
+				xtick pos=bottom]
+				\addplot [
+					color=red,fill,
+					error bars/.cd,
+						y dir=both,
+						y explicit,
+						error bar style = {color=black, line width=1pt}
+				] 
+				table [x expr=\coordindex, y={meanBRISQUE}, y error={semBRISQUE}] \datatable;
+			\end{axis}
+
+			\begin{axis}[ 
+				width=7cm, height=5cm,
+				xshift=6cm,
+				legend style={legend columns=-1},
+				ylabel=NIQE,
+				ytick pos=right,
+				ylabel near ticks,
+				xtick=data,
+				xticklabels={},
+				ybar,
+				ymin=0,ymax=15,
+				ytick={0,5,10,15},
+				yticklabel style={
+					/pgf/number format/fixed,
+					/pgf/number format/precision=2
+				},
+				xticklabel style={rotate=90, anchor=east},
+				xtick pos=bottom]
+				\addplot [
+					color=red,fill,
+					error bars/.cd,
+						y dir=both,
+						y explicit,
+						error bar style = {color=black, line width=1pt}
+				] 
+				table [x expr=\coordindex, y={meanNIQE}, y error={semNIQE}] \datatable;
+			\end{axis}
+				
+			\begin{axis}[ 
+				width=7cm, height=5cm,
+				yshift=-4.5cm,
+				legend style={legend columns=-1},
+				ylabel=PIQE,
+				xtick=data,
+				xticklabels={},
+				ybar,
+				ymin=0,ymax=100,
+				ytick={0,25,50,75,100},
+				yticklabel style={
+					/pgf/number format/fixed,
+					/pgf/number format/precision=2
+				},
+				xticklabel style={rotate=90, anchor=east},
+				xtick pos=bottom]
+				\addplot [
+					color=red,fill,
+					error bars/.cd,
+						y dir=both,
+						y explicit,
+						error bar style = {color=black, line width=1pt}
+				] 
+				table [x expr=\coordindex, y={meanPIQE}, y error={semPIQE}] \datatable;
+			\end{axis}
+			
+			\begin{axis}[ 
+				width=7cm, height=5cm,
+				xshift=6cm, yshift=-4.5cm,
+				legend style={legend columns=-1},
+				ylabel=TV,
+				ytick pos=right,
+				xtick=data,
+				xticklabels={},
+				ybar,
+			    ymin=0,ymax=10000,
+			    ytick={0,2500,5000,7500,10000},
+				yticklabel style={
+					/pgf/number format/fixed,
+					/pgf/number format/precision=2
+				},
+				xticklabel style={rotate=90, anchor=east},
+				xtick pos=bottom]
+				\addplot [
+					color=red,fill,
+					error bars/.cd,
+						y dir=both,
+						y explicit,
+						error bar style = {color=black, line width=1pt}
+				] 
+				table [x expr=\coordindex, y={meanTV}, y error={semTV}] \datatable;
+			\end{axis}
 		
-		\begin{axis}[ 
-			width=7cm, height=5cm,
-			xshift=6cm,
-			legend style={legend columns=-1},
-			ylabel=NIQE,
-			ytick pos=right,
-			ylabel near ticks,
-			xtick=data,
-			xticklabels={},
-			ybar,
-			ymin=0,ymax=15,
-			ytick={0,5,10,15},
-			yticklabel style={
-				/pgf/number format/fixed,
-				/pgf/number format/precision=2
-			},
-			xticklabel style={rotate=90, anchor=east},
-			xtick pos=bottom]
-			\addplot [
-			color=red,fill,
-			error bars/.cd,
-			y dir=both,
-			y explicit,
-			error bar style = {color=black, line width=1pt}
-			] 
-			table [x expr=\coordindex, y={meanNIQE}, y error={semNIQE}] \datatable;
-		\end{axis}
-		
-		\begin{axis}[ 
-			width=7cm, height=5cm,
-			yshift=-4.5cm,
-			legend style={legend columns=-1},
-			ylabel=PIQE,
-			xtick=data,
-			xticklabels={},
-			ybar,
-			ymin=0,ymax=100,
-			ytick={0,25,50,75,100},
-			yticklabel style={
-				/pgf/number format/fixed,
-				/pgf/number format/precision=2
-			},
-			xticklabel style={rotate=90, anchor=east},
-			xtick pos=bottom]
-			\addplot [
-			color=red,fill,
-			error bars/.cd,
-			y dir=both,
-			y explicit,
-			error bar style = {color=black, line width=1pt}
-			] 
-			table [x expr=\coordindex, y={meanPIQE}, y error={semPIQE}] \datatable;
-		\end{axis}
-		
-		\begin{axis}[ 
-			width=7cm, height=5cm,
-			xshift=6cm, yshift=-4.5cm,
-			legend style={legend columns=-1},
-			ylabel=TV,
-			ytick pos=right,
-			xtick=data,
-			xticklabels={},
-			ybar,
-			ymin=0,ymax=8000,
-			ytick={0,2000, 4000, 6000, 8000},
-			yticklabel style={
-				/pgf/number format/fixed,
-				/pgf/number format/precision=2
-			},
-			xticklabel style={rotate=90, anchor=east},
-			xtick pos=bottom]
-			\addplot [
-			color=red,fill,
-			error bars/.cd,
-			y dir=both,
-			y explicit,
-			error bar style = {color=black, line width=1pt}
-			] 
-			table [x expr=\coordindex, y={meanTV}, y error={semTV}] \datatable;
-		\end{axis}
-		
-		\begin{axis}[ 
-			width=7cm, height=5cm,
-			yshift=-9cm,
-			legend style={legend columns=-1},
-			ylabel=FSIM,
-			xtick=data,
-			xticklabels={},
-			ybar,
-			ymin=0.85,ymax=1,
-			ytick={0.85,0.90,0.95,1},
-			yticklabel style={
-				/pgf/number format/fixed,
-				/pgf/number format/precision=2
-			},
-			xticklabel style={rotate=90, anchor=east},
-			xtick pos=bottom]
-			\addplot [
-			color=red,fill,
-			error bars/.cd,
-			y dir=both,
-			y explicit,
-			error bar style = {color=black, line width=1pt}
-			] 
-			table [x expr=\coordindex, y={meanFSIM}, y error={semFSIM}] \datatable;
-		\end{axis}
-		
-		\begin{axis}[ 
-			width=7cm, height=5cm,
-			xshift=6cm, yshift=-9cm,
-			legend style={legend columns=-1},
-			ylabel=MI,
-			ytick pos=right,
-			xtick=data,
-			xticklabels={},
-			ybar,
-			ymin=0,ymax=1,
-			ytick={0,0.25,0.5,0.75,1},
-			yticklabel style={
-				/pgf/number format/fixed,
-				/pgf/number format/precision=2
-			},
-			xticklabel style={rotate=90, anchor=east},
-			xtick pos=bottom]
-			\addplot [
-			color=red,fill,
-			error bars/.cd,
-			y dir=both,
-			y explicit,
-			error bar style = {color=black, line width=1pt}
-			] 
-			table [x expr=\coordindex, y={meanMI}, y error={semMI}] \datatable;
-		\end{axis}
-		
-		\begin{axis}[ 
-			width=7cm, height=5cm,
-			yshift=-13.5cm,
-			legend style={legend columns=-1},
-			ylabel=EMSE,
-			xtick=data,
-			xticklabels from table={\datatable}{Row},
-			ybar,
-			ymin=0,ymax=0.1,
-			ytick={0,0.025,0.05,0.075,0.1},
-			yticklabel style={
-				/pgf/number format/fixed,
-				/pgf/number format/precision=2
-			},
-			xticklabel style={rotate=90, anchor=east},
-			xtick pos=bottom]
-			\addplot [
-			color=red,fill,
-			error bars/.cd,
-			y dir=both,
-			y explicit,
-			error bar style = {color=black, line width=1pt}
-			] 
-			table [x expr=\coordindex, y={meanEMSE}, y error={semEMSE}] \datatable;
-		\end{axis}
-		
-		\begin{axis}[ 
-			width=7cm, height=5cm,
-			xshift=6cm, yshift=-13.5cm,
-			legend style={legend columns=-1},
-			ylabel=EDK,
-			ytick pos=right,
-			xtick=data,
-			xticklabels from table={\datatable}{Row},
-			ybar,
-			ymin=0,ymax=0.2,
-			ytick={0,0.05,0.1,0.15,0.2},
-			yticklabel style={
-				/pgf/number format/fixed,
-				/pgf/number format/precision=2
-			},
-			xticklabel style={rotate=90, anchor=east},
-			xtick pos=bottom]
-			\addplot [
-			color=red,fill,
-			error bars/.cd,
-			y dir=both,
-			y explicit,
-			error bar style = {color=black, line width=1pt}
-			] 
-			table [x expr=\coordindex, y={meanESI}, y error={semESI}] \datatable;
-		\end{axis}
-		
+			\begin{axis}[ 
+				width=7cm, height=5cm,
+				yshift=-9cm,
+				legend style={legend columns=-1},
+				ylabel=FSIM,
+				xtick=data,
+				xticklabels={},
+				ybar,
+				ymin=0.92,ymax=1,
+				ytick={0.92,0.94,0.96,0.98,1},
+				yticklabel style={
+					/pgf/number format/fixed,
+					/pgf/number format/precision=2
+				},
+				xticklabel style={rotate=90, anchor=east},
+				xtick pos=bottom]
+				\addplot [
+					color=red,fill,
+					error bars/.cd,
+						y dir=both,
+						y explicit,
+						error bar style = {color=black, line width=1pt}
+				] 
+				table [x expr=\coordindex, y={meanFSIM}, y error={semFSIM}] \datatable;
+			\end{axis}
+			
+			\begin{axis}[ 
+				width=7cm, height=5cm,
+				xshift=6cm, yshift=-9cm,
+				legend style={legend columns=-1},
+				ylabel=MI,
+				ytick pos=right,
+				xtick=data,
+				xticklabels={},
+				ybar,
+				ymin=0,ymax=1,
+				ytick={0,0.25,0.5,0.75,1},
+				yticklabel style={
+					/pgf/number format/fixed,
+					/pgf/number format/precision=2
+				},
+				xticklabel style={rotate=90, anchor=east},
+				xtick pos=bottom]
+				\addplot [
+					color=red,fill,
+					error bars/.cd,
+						y dir=both,
+						y explicit,
+						error bar style = {color=black, line width=1pt}
+				] 
+				table [x expr=\coordindex, y={meanMI}, y error={semMI}] \datatable;
+			\end{axis}
+
+			\begin{axis}[ 
+				width=7cm, height=5cm,
+				yshift=-13.5cm,
+				legend style={legend columns=-1},
+				ylabel=EMSE,
+				xtick=data,
+				xticklabels from table={\datatable}{Row},
+				ybar,
+				ymin=0,ymax=0.1,
+				ytick={0,0.025,0.05,0.075,0.1},
+				yticklabel style={
+					/pgf/number format/fixed,
+					/pgf/number format/precision=2
+				},
+				xticklabel style={rotate=90, anchor=east},
+				xtick pos=bottom]
+				\addplot [
+					color=red,fill,
+					error bars/.cd,
+						y dir=both,
+						y explicit,
+						error bar style = {color=black, line width=1pt}
+				] 
+				table [x expr=\coordindex, y={meanEMSE}, y error={semEMSE}] \datatable;
+			\end{axis}
+			
+			\begin{axis}[ 
+				width=7cm, height=5cm,
+				xshift=6cm, yshift=-13.5cm,
+				legend style={legend columns=-1},
+				ylabel=EDK,
+				ytick pos=right,
+				xtick=data,
+				xticklabels from table={\datatable}{Row},
+				ybar,
+				ymin=0,ymax=0.2,
+				ytick={0,0.05,0.1,0.15,0.2},
+				yticklabel style={
+					/pgf/number format/fixed,
+					/pgf/number format/precision=2
+				},
+				xticklabel style={rotate=90, anchor=east},
+				xtick pos=bottom]
+				\addplot [
+					color=red,fill,
+					error bars/.cd,
+						y dir=both,
+						y explicit,
+						error bar style = {color=black, line width=1pt}
+				] 
+				table [x expr=\coordindex, y={meanESI}, y error={semESI}] \datatable;
+			\end{axis}
+						
 	\end{tikzpicture}
 	\caption{Grafici a barre delle medie di valutazione per immagini O3A}
 \end{figure}
-\vfill
-\newpage 
+\null
+\newpage
 
 \section{Ispezione visiva multicanale}
 
@@ -892,9 +888,8 @@ L'ispezione visiva può essere anche eseguita utilizzando l'immagine dell'ampiez
 		\caption{NLM}
 	\end{subfigure}
 	\caption{Ispezione visiva multicanale di un'immagine della $2^a$ armonica}
-	\label{fig:multichannel}
 \end{figure} 
 
-Si può notare come il filtro mediana abbia rimosso il rumore impulsivo presente soprattutto sui bordi del batterio preservando comunque dei bordi definiti, ma sono diminuiti i dettagli delle strutture interne. Al contrario, il filtro NLM ha preservato i bordi e i dettagli del campione ma non è riuscito a rimuovere il rumore impulsivo sui bordi, tuttavia ha svolto un lavoro nettamente migliore nel rimuovere le imperfezioni sul piano di osservazione lasciando però inalterato il batterio. In questo caso il rumore impulsivo dell'immagine originale è basso, molto minore dell'immagine presa in considerazione nelle pagine precedenti, quindi può avere esito migliore applicare un filtro \acrshort{nlm}.
+Si può notare come il filtro mediana abbia rimosso il rumore impulsivo presente soprattutto sui bordi del batterio preservando comunque dei bordi definiti, ma sono diminuiti i dettagli delle strutture interne. Al contrario, il filtro \acrshort{nlm} ha preservato i bordi e i dettagli del campione ma non è riuscito a rimuovere il rumore impulsivo sui bordi, tuttavia ha svolto un lavoro nettamente migliore nel rimuovere le imperfezioni sul piano di osservazione lasciando però inalterati i dettagli della superficie del batterio. In questo caso il rumore impulsivo dell'immagine originale è basso, molto minore dell'immagine presa in considerazione nelle pagine precedenti, quindi può avere esito migliore applicare un filtro \acrshort{nlm} per mantenere inalterati i dettagli.
 
-\end{document}
+\end{document}  
